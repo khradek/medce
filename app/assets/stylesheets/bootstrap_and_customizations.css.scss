@@ -1,0 +1,125 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+.large-container{
+  margin: auto;
+  max-width: 80%;
+}
+
+.medium-container{
+  margin: auto;
+  max-width: 65%;
+}
+
+.double_space{
+  line-height: 1.8;
+}
+
+.bold-text{
+  font-weight: bold;
+}
+
+.dark-blue-text{
+  color: #033f92;
+}
+
+.h1-custom {
+  display: block;
+  font-size: 4em;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.h2-custom {
+  display: block;
+  font-size: 1.8em;
+  margin-top: 0;
+  margin-bottom: 5px;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.box{
+  border-bottom-style: ridge;
+  border-width: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  background-color: #fff;
+  border-color: #b6b6b6; 
+}
+
+//Buttons
+.btn-blue {
+  background-color: hsl(209, 100%, 18%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#51abff", endColorstr="#002f5b");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#51abff), to(#002f5b));
+  background-image: -moz-linear-gradient(top, #51abff, #002f5b);
+  background-image: -ms-linear-gradient(top, #51abff, #002f5b);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #51abff), color-stop(100%, #002f5b));
+  background-image: -webkit-linear-gradient(top, #51abff, #002f5b);
+  background-image: -o-linear-gradient(top, #51abff, #002f5b);
+  background-image: linear-gradient(#51abff, #002f5b);
+  border-color: #002f5b #002f5b hsl(209, 100%, 6%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.79);
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn-red {
+  background-color: hsl(360, 100%, 18%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff5151", endColorstr="#5b0000");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ff5151), to(#5b0000));
+  background-image: -moz-linear-gradient(top, #ff5151, #5b0000);
+  background-image: -ms-linear-gradient(top, #ff5151, #5b0000);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff5151), color-stop(100%, #5b0000));
+  background-image: -webkit-linear-gradient(top, #ff5151, #5b0000);
+  background-image: -o-linear-gradient(top, #ff5151, #5b0000);
+  background-image: linear-gradient(#ff5151, #5b0000);
+  border-color: #5b0000 #5b0000 hsl(360, 100%, 6%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.79);
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn-gray {
+  background-color: hsl(0, 0%, 7%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#aaaaaa", endColorstr="#111111");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#aaaaaa), to(#111111));
+  background-image: -moz-linear-gradient(top, #aaaaaa, #111111);
+  background-image: -ms-linear-gradient(top, #aaaaaa, #111111);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #aaaaaa), color-stop(100%, #111111));
+  background-image: -webkit-linear-gradient(top, #aaaaaa, #111111);
+  background-image: -o-linear-gradient(top, #aaaaaa, #111111);
+  background-image: linear-gradient(#aaaaaa, #111111);
+  border-color: #111111 #111111 hsl(0, 0%, -8%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.99);
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn-light-gray {
+  background-color: hsl(0, 0%, 51%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fcfcfc", endColorstr="#828282");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#fcfcfc), to(#828282));
+  background-image: -moz-linear-gradient(top, #fcfcfc, #828282);
+  background-image: -ms-linear-gradient(top, #fcfcfc, #828282);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fcfcfc), color-stop(100%, #828282));
+  background-image: -webkit-linear-gradient(top, #fcfcfc, #828282);
+  background-image: -o-linear-gradient(top, #fcfcfc, #828282);
+  background-image: linear-gradient(#fcfcfc, #828282);
+  border-color: #828282 #828282 hsl(0, 0%, 39%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.79);
+  -webkit-font-smoothing: antialiased;
+}

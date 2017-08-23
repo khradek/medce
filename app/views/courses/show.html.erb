@@ -1,0 +1,18 @@
+<% @title = @course.title %>
+
+<div class="medium-container">
+  <h2 class="text-center"><%= @course.title %></h2>
+  <h5><%= @course.description %></h5>
+  <p>Price: $<%= number_with_precision(@course.price, :precision => 2) %></p>
+  <p>CE Hours: <%= @course.ce_hours %></p>
+  <br>
+  <p><%= link_to "Open Course (PDF)", course_path(@course, :format => 'pdf'), class: "btn btn-block btn-blue" %></p>
+</div>
+
+
+
+<br>
+<br>
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>

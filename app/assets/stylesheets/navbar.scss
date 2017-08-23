@@ -1,0 +1,21 @@
+.active a{
+  background-color: #fff !important;
+  color: #036ccb !important;
+  pointer-events: none;
+  cursor: default;
+}
+
+.nav-underline{
+  border-bottom-style: solid;
+  border-color: #b6b6b6;
+  border-width: 1px;
+  padding-bottom: 5px;
+}
+
+.nav-top-padding{
+  padding-top: 5px;
+}
+
+.blue-nav{
+  color: #036ccb !important;
+}
