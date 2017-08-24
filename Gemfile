@@ -15,6 +15,8 @@ gem 'simple_form', '~> 3.2'
 gem 'ckeditor', '~> 4.2', '>= 4.2.4'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'byebug'
