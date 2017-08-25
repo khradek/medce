@@ -1,0 +1,48 @@
+
+<div class="medium-container">
+  <div class="h1-custom text-center"><%= @user.fullname%></div>
+  <br>
+  <p><%= image_tag @user.image.url, class: "formation-image" %></p>
+  <br>
+  <p><%= @user.bio%></p>
+  <br>
+  <br>
+</div>
+
+<div class="container">
+  <div class="col-xs-12">  
+    <div class="h2-custom">Courses by <%= @user.fullname%>:</div>
+    <hr>
+    <% @courses.each do |course| %>
+      <div class="box">
+        <div class="row">
+          <div class="col-sm-10">
+            <div class="h2-custom"><%= link_to course.title, course_path(course), class: "bold-text dark-blue-text" %></div>
+          </div>
+          <div class="col-sm-2">
+            <%= link_to 'Add to Cart <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>'.html_safe, course_path(course), class: "btn btn-blue" %>  
+          </div> 
+        </div> 
+        <div class="row"> 
+          <div class="col-sm-12">
+            <h5><%= course.description %></h5>
+          </div>
+        </div>
+        <div class="row">    
+          <div class="col-sm-8">
+            <%= link_to "More Info", course_path(course), class: "btn btn-gray btn-sm" %>
+            <%= link_to 'Preview Course <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_path(course, :format => 'pdf'), class: "btn btn-light-gray btn-sm" %>
+          </div> 
+          <div class="col-sm-2">
+            <strong>CE Hours: <%= course.ce_hours%></strong>  
+          </div> 
+          <div class="col-sm-2">
+            <strong>Price: $<%= number_with_precision(course.price, :precision => 2) %></strong>  
+          </div> 
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to 'Back', 'javascript:history.go(-1);' %>

@@ -4,12 +4,27 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validate :password_complexity
+  mount_uploader :image, ImageUploader
+  
+  validates_processing_of :image
+  validate :password_complexity, :image_size_validation
+  
 
+  has_many :courses
+   
   def password_complexity
     if password.present? and not password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)./)
       errors.add :password, "must include at least one lowercase letter, one uppercase letter, and one digit"
     end
+  end
+
+  def fullname
+    fullname = "#{first_name} #{last_name}"
+  end
+
+  private
+  def image_size_validation
+    errors[:image] << "should be less than 500KB" if image.size > 0.5.megabytes
   end
 
 end

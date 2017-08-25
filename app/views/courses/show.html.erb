@@ -5,11 +5,11 @@
   <h5><%= @course.description %></h5>
   <p>Price: $<%= number_with_precision(@course.price, :precision => 2) %></p>
   <p>CE Hours: <%= @course.ce_hours %></p>
+  <p>Author: <%= link_to @author.fullname, @author %></p>
+
   <br>
   <p><%= link_to "Open Course (PDF)", course_path(@course, :format => 'pdf'), class: "btn btn-block btn-blue" %></p>
 </div>
-
-
 
 <br>
 <br>
