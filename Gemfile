@@ -17,7 +17,7 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'carrierwave'
 gem 'mini_magick'
-gem "fog"
+
 
 group :development, :test do
   gem 'byebug'
