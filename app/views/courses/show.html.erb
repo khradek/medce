@@ -6,8 +6,15 @@
   <p>Price: $<%= number_with_precision(@course.price, :precision => 2) %></p>
   <p>CE Hours: <%= @course.ce_hours %></p>
   <p>Author: <%= link_to @author.fullname, @author %></p>
+  Categories: <%= @course.category1 %><% if @course.category2.present? %>,<% end %>  
+  <%= @course.category2 %><% if @course.category3.present? %>,<% end %>
+  <%= @course.category3 %><% if @course.category4.present? %>,<% end %>
+  <%= @course.category4 %><% if @course.category5.present? %>,<% end %>
+  <%= @course.category5 %>
 
   <br>
+  <br>
+  
   <p><%= link_to "Open Course (PDF)", course_path(@course, :format => 'pdf'), class: "btn btn-block btn-blue" %></p>
 </div>
 

@@ -1,18 +1,33 @@
-
-<div class="medium-container">
-  <div class="h1-custom text-center"><%= @user.fullname%></div>
-  <br>
-  <p><%= image_tag @user.image.url, class: "formation-image" %></p>
-  <br>
-  <p><%= @user.bio%></p>
-  <br>
-  <br>
-</div>
-
 <div class="container">
+  
+  <br>
+
+  <div class="short-select-container">
+  <%= select_tag "saved_formations", options_for_select(User.where(:author => true).map{ |a| [a.fullname, a.id] }), prompt: "Select an author", class: "form-control", id: "author-dropdown" %>
+  </div>
+  
+  <br>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="h2-custom"><%= @user.fullname%></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-9">
+      <p><%= simple_format(@user.bio) %></p>
+    </div>
+    <div class="col-xs-3">
+      <%= image_tag @user.image.url, class: "profile-image" %>
+    </div>  
+  </div>
+
+  <hr>
+  
+  <div class="h3-custom">Courses by <%= @user.fullname %>:</div>
+
   <div class="col-xs-12">  
-    <div class="h2-custom">Courses by <%= @user.fullname%>:</div>
-    <hr>
+   
     <% @courses.each do |course| %>
       <div class="box">
         <div class="row">
@@ -44,5 +59,13 @@
     <% end %>
   </div>
 </div>
+
+<div class="text-center">
+  <nav class="pagination">
+    <%= will_paginate @courses, renderer: BootstrapPagination::Rails %>
+  </nav>
+</div>
+
+<br>
 
 <%= link_to 'Back', 'javascript:history.go(-1);' %>

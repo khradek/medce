@@ -16,6 +16,14 @@
   max-width: 45%;
 }
 
+.short-select-container{
+  max-width: 25%;
+}
+
+.break-word{
+  overflow-wrap: break-word;
+}
+
 .double_space{
   line-height: 1.8;
 }
@@ -26,6 +34,17 @@
 
 .dark-blue-text{
   color: #033f92;
+}
+
+.courses-header {
+  display: block;
+  font-size: 2.75em;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  line-height: 1;
 }
 
 .h1-custom {
@@ -50,14 +69,48 @@
   line-height: 1.2;
 }
 
+.h3-custom {
+  display: block;
+  font-size: 1.2em;
+  margin-top: 0;
+  margin-bottom: 5px;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.bottom-margin-8 {
+  margin-bottom: 8px;
+}
+
 .box{
-  border-bottom-style: ridge;
+  border-style: ridge;
   border-width: 10px;
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 10px;
+  padding-right: 10px;
   background-color: #fff;
   border-color: #b6b6b6; 
+}
+
+hr.light-blue {
+  height: 30px;
+  border: 0;
+  box-shadow: inset 0 30px 30px -30px rgba(0, 76, 163, 0.84);
+}
+
+hr.light-smoke {
+  height: 30px;
+  border: 0;
+  box-shadow: inset 0 30px 30px -30px rgba(40, 40, 40, 0.9);
+}
+
+hr.light-smoke-short {
+  height: 5px;
+  border: 0;
+  box-shadow: inset 0 5px 5px -5px rgba(40, 40, 40, 0.9);
 }
 
 //Buttons

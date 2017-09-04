@@ -4,7 +4,9 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.order("title")
+    @q = Course.search(params[:q])
+    @courses = @q.result.order("title").paginate(:page => params[:page], :per_page => 5)
+    @authors = User.where('author = ?', true )
   end
 
   # GET /courses/1
@@ -19,10 +21,10 @@ class CoursesController < ApplicationController
         render pdf: "#{@course.title}",
                template: "courses/show.pdf.erb",
                locals: {:course => @course},
-               margin:  {   top:               20,    # default 10 (mm)
-                            bottom:            20,
-                            left:              20,
-                            right:             20 }             
+               margin: {top:        20,    # default 10 (mm)
+                        bottom:     20,
+                        left:       20,
+                        right:      20 }             
       end
     end
   end

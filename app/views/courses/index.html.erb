@@ -1,14 +1,67 @@
-<div class="container">
-  <div class="col-xs-12">
-    <div class="h1-custom text-center">The Courses</div>
-    <hr>
-    <% @courses.each do |course| %>
-      <div class="box">
+<div class="container-fluid">
+  
+  <div class="col-sm-3">
+  
+  <br>
+  <br>
+
+  <div class="box">
+    <div class="h3-custom bottom-margin-8">Search</div>
+      <div>
+        <%= search_form_for @q, html: { class: "form-inline-block" } do |f| %>
+          <%= f.search_field :title_or_description_cont, placeholder: "Search Courses...", class: "form-control" %>
+        <% end %>
+      </div>
+
+      <hr class="light-smoke-short">
+
+      <div class="h3-custom">Authors</div>
+      <% @authors.each do |author| %>
+        <div><%= link_to author.fullname, author, class: "bold-text dark-blue-text" %></div>
+      <% end %>
+
+      <hr class="light-smoke-short">
+
+      <div class="h3-custom">Categories</div>
+      <div><%= link_to 'Ethics', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'Ethics'}), class: "bold-text dark-blue-text break-word" %></div>
+      <div><%= link_to 'Clinical Supervision', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'Clinical Supervision'}), class: "bold-text dark-blue-text break-word" %></div>
+      <div><%= link_to 'Substance Abuse/Chemical Dependency', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'Substance Abuse/Chemical Dependency'}), class: "bold-text dark-blue-text break-word" %></div>
+      <div><%= link_to 'Children/Adolescents', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'Children/Adolescents'}), class: "bold-text dark-blue-text break-word" %></div>
+      <div><%= link_to 'Cultural Competence', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'Cultural Competence'}), class: "bold-text dark-blue-text break-word" %></div>
+      <div><%= link_to 'General Practice', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'General Practice'}), class: "bold-text dark-blue-text break-word" %></div>
+      <div><%= link_to 'Evidence Based Methods', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'Evidence Based Methods'}), class: "bold-text dark-blue-text break-word" %></div>
+      <div><%= link_to 'Trauma', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'Trauma'}), class: "bold-text dark-blue-text break-word" %></div>
+      <div><%= link_to 'Psychotherapy', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'Psychotherapy'}), class: "bold-text dark-blue-text break-word" %></div>
+      <div><%= link_to 'Marriage Counseling', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'Marriage Counseling'}), class: "bold-text dark-blue-text break-word" %></div>
+      <div><%= link_to 'Sex Therapy', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'Sex Therapy'}), class: "bold-text dark-blue-text break-word" %></div>
+      <div><%= link_to 'Clinical/Legal Documents', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'Clinical/Legal Documents'}), class: "bold-text dark-blue-text break-word" %></div>
+      <div><%= link_to 'Older Adults', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'Older Adults'}), class: "bold-text dark-blue-text break-word" %></div>
+      <div><%= link_to 'DSM-5', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'DSM-5'}), class: "bold-text dark-blue-text break-word" %></div>
+      <div><%= link_to 'Suicide', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'Suicide'}), class: "bold-text dark-blue-text break-word" %></div>
+      <div><%= link_to 'Domestic Violence', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'Domestic Violence'}), class: "bold-text dark-blue-text break-word" %></div>
+      <div><%= link_to 'Neuroscience', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'Neuroscience'}), class: "bold-text dark-blue-text break-word" %></div>
+      <div><%= link_to 'Personality Disorders', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'Personality Disorders'}), class: "bold-text dark-blue-text break-word" %></div>
+      <div><%= link_to 'Career Coundeling', courses_path(q: {category1_or_category2_or_category3_or_category4_or_category5_cont: 'Career Coundeling'}), class: "bold-text dark-blue-text break-word" %></div>
+    </div>
+
+  </div>
+
+  <br>
+  <br>
+
+  <div class="col-sm-9">
+    
+    <div class="box">
+      <div class="courses-header">The Courses</div>
+      <hr class="light-blue">
+
+      <% @courses.each do |course| %>
+
         <div class="row">
-          <div class="col-sm-10">
+          <div class="col-sm-8 col-md-9">
             <div class="h2-custom"><%= link_to course.title, course_path(course), class: "bold-text dark-blue-text" %></div>
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-4 col-md-3">
             <%= link_to 'Add to Cart <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>'.html_safe, course_path(course), class: "btn btn-blue" %>  
           </div> 
         </div> 
@@ -18,22 +71,32 @@
           </div>
         </div>
         <div class="row">    
-          <div class="col-sm-8">
+          <div class="col-sm-7">
             <%= link_to "More Info", course_path(course), class: "btn btn-gray btn-sm" %>
             <%= link_to 'Preview Course <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_path(course, :format => 'pdf'), class: "btn btn-light-gray btn-sm" %>
           </div> 
           <div class="col-sm-2">
             <strong>CE Hours: <%= course.ce_hours%></strong>  
           </div> 
-          <div class="col-sm-2">
+          <div class="col-sm-3">
             <strong>Price: $<%= number_with_precision(course.price, :precision => 2) %></strong>  
           </div> 
         </div>
+        <hr class="light-smoke">
+      <% end %>
+     
+      <div class="text-center">
+        <nav class="pagination">
+          <%= will_paginate @courses, renderer: BootstrapPagination::Rails %>
+        </nav>
       </div>
-    <% end %>
-  </div>
+    </div>
 </div>
+
+
 
 <br>
 
-<%= link_to 'New Course', new_course_path %>
+<% if current_user && current_user.author? %>
+  <%= link_to 'New Course', new_course_path %>
+<% end %>
