@@ -56,14 +56,23 @@
       <hr class="light-blue">
 
       <% @courses.each do |course| %>
-
+        
         <div class="row">
           <div class="col-sm-8 col-md-9">
             <div class="h2-custom"><%= link_to course.title, course_path(course), class: "bold-text dark-blue-text" %></div>
           </div>
+
+        <%= form_for @order_item, remote: true do |f| %>
           <div class="col-sm-4 col-md-3">
-            <%= link_to 'Add to Cart <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>'.html_safe, course_path(course), class: "btn btn-blue" %>  
+            <div class="input-group">
+              <%= f.hidden_field :course_id, value: course.id %>
+              <%= button_tag type: 'submit', class: "btn btn-blue" do %>
+                 Add to Cart <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> 
+              <% end %>
+            </div> 
           </div> 
+        <% end %>
+
         </div> 
         <div class="row"> 
           <div class="col-sm-12">

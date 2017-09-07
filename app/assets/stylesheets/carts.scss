@@ -1,0 +1,21 @@
+
+.cart-container{
+  margin: auto;
+  max-width: 100%;
+  padding-top: 10px;
+}
+
+.circle{
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+
+  -moz-border-radius: 30px; /* or 50% */
+  border-radius: 30px; /* or 50% */
+
+  background-color: #1068b8;
+  color: white;
+  text-align: center;
+  font-size: 1em;
+}

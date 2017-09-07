@@ -15,7 +15,16 @@
   <br>
   <br>
   
-  <p><%= link_to "Open Course (PDF)", course_path(@course, :format => 'pdf'), class: "btn btn-block btn-blue" %></p>
+  <%= form_for @order_item do |f| %>
+    <%= f.hidden_field :course_id, value: @course.id %>
+    <%= button_tag type: 'submit', class: "btn btn-blue btn-block" do %>
+       Purchase Course
+    <% end %>
+  <% end %>
+  
+  <br>
+
+  <%= link_to "Open Course (PDF)", course_path(@course, :format => 'pdf'), class: "btn btn-block btn-blue" %>
 </div>
 
 <br>

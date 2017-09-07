@@ -37,7 +37,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li class="dropdown">
+          <li class="dropdown divider-vertical-rt">
             <a href="#" data-toggle="dropdown" class="<%= 'blue-nav' if controller_name == 'registrations' %>"><i class="fa fa-user fa-lg" aria-hidden="true"></i> <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li class="<%= is_active?('/users/edit') %> nav-underline"><%= link_to "Account Settings", edit_user_registration_path %></li>
@@ -46,8 +46,15 @@
           </li>
         <% else %>
           <li class="<%= is_active?('/users/sign_up') %>"><%= link_to "Sign Up", new_user_registration_path %></li>
-          <li class="<%= is_active?('/users/sign_in') %>"><%= link_to "Sign In", new_user_session_path %></li>
-        <% end %>  
+          <li class="<%= is_active?('/users/sign_in') %>"><%= link_to "Sign In", new_user_session_path, class: "divider-vertical-rt" %></li>
+        <% end %> 
+        <li>
+          <%= link_to "My Cart", cart_path %>
+        </li>
+        <li class="cart-container">
+          <%= render 'layouts/cart_text' %>
+        </li>
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

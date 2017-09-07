@@ -1,6 +1,10 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+.hidden{
+  display: none;
+}
+
 .large-container{
   margin: auto;
   max-width: 80%;
@@ -34,6 +38,10 @@
 
 .dark-blue-text{
   color: #033f92;
+}
+
+.grey-text{
+  color: #818181;
 }
 
 .courses-header {
