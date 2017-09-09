@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   
 
   has_many :courses
+  has_many :purchased_courses
    
   def password_complexity
     if password.present? and not password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)./)

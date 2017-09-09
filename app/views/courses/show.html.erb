@@ -15,16 +15,23 @@
   <br>
   <br>
   
-  <%= form_for @order_item do |f| %>
-    <%= f.hidden_field :course_id, value: @course.id %>
-    <%= button_tag type: 'submit', class: "btn btn-blue btn-block" do %>
-       Purchase Course
+  <% unless @purchased_courses.any? {|a| a.course_id == @course.id}  %> 
+    <%= link_to 'Preview Course <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_path(@course, :format => 'pdf'), class: "btn btn-light-gray btn-sm" %>
+    <br>
+    <hr>
+    <%= form_for @order_item do |f| %>
+      <%= f.hidden_field :course_id, value: @course.id %>
+      <%= button_tag type: 'submit', class: "btn btn-blue btn-block" do %>
+         Purchase Course
+      <% end %>
     <% end %>
   <% end %>
-  
+
   <br>
 
-  <%= link_to "Open Course (PDF)", course_path(@course, :format => 'pdf'), class: "btn btn-block btn-blue" %>
+  <% if current_user && @purchased_courses.any? {|a| a.course_id == @course.id} %>
+    <%= link_to "Open Course (PDF)", course_path(@course, :format => 'pdf'), class: "btn btn-block btn-blue" %>
+  <% end %>
 </div>
 
 <br>

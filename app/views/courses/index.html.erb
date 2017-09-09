@@ -61,18 +61,24 @@
           <div class="col-sm-8 col-md-9">
             <div class="h2-custom"><%= link_to course.title, course_path(course), class: "bold-text dark-blue-text" %></div>
           </div>
-
-        <%= form_for @order_item, remote: true do |f| %>
-          <div class="col-sm-4 col-md-3">
-            <div class="input-group">
-              <%= f.hidden_field :course_id, value: course.id %>
-              <%= button_tag type: 'submit', class: "btn btn-blue" do %>
-                 Add to Cart <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> 
-              <% end %>
+ 
+          <% if @purchased_courses.any? {|a| a.course_id == course.id} %>
+            <div class="col-sm-4 col-md-3">
+              <strong>You have purchased this course.</strong> 
             </div> 
-          </div> 
-        <% end %>
-
+          <% else %>  
+            <%= form_for @order_item, remote: true do |f| %>
+              <div class="col-sm-4 col-md-3">
+                <div class="input-group">
+                  <%= f.hidden_field :course_id, value: course.id %>
+                  <%= button_tag type: 'submit', class: "btn btn-blue" do %>
+                     Add to Cart <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> 
+                  <% end %>
+                </div> 
+              </div> 
+            <% end %>
+          <% end %>
+          
         </div> 
         <div class="row"> 
           <div class="col-sm-12">
@@ -84,12 +90,15 @@
             <%= link_to "More Info", course_path(course), class: "btn btn-gray btn-sm" %>
             <%= link_to 'Preview Course <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_path(course, :format => 'pdf'), class: "btn btn-light-gray btn-sm" %>
           </div> 
-          <div class="col-sm-2">
-            <strong>CE Hours: <%= course.ce_hours%></strong>  
-          </div> 
-          <div class="col-sm-3">
-            <strong>Price: $<%= number_with_precision(course.price, :precision => 2) %></strong>  
-          </div> 
+
+          <% unless @purchased_courses.any? {|a| a.course_id == course.id} %>
+            <div class="col-sm-2">
+              <strong>CE Hours: <%= course.ce_hours%></strong>  
+            </div> 
+            <div class="col-sm-3">
+              <strong>Price: $<%= number_with_precision(course.price, :precision => 2) %></strong>  
+            </div> 
+          <% end %>         
         </div>
         <hr class="light-smoke">
       <% end %>

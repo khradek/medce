@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resource :cart, only: [:show]
+  resource :cart, only: [:show] do
+    get :purchase
+  end
+  
   resources :order_items, only: [:create, :update, :destroy]
 
   mount Ckeditor::Engine => '/ckeditor'

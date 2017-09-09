@@ -1,21 +1,43 @@
-<% if !@order_item.nil? && @order_item.errors.any? %>
-  <div class="alert alert-danger">
-    <ul>
-    <% @order_item.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-<% if @order_items.size == 0 %>
-  <p class="text-center">
-    There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
-  </p>
-<% else %>
-  <% @order_items.each do |order_item| %>
-    <%= render 'carts/cart_row', course: order_item.course, order_item: order_item, show_total: true %>
+
+<div class="large-container box">
+  <% if !@order_item.nil? && @order_item.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+      <% @order_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
+  <div class="courses-header text-center">My Cart</div>
+  <br>
+  <% if @order_items.size == 0 %>
+    <div class="text-center">
+      <p>Your cart is empty.</p> 
+      <div><%= link_to "View Courses", root_path, class: "bold-text dark-blue-text" %></div>
+    </div>
+  <% else %>
+    <% @order_items.each do |order_item| %>
+      <%= render 'carts/cart_row', course: order_item.course, order_item: order_item, show_total: true %>
+    <% end %>
 
-  <h4 class="text-right">My Total: <span style="color: green"><%= number_to_currency current_order.subtotal %>
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <div class="f-table"><%= link_to "Add More Courses", courses_path, class: "btn btn-gray btn-block" %></div>
+      </div>
+    </div>
 
-<% end %>
+    <hr>
+
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-8">
+        <h3 class="text-center">My Total: <span style="color: green"><%= number_to_currency current_order.subtotal %></span>
+        </h3>  
+        <br>
+        <%= form_tag url_for(:controller => "carts", :action => "purchase"), :method => "get" do %>
+          <%= submit_tag "Purchase", class: "btn btn-blue btn-block" %>
+        <% end %>
+      </div>  
+    </div>  
+  <% end %>
+</div>

@@ -8,6 +8,11 @@ class CoursesController < ApplicationController
     @courses = @q.result.order("title").paginate(:page => params[:page], :per_page => 5)
     @authors = User.where('author = ?', true )
     @order_item = current_order.order_items.new
+    if current_user
+      @purchased_courses = current_user.purchased_courses
+    else
+      @purchased_courses = []
+    end
   end
 
   # GET /courses/1
@@ -16,6 +21,11 @@ class CoursesController < ApplicationController
     @course = Course.find params[:id]
     @author = @course.user
     @order_item = current_order.order_items.new
+    if current_user
+      @purchased_courses = current_user.purchased_courses
+    else
+      @purchased_courses = []
+    end
 
     respond_to do |format|
       format.html
