@@ -1,41 +1,60 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<div class="small-container">
+  <h1 class="text-center">Welcome</h1>
+
+  <hr class="light-blue">
+
+  <p>Please complete the form below to create your account.</p>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, class: "form-control" %>
+          </div>
+        </div>
+      </div>  
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="field">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum - must contain at least one lowercase letter, one uppercase letter, and one number)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+          </div>
+        </div>
+      </div>  
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="field">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+          </div>
+        </div>
+      </div> 
 
     <div class="row">
       <div class="col-xs-12">
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, class: "form-control" %>
+        <div class="actions">
+          <%= f.button "Register Account", class: "btn btn-gray btn-block", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Registering account..."} %>
         </div>
       </div>
-    </div>  
+    </div>
+  <% end %>
 
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="field">
-          <%= f.label :password %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum - must contain at least one lowercase letter, one uppercase letter, and one number)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-        </div>
-      </div>
-    </div>  
+  <br>
 
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="field">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-        </div>
-      </div>
-    </div> 
+  <p>or</p>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+  <p>Already have an account?</p>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+
+  <hr class="light-blue">
+</div>

@@ -14,12 +14,14 @@ class OrderItemsController < ApplicationController
     else
       respond_to do |format|
         if @order.save
+          session[:order_id] = @order.id 
           format.html { redirect_to cart_path }
           format.js
         end
       end
     end 
-    session[:order_id] = @order.id     
+    #session[:order_id] = @order.id 
+    #@order_items = @order.order_items    
   end
 
   def update

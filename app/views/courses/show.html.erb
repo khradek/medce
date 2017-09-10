@@ -13,9 +13,9 @@
   <%= @course.category5 %>
 
   <br>
-  <br>
   
   <% unless @purchased_courses.any? {|a| a.course_id == @course.id}  %> 
+    <br>
     <%= link_to 'Preview Course <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_path(@course, :format => 'pdf'), class: "btn btn-light-gray btn-sm" %>
     <br>
     <hr>
@@ -27,9 +27,8 @@
     <% end %>
   <% end %>
 
-  <br>
-
   <% if current_user && @purchased_courses.any? {|a| a.course_id == @course.id} %>
+    <hr>
     <%= link_to "Open Course (PDF)", course_path(@course, :format => 'pdf'), class: "btn btn-block btn-blue" %>
   <% end %>
 </div>

@@ -1,7 +1,7 @@
 
 <span class="cart-text">
   <i class='fa fa-shopping-cart fa-2x grey-text' aria-hidden='true'></i>
-  <span class="<%= 'hidden' if current_order.order_items.size == 0%>">
+  <span class="<%= 'hidden' if current_order.order_items.size < 1 %>">
     <span class='circle'><%= current_order.order_items.size %></span>
   </span>
 </span>
