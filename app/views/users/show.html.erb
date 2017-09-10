@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container-fluid">
   
   <br>
 
   <div class="short-select-container">
-  <%= select_tag "saved_formations", options_for_select(User.where(:author => true).map{ |a| [a.fullname, a.id] }), prompt: "Select an author", class: "form-control", id: "author-dropdown" %>
+  <%= select_tag "authors", options_for_select(User.where(:author => true).map{ |a| [a.fullname, a.id] }), prompt: "Select an author", class: "form-control", id: "author-dropdown" %>
   </div>
   
   <br>
@@ -24,19 +24,35 @@
 
   <hr>
   
-  <div class="h3-custom">Courses by <%= @user.fullname %>:</div>
-
   <div class="col-xs-12">  
-   
-    <% @courses.each do |course| %>
-      <div class="box">
+    <div class="box">
+      <div class="h3-custom">Courses by <%= @user.fullname %>:</div>
+      <hr class="light-blue">
+      <% @courses.each do |course| %>
         <div class="row">
-          <div class="col-sm-10">
+          <div class="col-sm-8 col-md-10">
             <div class="h2-custom"><%= link_to course.title, course_path(course), class: "bold-text dark-blue-text" %></div>
           </div>
-          <div class="col-sm-2">
-            <%= link_to 'Add to Cart <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>'.html_safe, course_path(course), class: "btn btn-blue" %>  
-          </div> 
+
+
+          <% if @purchased_courses.any? {|a| a.course_id == course.id} %>
+            <div class="col-sm-4 col-md-2">
+              <strong>You have purchased this course.</strong> 
+            </div> 
+          <% else %>  
+            <%= form_for @order_item, remote: true do |f| %>
+              <div class="col-sm-4 col-md-2">
+                <div class="input-group">
+                  <%= f.hidden_field :course_id, value: course.id %>
+                  <%= button_tag type: 'submit', class: "btn btn-blue" do %>
+                     Add to Cart <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> 
+                  <% end %>
+                </div> 
+              </div> 
+            <% end %>
+          <% end %>
+
+
         </div> 
         <div class="row"> 
           <div class="col-sm-12">
@@ -55,17 +71,13 @@
             <strong>Price: $<%= number_with_precision(course.price, :precision => 2) %></strong>  
           </div> 
         </div>
+        <hr class="light-smoke">
+      <% end %>
+      <div class="text-center">
+        <nav class="pagination">
+          <%= will_paginate @courses, renderer: BootstrapPagination::Rails %>
+        </nav>
       </div>
-    <% end %>
   </div>
 </div>
 
-<div class="text-center">
-  <nav class="pagination">
-    <%= will_paginate @courses, renderer: BootstrapPagination::Rails %>
-  </nav>
-</div>
-
-<br>
-
-<%= link_to 'Back', 'javascript:history.go(-1);' %>

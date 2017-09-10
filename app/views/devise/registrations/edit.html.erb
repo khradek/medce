@@ -21,6 +21,24 @@
   <hr>
   
   <% if current_user.author? %>
+
+    <div class="box">
+      <h3 class="text-center">My Authored Courses</h3>
+      <table class="table table-hover">
+        <tbody>
+          <% @current_user.courses.each do |course|%>
+            <tr>
+              <td><%= link_to course.title, course, class: "bold-text dark-blue-text" %></td>
+              <td><%= link_to "Edit", edit_course_path(course)%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to 'Create New Course', new_course_path, class: "btn btn-light-gray btn-block" %>
+    </div>
+
+    <hr>
+
     <h3>Update Personal Info</h3>
   <% end %>
 
@@ -137,4 +155,3 @@
   <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-red btn-block"  %>
 </div>
 
-<%= link_to "Back", :back %>
