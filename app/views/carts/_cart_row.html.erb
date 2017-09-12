@@ -14,7 +14,7 @@
           </div>
           <div class="col-xs-10 text-right">
             <div class="btn-group">
-              <%= link_to "Remove", order_item, { data: { confirm: "Are you sure you wish to delete the course '#{order_item.course.title}' from your cart?" }, method: :delete, remote: true, class: "btn btn-red" } %>
+              <%= link_to "Remove", order_item, { method: :delete, remote: true, class: "btn btn-red" } %>
             </div>
           </div>
         </div>

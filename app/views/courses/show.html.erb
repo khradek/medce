@@ -6,17 +6,13 @@
   <p>Price: $<%= number_with_precision(@course.price, :precision => 2) %></p>
   <p>CE Hours: <%= @course.ce_hours %></p>
   <p>Author: <%= link_to @author.fullname, @author %></p>
-  Categories: <%= @course.category1 %><% if @course.category2.present? %>,<% end %>  
-  <%= @course.category2 %><% if @course.category3.present? %>,<% end %>
-  <%= @course.category3 %><% if @course.category4.present? %>,<% end %>
-  <%= @course.category4 %><% if @course.category5.present? %>,<% end %>
-  <%= @course.category5 %>
-
+  Categories: 
+  <%= @categories.to_sentence %>
   <br>
   
   <% unless @purchased_courses.any? {|a| a.course_id == @course.id}  %> 
     <br>
-    <%= link_to 'Preview Course <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_path(@course, :format => 'pdf'), class: "btn btn-light-gray btn-sm" %>
+    <%= link_to 'Preview Course <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_preview_path(@course, :format => 'pdf'), class: "btn btn-light-gray btn-sm" %>
     <br>
     <hr>
     <%= form_for @order_item do |f| %>

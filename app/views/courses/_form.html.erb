@@ -25,33 +25,72 @@
       <%= f.input :description, placeholder: 'Description', label: false, class: "form-control" %>
     </div>
 
-    <div class="form-group">
-      <%= f.label :price, "Price" %>
-      <%= f.input :price, placeholder: 'Price', label: false, class: "form-control" %>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group">
+          <%= f.label :price, "Price" %>
+          <%= f.input :price, placeholder: 'Price', label: false, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="col-xs-6">
+        <div class="form-group">
+          <%= f.label :ce_hours, "CE Hours" %>
+          <%= f.input :ce_hours, placeholder: 'CE Hours', label: false, class: "form-control" %>
+        </div>
+      </div>  
     </div>
 
-    <div class="form-group">
-      <%= f.label :ce_hours, "CE Hours" %>
-      <%= f.input :ce_hours, placeholder: 'CE Hours', label: false, class: "form-control" %>
+    <%= f.label :category1, "Categories" %>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group"> 
+          <%= f.select(:category1, options_for_select([[' ', ' '], ['Ethics', 'Ethics'], ['Clinical Supervision', 'Clinical Supervision'], ['Substance Abuse/Chemical Dependency', 'Substance Abuse/Chemical Dependency'], ['Children/Adolescents', 'Children/Adolescents'], ['Cultural Competence', 'Cultural Competence'], ['General Practice', 'General Practice'], ['Evidence Based Methods', 'Evidence Based Methods'], ['Trauma', 'Trauma'], ['Psychotherapy', 'Psychotherapy'], ['Marriage Counseling', 'Marriage Counseling'], ['Sex Therapy', 'Sex Therapy'], ['Clinical/Legal Documents', 'Clinical/Legal Documents'], ['Older Adults', 'Older Adults'], ['DSM-5', 'DSM-5'], ['Suicide', 'Suicide'], ['Domestic Violence', 'Domestic Violence'], ['Neuroscience', 'Neuroscience'], ['Personality Disorders', 'Personality Disorders'], ['Career Counseling', 'Career Counseling']], :selected => f.object.category1), {}, {class: "form-control"}) %>
+        </div>  
+      </div>        
+      <div class="col-xs-6">
+        <div class="form-group">
+          <%= f.select(:category2, options_for_select([[' ', ' '], ['Ethics', 'Ethics'], ['Clinical Supervision', 'Clinical Supervision'], ['Substance Abuse/Chemical Dependency', 'Substance Abuse/Chemical Dependency'], ['Children/Adolescents', 'Children/Adolescents'], ['Cultural Competence', 'Cultural Competence'], ['General Practice', 'General Practice'], ['Evidence Based Methods', 'Evidence Based Methods'], ['Trauma', 'Trauma'], ['Psychotherapy', 'Psychotherapy'], ['Marriage Counseling', 'Marriage Counseling'], ['Sex Therapy', 'Sex Therapy'], ['Clinical/Legal Documents', 'Clinical/Legal Documents'], ['Older Adults', 'Older Adults'], ['DSM-5', 'DSM-5'], ['Suicide', 'Suicide'], ['Domestic Violence', 'Domestic Violence'], ['Neuroscience', 'Neuroscience'], ['Personality Disorders', 'Personality Disorders'], ['Career Counseling', 'Career Counseling']], :selected => f.object.category2), {}, {class: "form-control"}) %>
+        </div> 
+      </div>
     </div>
 
-    <div class="form-group">
-      <%= f.label :category1, "Categories" %> 
-      <%= f.select(:category1, options_for_select([[' ', ' '], ['Ethics', 'Ethics'], ['Clinical Supervision', 'Clinical Supervision'], ['Substance Abuse/Chemical Dependency', 'Substance Abuse/Chemical Dependency'], ['Children/Adolescents', 'Children/Adolescents'], ['Cultural Competence', 'Cultural Competence'], ['General Practice', 'General Practice'], ['Evidence Based Methods', 'Evidence Based Methods'], ['Trauma', 'Trauma'], ['Psychotherapy', 'Psychotherapy'], ['Marriage Counseling', 'Marriage Counseling'], ['Sex Therapy', 'Sex Therapy'], ['Clinical/Legal Documents', 'Clinical/Legal Documents'], ['Older Adults', 'Older Adults'], ['DSM-5', 'DSM-5'], ['Suicide', 'Suicide'], ['Domestic Violence', 'Domestic Violence'], ['Neuroscience', 'Neuroscience'], ['Personality Disorders', 'Personality Disorders'], ['Career Counseling', 'Career Counseling']], :selected => f.object.category1), {}, {class: "form-control"}) %>
-    </div>  
-    <div class="form-group">
-      <%= f.select(:category2, options_for_select([[' ', ' '], ['Ethics', 'Ethics'], ['Clinical Supervision', 'Clinical Supervision'], ['Substance Abuse/Chemical Dependency', 'Substance Abuse/Chemical Dependency'], ['Children/Adolescents', 'Children/Adolescents'], ['Cultural Competence', 'Cultural Competence'], ['General Practice', 'General Practice'], ['Evidence Based Methods', 'Evidence Based Methods'], ['Trauma', 'Trauma'], ['Psychotherapy', 'Psychotherapy'], ['Marriage Counseling', 'Marriage Counseling'], ['Sex Therapy', 'Sex Therapy'], ['Clinical/Legal Documents', 'Clinical/Legal Documents'], ['Older Adults', 'Older Adults'], ['DSM-5', 'DSM-5'], ['Suicide', 'Suicide'], ['Domestic Violence', 'Domestic Violence'], ['Neuroscience', 'Neuroscience'], ['Personality Disorders', 'Personality Disorders'], ['Career Counseling', 'Career Counseling']], :selected => f.object.category2), {}, {class: "form-control"}) %>
-    </div> 
-    <div class="form-group"> 
-      <%= f.select(:category3, options_for_select([[' ', ' '], ['Ethics', 'Ethics'], ['Clinical Supervision', 'Clinical Supervision'], ['Substance Abuse/Chemical Dependency', 'Substance Abuse/Chemical Dependency'], ['Children/Adolescents', 'Children/Adolescents'], ['Cultural Competence', 'Cultural Competence'], ['General Practice', 'General Practice'], ['Evidence Based Methods', 'Evidence Based Methods'], ['Trauma', 'Trauma'], ['Psychotherapy', 'Psychotherapy'], ['Marriage Counseling', 'Marriage Counseling'], ['Sex Therapy', 'Sex Therapy'], ['Clinical/Legal Documents', 'Clinical/Legal Documents'], ['Older Adults', 'Older Adults'], ['DSM-5', 'DSM-5'], ['Suicide', 'Suicide'], ['Domestic Violence', 'Domestic Violence'], ['Neuroscience', 'Neuroscience'], ['Personality Disorders', 'Personality Disorders'], ['Career Counseling', 'Career Counseling']], :selected => f.object.category3), {}, {class: "form-control"}) %>
-    </div> 
-    <div class="form-group">
-      <%= f.select(:category4, options_for_select([[' ', ' '], ['Ethics', 'Ethics'], ['Clinical Supervision', 'Clinical Supervision'], ['Substance Abuse/Chemical Dependency', 'Substance Abuse/Chemical Dependency'], ['Children/Adolescents', 'Children/Adolescents'], ['Cultural Competence', 'Cultural Competence'], ['General Practice', 'General Practice'], ['Evidence Based Methods', 'Evidence Based Methods'], ['Trauma', 'Trauma'], ['Psychotherapy', 'Psychotherapy'], ['Marriage Counseling', 'Marriage Counseling'], ['Sex Therapy', 'Sex Therapy'], ['Clinical/Legal Documents', 'Clinical/Legal Documents'], ['Older Adults', 'Older Adults'], ['DSM-5', 'DSM-5'], ['Suicide', 'Suicide'], ['Domestic Violence', 'Domestic Violence'], ['Neuroscience', 'Neuroscience'], ['Personality Disorders', 'Personality Disorders'], ['Career Counseling', 'Career Counseling']], :selected => f.object.category4), {}, {class: "form-control"}) %>
-    </div> 
-    <div class="form-group"> 
-      <%= f.select(:category5, options_for_select([[' ', ' '], ['Ethics', 'Ethics'], ['Clinical Supervision', 'Clinical Supervision'], ['Substance Abuse/Chemical Dependency', 'Substance Abuse/Chemical Dependency'], ['Children/Adolescents', 'Children/Adolescents'], ['Cultural Competence', 'Cultural Competence'], ['General Practice', 'General Practice'], ['Evidence Based Methods', 'Evidence Based Methods'], ['Trauma', 'Trauma'], ['Psychotherapy', 'Psychotherapy'], ['Marriage Counseling', 'Marriage Counseling'], ['Sex Therapy', 'Sex Therapy'], ['Clinical/Legal Documents', 'Clinical/Legal Documents'], ['Older Adults', 'Older Adults'], ['DSM-5', 'DSM-5'], ['Suicide', 'Suicide'], ['Domestic Violence', 'Domestic Violence'], ['Neuroscience', 'Neuroscience'], ['Personality Disorders', 'Personality Disorders'], ['Career Counseling', 'Career Counseling']], :selected => f.object.category5), {}, {class: "form-control"}) %>
-    </div>         
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group"> 
+          <%= f.select(:category3, options_for_select([[' ', ' '], ['Ethics', 'Ethics'], ['Clinical Supervision', 'Clinical Supervision'], ['Substance Abuse/Chemical Dependency', 'Substance Abuse/Chemical Dependency'], ['Children/Adolescents', 'Children/Adolescents'], ['Cultural Competence', 'Cultural Competence'], ['General Practice', 'General Practice'], ['Evidence Based Methods', 'Evidence Based Methods'], ['Trauma', 'Trauma'], ['Psychotherapy', 'Psychotherapy'], ['Marriage Counseling', 'Marriage Counseling'], ['Sex Therapy', 'Sex Therapy'], ['Clinical/Legal Documents', 'Clinical/Legal Documents'], ['Older Adults', 'Older Adults'], ['DSM-5', 'DSM-5'], ['Suicide', 'Suicide'], ['Domestic Violence', 'Domestic Violence'], ['Neuroscience', 'Neuroscience'], ['Personality Disorders', 'Personality Disorders'], ['Career Counseling', 'Career Counseling']], :selected => f.object.category3), {}, {class: "form-control"}) %>
+        </div> 
+      </div>   
+      <div class="col-xs-6">
+        <div class="form-group">
+          <%= f.select(:category4, options_for_select([[' ', ' '], ['Ethics', 'Ethics'], ['Clinical Supervision', 'Clinical Supervision'], ['Substance Abuse/Chemical Dependency', 'Substance Abuse/Chemical Dependency'], ['Children/Adolescents', 'Children/Adolescents'], ['Cultural Competence', 'Cultural Competence'], ['General Practice', 'General Practice'], ['Evidence Based Methods', 'Evidence Based Methods'], ['Trauma', 'Trauma'], ['Psychotherapy', 'Psychotherapy'], ['Marriage Counseling', 'Marriage Counseling'], ['Sex Therapy', 'Sex Therapy'], ['Clinical/Legal Documents', 'Clinical/Legal Documents'], ['Older Adults', 'Older Adults'], ['DSM-5', 'DSM-5'], ['Suicide', 'Suicide'], ['Domestic Violence', 'Domestic Violence'], ['Neuroscience', 'Neuroscience'], ['Personality Disorders', 'Personality Disorders'], ['Career Counseling', 'Career Counseling']], :selected => f.object.category4), {}, {class: "form-control"}) %>
+        </div> 
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group"> 
+          <%= f.select(:category5, options_for_select([[' ', ' '], ['Ethics', 'Ethics'], ['Clinical Supervision', 'Clinical Supervision'], ['Substance Abuse/Chemical Dependency', 'Substance Abuse/Chemical Dependency'], ['Children/Adolescents', 'Children/Adolescents'], ['Cultural Competence', 'Cultural Competence'], ['General Practice', 'General Practice'], ['Evidence Based Methods', 'Evidence Based Methods'], ['Trauma', 'Trauma'], ['Psychotherapy', 'Psychotherapy'], ['Marriage Counseling', 'Marriage Counseling'], ['Sex Therapy', 'Sex Therapy'], ['Clinical/Legal Documents', 'Clinical/Legal Documents'], ['Older Adults', 'Older Adults'], ['DSM-5', 'DSM-5'], ['Suicide', 'Suicide'], ['Domestic Violence', 'Domestic Violence'], ['Neuroscience', 'Neuroscience'], ['Personality Disorders', 'Personality Disorders'], ['Career Counseling', 'Career Counseling']], :selected => f.object.category5), {}, {class: "form-control"}) %>
+        </div>         
+      </div>
+      <div class="col-xs-6">
+        <div class="form-group"> 
+          <%= f.select(:category6, options_for_select([[' ', ' '], ['Ethics', 'Ethics'], ['Clinical Supervision', 'Clinical Supervision'], ['Substance Abuse/Chemical Dependency', 'Substance Abuse/Chemical Dependency'], ['Children/Adolescents', 'Children/Adolescents'], ['Cultural Competence', 'Cultural Competence'], ['General Practice', 'General Practice'], ['Evidence Based Methods', 'Evidence Based Methods'], ['Trauma', 'Trauma'], ['Psychotherapy', 'Psychotherapy'], ['Marriage Counseling', 'Marriage Counseling'], ['Sex Therapy', 'Sex Therapy'], ['Clinical/Legal Documents', 'Clinical/Legal Documents'], ['Older Adults', 'Older Adults'], ['DSM-5', 'DSM-5'], ['Suicide', 'Suicide'], ['Domestic Violence', 'Domestic Violence'], ['Neuroscience', 'Neuroscience'], ['Personality Disorders', 'Personality Disorders'], ['Career Counseling', 'Career Counseling']], :selected => f.object.category6), {}, {class: "form-control"}) %>
+        </div>         
+      </div>      
+    </div>
+
+    <div class="row">
+      <div class="col-xs-2">
+        <div class="form-group">
+          <%= f.label :preview_num, "Preview Length" %>
+          <%= f.input :preview_num, label: false, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <br>
     <div class="form-group">
       <%= f.input :body, label: false, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}}, class: "form-control" %>
     </div>
@@ -59,7 +98,7 @@
     <br>
 
     <div class="form-group">
-      <%= f.button :submit, class: "btn-block" %>
+      <%= f.button :submit, class: "btn-block btn-blue" %>
     </div>
   <% end %>
 </div>

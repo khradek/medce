@@ -28,12 +28,32 @@ class CoursesController < ApplicationController
     else
       @purchased_courses = []
     end
+    @categories = [@course.category1, @course.category2, @course.category3, @course.category4, @course.category5, @course.category6].reject(&:blank?)
+
 
     respond_to do |format|
       format.html
       format.pdf do
         render pdf: "#{@course.title}",
                template: "courses/show.pdf.erb",
+               locals: {:course => @course},
+               margin: {top:        20,    # default 10 (mm)
+                        bottom:     20,
+                        left:       20,
+                        right:      20 }             
+      end
+    end
+  end
+
+  def preview
+    @course = Course.find params[:course_id]
+    @number = @course.preview_num
+    @preview = @course.body[0..@number]
+
+    respond_to do |format|
+      format.pdf do
+        render pdf: "#{@course.title}",
+               template: "courses/preview.pdf.erb",
                locals: {:course => @course},
                margin: {top:        20,    # default 10 (mm)
                         bottom:     20,
@@ -105,6 +125,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:title, :body, :author_id, :description, :ce_hours, :price, :category1, :category2, :category3, :category4, :category5)
+      params.require(:course).permit(:title, :body, :preview_num, :author_id, :description, :ce_hours, :price, :category1, :category2, :category3, :category4, :category5, :category6)
     end
 end

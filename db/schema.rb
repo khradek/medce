@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170907223349) do
+ActiveRecord::Schema.define(version: 20170911235117) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20170907223349) do
     t.string   "category4"
     t.string   "category5"
     t.boolean  "active"
+    t.integer  "preview_num"
+    t.string   "category6"
   end
 
   create_table "order_items", force: :cascade do |t|
