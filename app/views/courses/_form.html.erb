@@ -85,7 +85,7 @@
       <div class="col-xs-2">
         <div class="form-group">
           <%= f.label :preview_num, "Preview Length" %>
-          <%= f.input :preview_num, label: false, class: "form-control" %>
+          <%= f.input :preview_num, :input_html => { value: f.object.preview_num || 5000 }, label: false, class: "form-control" %>
         </div>
       </div>
     </div>

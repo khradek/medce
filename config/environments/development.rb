@@ -42,3 +42,6 @@ Rails.application.configure do
   # For Devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
+
+S3_ACCESS = ENV['MEDCE_AWS_ACCESS_KEY']
+S3_SECRET = ENV['MEDCE_AWS_SECRET_ACCESS_KEY']
