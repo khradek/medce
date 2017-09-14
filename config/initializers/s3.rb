@@ -7,5 +7,5 @@ CarrierWave.configure do |config|
       :aws_secret_access_key  => S3_SECRET,
       :region                 => 'us-east-2' # Change this for different AWS region. Default is 'us-east-1'
   }
-  config.fog_directory  = "medce"
+  config.fog_directory  = 'medce'
 end
