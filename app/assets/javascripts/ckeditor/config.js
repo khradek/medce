@@ -1,3 +1,4 @@
+
 CKEDITOR.editorConfig = function(config) {
   config.language = 'en';
   config.width = '908';
@@ -8,18 +9,8 @@ CKEDITOR.editorConfig = function(config) {
   config.filebrowserImageBrowseUrl = "/ckeditor/pictures";
   config.filebrowserImageUploadUrl = "/ckeditor/pictures";
   config.filebrowserUploadUrl = "/ckeditor/attachment_files";
+  config.stylesSet = [{ name: 'Double Space', element: 'p', styles: {'line-height': '2.0' }}, { name: 'Red Title' , element: 'h3', styles: { 'color': 'Red' } }, { name: 'Marker: Yellow', element: 'span', styles: { 'background-color': 'Yellow' } }]
 
-
-  CKEDITOR.stylesSet.add( 'my_styles', [
-      // Block-level styles
-      { name: 'Double Space', element: 'p', styles: { 'line-height': '2.0' } },
-      { name: 'Red Title' , element: 'h3', styles: { 'color': 'Red' } },
-
-      // Inline styles
-      { name: 'Marker: Yellow', element: 'span', styles: { 'background-color': 'Yellow' } }
-  ] );
-
-  config.stylesSet = 'my_styles';
   config.toolbar_Pure = [
     '/', {
       name: 'basicstyles',
@@ -46,3 +37,5 @@ CKEDITOR.editorConfig = function(config) {
   return true;
 
 }
+
+

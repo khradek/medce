@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @q = Course.search(params[:q])
+    @q = Course.where('published = ?', true ).search(params[:q])
     @courses = @q.result.order("title").paginate(:page => params[:page], :per_page => 5)
     @authors = User.where('author = ?', true )
     @order_item = current_order.order_items.new
@@ -125,6 +125,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:title, :body, :preview_num, :author_id, :description, :ce_hours, :price, :category1, :category2, :category3, :category4, :category5, :category6)
+      params.require(:course).permit(:title, :body, :preview_num, :author_id, :description, :ce_hours, :price, :category1, :category2, :category3, :category4, :category5, :category6, :published)
     end
 end

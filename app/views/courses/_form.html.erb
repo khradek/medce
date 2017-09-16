@@ -97,8 +97,18 @@
 
     <br>
 
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group"> 
+        <%= f.label :published, "Publish?" %>
+          <%= f.select(:published, options_for_select([['Yes', 'true'], ['No', 'false']], :selected => f.object.published), {:prompt => "Once published, course will be available to the public"}, {class: "form-control"}) %>
+        </div>  
+      </div> 
+    </div>
+    
     <div class="form-group">
       <%= f.button :submit, class: "btn-block btn-blue" %>
     </div>
   <% end %>
 </div>
+
