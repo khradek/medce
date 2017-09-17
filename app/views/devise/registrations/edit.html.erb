@@ -1,9 +1,38 @@
 
 <div class="small-container">
-
   <div class="h1-custom text-center">My Account</div>
-  
+</div>
+
   <hr>
+
+<div class="medium-container">
+  <% if current_user.author? %>
+    <div class="box">
+      <h3 class="text-center bold-text">My Authored Courses</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th class="text-center">Published?</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @current_user.courses.each do |course|%>
+            <tr>
+              <td width="80%"><%= link_to course.title, course, class: "bold-text dark-blue-text" %></td>
+              <td width="10%" class="text-center"><% if course.published %><span class="green-text">Yes</span><% else %><span class="red-text">No</span><% end %></td>
+              <td width="10%"><%= link_to "Edit", edit_course_path(course) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to 'Create New Course', new_course_path, class: "btn btn-light-gray btn-block" %>
+    </div>
+    <hr> 
+  <% end %>
+
+
 
   <div class="box">
     <h3 class="text-center">My Purchased Courses</h3>
@@ -17,29 +46,15 @@
       </tbody>
     </table>
   </div>
+</div>
 
+<div class="small-container"> 
   <hr>
   
   <% if current_user.author? %>
-
-    <div class="box">
-      <h3 class="text-center">My Authored Courses</h3>
-      <table class="table table-hover">
-        <tbody>
-          <% @current_user.courses.each do |course|%>
-            <tr>
-              <td width="88%"><%= link_to course.title, course, class: "bold-text dark-blue-text" %></td>
-              <td width="12%"><%= link_to "Edit", edit_course_path(course) %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <%= link_to 'Create New Course', new_course_path, class: "btn btn-light-gray btn-block" %>
-    </div>
-
-    <hr>
-
     <h3>Update Personal Info</h3>
+  <% else %>
+    <h3>Update Email</h3>
   <% end %>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
