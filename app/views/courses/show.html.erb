@@ -13,7 +13,7 @@
     
     <% if !@purchased_courses.any? {|a| a.course_id == @course.id} || current_user == @course.user %> 
       <br>
-      <%= link_to 'Preview Course <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_preview_path(@course, :format => 'pdf'), class: "btn btn-light-gray btn-sm" %>
+      <%= link_to 'Preview Course <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_preview_path(@course, :format => 'pdf'), target: "_blank", class: "btn btn-light-gray btn-sm" %>
       <br>
       <hr>
     <% end %>  
@@ -39,7 +39,7 @@
 
     <% if current_user && @purchased_courses.any? {|a| a.course_id == @course.id} || current_user == @course.user %>
       <hr>
-      <%= link_to "Open Course (PDF)", course_path(@course, :format => 'pdf'), class: "btn btn-block btn-blue" %>
+      <%= link_to "Open Course (PDF)", course_path(@course, :format => 'pdf'), target: "_blank", class: "btn btn-block btn-blue" %>
     <% end %>
   </div>
 <% else %>

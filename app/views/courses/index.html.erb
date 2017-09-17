@@ -88,7 +88,7 @@
         <div class="row">    
           <div class="col-sm-7">
             <%= link_to "More Info", course_path(course), class: "btn btn-gray btn-sm" %>
-            <%= link_to 'Preview Course <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_preview_path(course, :format => 'pdf'), class: "btn btn-light-gray btn-sm" %>
+            <%= link_to 'Preview Course <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_preview_path(course, :format => 'pdf'), target: "_blank", class: "btn btn-light-gray btn-sm" %>
           </div> 
 
           <% unless @purchased_courses.any? {|a| a.course_id == course.id} %>

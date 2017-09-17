@@ -61,7 +61,7 @@
         <div class="row">    
           <div class="col-sm-8">
             <%= link_to "More Info", course_path(course), class: "btn btn-gray btn-sm" %>
-            <%= link_to 'Preview Course <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_preview_path(course, :format => 'pdf'), class: "btn btn-light-gray btn-sm" %>
+            <%= link_to 'Preview Course <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_preview_path(course, :format => 'pdf'), target: "_blank", class: "btn btn-light-gray btn-sm" %>
           </div> 
           <div class="col-sm-2">
             <strong>CE Hours: <%= course.ce_hours%></strong>  
