@@ -1,11 +1,17 @@
 <div class="container-fluid">
   
   <br>
-
-  <div class="short-select-container">
-  <%= select_tag "authors", options_for_select(User.where(:author => true).map{ |a| [a.fullname, a.id] }), prompt: "Select an author", class: "form-control", id: "author-dropdown" %>
-  </div>
   
+  <div class="row">
+    <div class="col-xs-3">
+      <%= select_tag "authors", options_for_select(User.where(:author => true).map{ |a| [a.fullname, a.id] }), prompt: "Select an author", class: "form-control", id: "author-dropdown" %>
+    </div>
+    
+    <div class="col-xs-3 col-xs-offset-6">
+      <%= link_to 'View Courses by all Authors', courses_path, class: "btn btn-gray btn-md pull-right" %>
+    </div>
+  </div>
+
   <br>
 
   <div class="row">
@@ -23,7 +29,7 @@
   </div>
 
   <hr>
-  
+
   <div class="col-xs-12">  
     <div class="box">
       <div class="h3-custom">Courses by <%= @user.fullname %>:</div>
