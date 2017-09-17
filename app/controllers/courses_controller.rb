@@ -48,7 +48,11 @@ class CoursesController < ApplicationController
   def preview
     @course = Course.find params[:course_id]
     @number = @course.preview_num
-    @preview = @course.body[0..@number]
+    if @course.body.blank?
+      @preview = @course.body
+    else
+      @preview = @course.body[0..@number]
+    end
 
     respond_to do |format|
       format.pdf do
@@ -94,7 +98,7 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to edit_course_path(@course), notice: 'The course was successfully updated.' }
+        format.html { redirect_to @course, notice: 'The course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit }

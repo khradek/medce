@@ -1,36 +1,50 @@
 <% @title = @course.title %>
 
-<div class="medium-container">
-  <h2 class="text-center"><%= @course.title %></h2>
-  <h5><%= @course.description %></h5>
-  <p>Price: $<%= number_with_precision(@course.price, :precision => 2) %></p>
-  <p>CE Hours: <%= @course.ce_hours %></p>
-  <p>Author: <%= link_to @author.fullname, @author %></p>
-  Categories: 
-  <%= @categories.to_sentence %>
-  <br>
-  
-  <% unless @purchased_courses.any? {|a| a.course_id == @course.id}  %> 
+<% if @course.published || current_user == @course.user %>
+  <div class="medium-container">
+    <h2 class="text-center"><%= @course.title %></h2>
+    <h5><%= @course.description %></h5>
+    <p>Price: $<%= number_with_precision(@course.price, :precision => 2) %></p>
+    <p>CE Hours: <%= @course.ce_hours %></p>
+    <p>Author: <%= link_to @author.fullname, @author %></p>
+    Categories: 
+    <%= @categories.to_sentence %>
     <br>
-    <%= link_to 'Preview Course <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_preview_path(@course, :format => 'pdf'), class: "btn btn-light-gray btn-sm" %>
-    <br>
-    <hr>
-    <%= form_for @order_item do |f| %>
-      <%= f.hidden_field :course_id, value: @course.id %>
-      <%= button_tag type: 'submit', class: "btn btn-blue btn-block" do %>
-         Purchase Course
+    
+    <% if !@purchased_courses.any? {|a| a.course_id == @course.id} || current_user == @course.user %> 
+      <br>
+      <%= link_to 'Preview Course <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_preview_path(@course, :format => 'pdf'), class: "btn btn-light-gray btn-sm" %>
+      <br>
+      <hr>
+    <% end %>  
+
+    <% unless @purchased_courses.any? {|a| a.course_id == @course.id} || current_user == @course.user %>
+      <%= form_for @order_item do |f| %>
+        <%= f.hidden_field :course_id, value: @course.id %>
+        <%= button_tag type: 'submit', class: "btn btn-blue btn-block" do %>
+           Purchase Course
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
 
-  <% if current_user && @purchased_courses.any? {|a| a.course_id == @course.id} %>
+    <% if current_user == @course.user %>
     <hr>
-    <%= link_to "Open Course (PDF)", course_path(@course, :format => 'pdf'), class: "btn btn-block btn-blue" %>
-  <% end %>
-</div>
+    <h5 class="text-center">
+      You are the author of this course. Click <strong><%= link_to "HERE", edit_course_path(@course), class: "dark-blue-text" %></strong> to edit it.
+    </h5>
+    <h5 class="text-center">
+      This course <% if @course.published %><span class="green-text">IS</span><% else %><span class="red-text">IS NOT</span><% end %> published.
+    <% end %>
+    </h5>
 
-
-
+    <% if current_user && @purchased_courses.any? {|a| a.course_id == @course.id} || current_user == @course.user %>
+      <hr>
+      <%= link_to "Open Course (PDF)", course_path(@course, :format => 'pdf'), class: "btn btn-block btn-blue" %>
+    <% end %>
+  </div>
+<% else %>
+  <h1 class="text-center">This course has not yet been published.</h1>
+<% end %>
 
  
 

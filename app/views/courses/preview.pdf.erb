@@ -1,2 +1,6 @@
 
-<div><%= raw @preview %></div>
+<% if @course.published || current_user == @course.user %>
+  <div><%= raw @preview %></div>
+<% else %>
+  <h1 class="text-center">This course has not yet been published.</h1>
+<% end %>
