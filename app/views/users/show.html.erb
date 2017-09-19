@@ -4,7 +4,7 @@
   
   <div class="row">
     <div class="col-xs-3">
-      <%= select_tag "authors", options_for_select(User.where(:author => true).map{ |a| [a.fullname, a.id] }), prompt: "Select an author", class: "form-control", id: "author-dropdown" %>
+      <%= select_tag "authors", options_for_select(User.where(:author => true).order('last_name ASC').map{ |a| [a.fullname, a.id] }), prompt: "Select an author", class: "form-control", id: "author-dropdown" %>
     </div>
     
     <div class="col-xs-3 col-xs-offset-6">

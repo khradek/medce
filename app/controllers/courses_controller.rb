@@ -8,7 +8,7 @@ class CoursesController < ApplicationController
   def index
     @q = Course.where('published = ?', true ).search(params[:q])
     @courses = @q.result.order("title").paginate(:page => params[:page], :per_page => 5)
-    @authors = User.where('author = ?', true )
+    @authors = User.where('author = ?', true ).order('last_name ASC')
     @order_item = current_order.order_items.new
     if current_user
       @purchased_courses = current_user.purchased_courses
