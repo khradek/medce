@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   resources :users, :only => [:show]
 
   root 'courses#index'
+  
+  get '/masquerade' => "pages#masquerade"
 
 end

@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
 
-  def landing
+  def masquerade
+    if current_user.admin?
+      @users = User.all
+    end
   end
 
 end

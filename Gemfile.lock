@@ -83,6 +83,9 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
+    devise_masquerade (0.3.1)
+      devise (>= 2.1.0)
+      railties (>= 3.0)
     erubis (2.7.0)
     excon (0.58.0)
     execjs (2.7.0)
@@ -233,6 +236,7 @@ DEPENDENCIES
   ckeditor (~> 4.2, >= 4.2.4)
   coffee-rails (~> 4.1.0)
   devise (~> 4.3)
+  devise_masquerade
   fog-aws
   jbuilder (~> 2.0)
   jquery-rails
