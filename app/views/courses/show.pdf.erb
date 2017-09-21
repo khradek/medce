@@ -1,5 +1,6 @@
 
 <% if @course.published || current_user == @course.user %>
+  <title><%= @course.title%></title>
   <div><%= raw @course.body %></div>
 <% else %>
   <h1 class="text-center">This course has not yet been published.</h1>
