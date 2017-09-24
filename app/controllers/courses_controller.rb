@@ -30,7 +30,6 @@ class CoursesController < ApplicationController
     end
     @categories = [@course.category1, @course.category2, @course.category3, @course.category4, @course.category5, @course.category6].reject(&:blank?)
 
-
     respond_to do |format|
       format.html
       format.pdf do
