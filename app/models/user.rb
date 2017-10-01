@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   validate :password_complexity, :image_size_validation
   
 
-  has_many :courses
+  has_many :courses     #as author
+  #has_many :evaluations #as author
   has_many :purchased_courses, dependent: :destroy
    
   def password_complexity

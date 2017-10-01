@@ -1,0 +1,46 @@
+
+<%= simple_form_for [@evaluation, @question], :html=> { id: 'questionForm' } do |f| %>
+    
+    <div class="form-group">
+      <div class="row">  
+        <div class="col-sm-12">
+          <%= f.label :text, "Question" %>
+          <%= f.input :text, label: false, class: "form-control" %>
+        </div>
+      </div>
+      
+      <br>
+
+    <table class="table table-bordered">
+      <tr>
+        <th width=5% class="center">Correct</th>
+        <th width=90%>Answer Choices</th>
+        <th width=5% class="center">Remove</th>
+      </tr>
+
+      <%= f.fields_for :answers do |a| %>
+        <tr>
+          <td class="center">
+            <%= a.check_box :correct_answer %>
+          </td>
+          <td>
+            <%= a.text_field :text, placeholder: "Enter text here", class: "form-control" %>
+          </td>
+          <td class="center">
+            <%= a.check_box '_destroy' %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    
+    <%= link_to 'Add Answer Choice', answers_path(question_id: @question.id), method: :post, remote: true, class: "btn btn-gray btn-sm" %>
+
+    <br>
+
+    <hr>
+
+    <div class="form-group">
+      <%= f.button :submit, class: "btn-block btn-blue" %>
+    </div>
+
+<% end %>

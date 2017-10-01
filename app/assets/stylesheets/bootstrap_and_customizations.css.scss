@@ -7,6 +7,10 @@ body { background: #F5F5F5 !important;}
   display: none;
 }
 
+.center{
+  text-align: center;
+}
+
 .large-container{
   margin: auto;
   max-width: 80%;
@@ -48,6 +52,10 @@ body { background: #F5F5F5 !important;}
 
 .green-text{
   color: #269f00
+}
+
+.highlight{
+  background-color: #FFFF00
 }
 
 .courses-header {
@@ -101,6 +109,17 @@ body { background: #F5F5F5 !important;}
 .box{
   border-style: ridge;
   border-width: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #fff;
+  border-color: #b6b6b6; 
+}
+
+.question-box{
+  border-style: ridge;
+  border-width: 3px;
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 10px;

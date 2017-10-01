@@ -1,0 +1,26 @@
+<div class="h1-custom text-center"><%= @evaluation.course.title %> Evaluation</div> 
+
+<br>
+
+<div class="large-container">
+  <div class="box">
+    <% @questions.each do |question| %>
+      <div class="question-box">
+        <div class="h3-custom"><%= link_to question.text, edit_evaluation_question_path(@evaluation, question), class: "bold-text dark-blue-text" %></div>
+        <% letter = '@' %>
+        <% question.answers.each do |answer| %>
+          <div>
+            <% letter = letter.next %>
+            <span><%= letter %>.</span>
+            <span class="<%= 'highlight' if answer.correct_answer %>"><%= answer.text %></span>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <br>
+    <%= link_to 'Add a New Question', new_evaluation_question_path(@evaluation,), class: "btn btn-light-gray btn-block" %>
+  </div>
+</div>
+
+<br>
+<br>

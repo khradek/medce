@@ -1,0 +1,19 @@
+<script>
+  setTimeout("$('.alert').fadeOut('slow')", 1500)
+</script>
+
+<%= link_to  '<i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Evaluation'.html_safe, evaluation_path(@evaluation), class: "btn btn-gray btn-sm small-block" %>
+
+<%= link_to '<i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete Question'.html_safe, [@evaluation, @question], method: :delete, class: "btn btn-red btn-sm small-block pull-right", data: { confirm: 'Are you sure? This will delete the entire question.' } %>
+
+<br>
+
+<div class="courses-header center">Edit Question</div>
+
+<br>
+
+<%= render 'update_form' %>
+
+
+
+

@@ -4,6 +4,10 @@
 
 <%= render 'form' %>
 
+<% if @course.evaluation.exists? %>
+  <%= link_to "Edit Evaluation", evaluation_path %>
+<% end %>
+
 <br>
 <br>
 <br>

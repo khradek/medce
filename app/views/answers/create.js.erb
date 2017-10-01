@@ -1,0 +1,7 @@
+var form = $('#questionForm');
+
+$.ajax({
+  type: "PATCH",
+  url: form.attr('action'),
+  data: form.serialize(),
+});
