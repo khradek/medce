@@ -51,10 +51,10 @@
       <br>
       <hr>
       <hr>
-      <br>
+
 
       <% if @evaluation.questions.count > 0 %>
-        <%= link_to "Take Evaluation", course_take_evaluation_path(@course), class: "btn btn-block btn-gray" %>
+        <h3 class="text-center bold-text">Evaluation/CE Hours Earned</h3>
       <% end %>
         
       <% unless @results.empty? %>
@@ -86,6 +86,10 @@
             <% end %>
           </tbody>
         </table>
+      <% end %>
+
+      <% if @evaluation.questions.count > 0 %>
+        <%= link_to "Take Evaluation", course_take_evaluation_path(@course), class: "btn btn-block btn-gray" %>
       <% end %>
 
     <% end %>
