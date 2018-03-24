@@ -9,7 +9,7 @@ class Evaluations::QuestionsController < ApplicationController
 
   def edit
     @evaluation = Evaluation.find(params[:evaluation_id])
-    @answers = @question.answers.order('created_at DESC')
+    @answers = @question.answers
   end
 
   def create

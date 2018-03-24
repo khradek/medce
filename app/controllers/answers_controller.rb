@@ -4,6 +4,7 @@ class AnswersController < ApplicationController
     @answer = Answer.new
     @question = Question.find(params[:question_id])
     @answer.question_id = @question.id
+    @answer.text = ""
     @answer.save
   end
 
