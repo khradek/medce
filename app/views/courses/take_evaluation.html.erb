@@ -1,0 +1,27 @@
+ 
+<h1 class="center bold-text"><%= @course.title %> Evaluation</h1>
+<br>
+
+<%= form_tag({:controller => "courses", :action => "grading"}, id: "evaluation-form") do %>
+  <% @questions.each do |question| %>
+    <div class="question-box", id="<%= dom_id(question) %>">
+      <div class="h3-custom"><%= question.text %></div>
+      <% letter = '@' %>
+      <% question.answers.each do |answer| %>
+        <div>
+          <%= radio_button_tag("answer[#{question.id}]", answer.id) %>
+          <% letter = letter.next %>
+          <span><%= letter %>.</span>
+          <span><%= answer.text %></span>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <br>
+
+  <div class="form-group">
+    <%= submit_tag('Submit Test', class: "btn btn-block btn-blue", id: "evaluation-submit-button") %>
+  </div>
+
+<% end %>

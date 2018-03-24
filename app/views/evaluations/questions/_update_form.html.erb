@@ -21,10 +21,10 @@
       <%= f.fields_for :answers do |a| %>
         <tr>
           <td class="center">
-            <%= a.check_box :correct_answer %>
+            <%= a.check_box :correct_answer, class: 'correctCheck' %>
           </td>
           <td>
-            <%= a.text_field :text, placeholder: "Enter text here", class: "form-control" %>
+            <%= a.input :text, placeholder: "Enter text here", label: false, :input_html => { class: "form-control", :rows => 1 } %>
           </td>
           <td class="center">
             <%= a.check_box '_destroy' %>

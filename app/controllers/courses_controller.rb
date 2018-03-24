@@ -29,6 +29,12 @@ class CoursesController < ApplicationController
       @purchased_courses = []
     end
     @categories = [@course.category1, @course.category2, @course.category3, @course.category4, @course.category5, @course.category6].reject(&:blank?)
+    @evaluation = @course.evaluation
+    if current_user.nil?
+      @results = []
+    else
+      @results = EvalResult.where(course_id: @course.id, user_id: current_user.id).order('created_at DESC')
+    end
 
     respond_to do |format|
       format.html
@@ -66,6 +72,51 @@ class CoursesController < ApplicationController
     end
   end
 
+  def take_evaluation
+    @course = Course.find params[:course_id]
+    @evaluation = Evaluation.find_by('course_id = ?', @course.id)
+    @questions = @evaluation.questions.order(:position) 
+  end
+
+  def grading
+    @course ||= Course.find params[:course_id]
+    @evaluation = Evaluation.find_by('course_id = ?', @course.id)
+    total = @evaluation.questions.count.to_i
+
+    session[:total]   = total
+    session[:correct] = 0
+    @total   = session[:total]
+
+    h = params[:answer]
+
+    h.values.each do |answer|
+      @answer = answer ? Answer.find(answer) : nil
+      if @answer and @answer.correct_answer
+        @correct = true
+        session[:correct] += 1
+      else
+        @correct = false
+      end
+    end
+
+    @correct = session[:correct]
+    @total   = session[:total]
+
+    @score = @correct * 100 / @total
+
+    @eval_result = EvalResult.new(user_id: current_user.id, course_id: @course.id, score: @score)
+    @eval_result.save
+
+    redirect_to course_results_path
+  end
+
+  def results
+    @correct = session[:correct]
+    @total   = session[:total]
+
+    @score = @correct * 100 / @total 
+  end
+
   # GET /courses/new
   def new
     @course = current_user.courses.build
@@ -83,7 +134,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, notice: 'The course was successfully created.' }
+        format.html { redirect_to edit_course_path(@course), notice: 'The course was successfully created. Please be sure to add an evaluation to the course by clicking the Course Evaluation button below.' }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }
@@ -128,6 +179,7 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:title, :body, :preview_num, :author_id, :description, :ce_hours, :price, :category1, :category2, :category3, :category4, :category5, :category6, :published)
+      params.require(:course).permit(:title, :body, :preview_num, :req_score, :author_id, :description, :ce_hours, :price, :category1, :category2, :category3, :category4, :category5, :category6, :published)
     end
+
 end

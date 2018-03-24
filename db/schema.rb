@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170929234155) do
+ActiveRecord::Schema.define(version: 20180302001801) do
 
   create_table "answers", force: :cascade do |t|
-    t.string   "text"
+    t.text     "text"
     t.integer  "question_id"
+    t.boolean  "correct_answer", default: false, null: false
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-    t.boolean  "correct_answer", default: false, null: false
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20170929234155) do
     t.boolean  "published"
     t.integer  "preview_num"
     t.string   "category6"
+    t.decimal  "req_score",   precision: 5, scale: 2
+  end
+
+  create_table "eval_results", force: :cascade do |t|
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.decimal  "score",      precision: 5, scale: 2
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   create_table "evaluations", force: :cascade do |t|
@@ -99,10 +108,11 @@ ActiveRecord::Schema.define(version: 20170929234155) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string   "text"
+    t.text     "text"
     t.integer  "evaluation_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "position"
   end
 
   create_table "users", force: :cascade do |t|

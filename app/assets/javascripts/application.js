@@ -12,7 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/widget 
+//= require jquery-ui/sortable
 //= require turbolinks
 //= require bootstrap
 //= require ckeditor/init
+//= require local-time
 //= require_tree .

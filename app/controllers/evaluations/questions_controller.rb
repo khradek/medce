@@ -61,6 +61,12 @@ class Evaluations::QuestionsController < ApplicationController
     end  
   end
 
+  def sort 
+    params[:question].each_with_index do |id, index|
+      Question.where(id: id).update_all(position: index + 1)
+    end 
+    head :ok
+  end 
 
   private
     def set_question

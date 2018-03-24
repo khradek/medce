@@ -2,7 +2,8 @@
 
 <% if @course.published || current_user == @course.user %>
   <div class="medium-container">
-    <h2 class="text-center"><%= @course.title %></h2>
+    <h1 class="text-center bold-text"><%= @course.title %></h1>
+    <br>
     <h5><%= @course.description %></h5>
     <p>Price: $<%= number_with_precision(@course.price, :precision => 2) %></p>
     <p>CE Hours: <%= @course.ce_hours %></p>
@@ -37,14 +38,64 @@
     <% end %>
     </h5>
 
+    <% if @evaluation.questions.count < 1 && current_user == @course.user %>
+      <h5 class="text-center">
+        It looks like this course does not have an evalutation yet. <strong><%= link_to "Add Evaluation", evaluation_path, class: "dark-blue-text" %></strong>.
+      </h5>
+    <% end %>
+
     <% if current_user && @purchased_courses.any? {|a| a.course_id == @course.id} || current_user == @course.user %>
       <hr>
       <%= link_to "Open Course (PDF)", course_path(@course, :format => 'pdf'), target: "_blank", class: "btn btn-block btn-blue" %>
+      
+      <br>
+      <hr>
+      <hr>
+      <br>
+
+      <% if @evaluation.questions.count > 0 %>
+        <%= link_to "Take Evaluation", course_take_evaluation_path(@course), class: "btn btn-block btn-gray" %>
+      <% end %>
+        
+      <% unless @results.empty? %>
+       <br>
+        <h5 class="text-center bold-text">Your Previous Results</h5>
+
+        <p>Number of attempts: <%= @results.count %></p>
+        <p>Score Required to Pass: <%= number_to_percentage(@course.req_score, precision: 2) %></p>
+        <table class="table table-bordered text-center">
+          <thead>
+            <tr>
+              <th class="text-center">Date Taken</th>
+              <th class="text-center">Score</th>
+              <th class="text-center">Pass/Fail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @results.each do |result| %>
+              <tr>
+                <td><%= local_time(result.created_at) %></td>
+                <td><%= number_to_percentage(result.score, precision: 2) %></td>  
+                <% if result.score >= @course.req_score %>  
+                  <td class="green-text">Pass</td>
+                <% else %>
+                  <td class="red-text">Fail</td>
+                <% end %>
+              
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+
     <% end %>
   </div>
 <% else %>
   <h1 class="text-center">This course has not yet been published.</h1>
 <% end %>
 
+<br>
+<br>
+<br>
  
 

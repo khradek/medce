@@ -23,6 +23,9 @@ gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'puma', '~> 3.4'
 gem 'devise_masquerade'
+gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
+gem 'acts_as_list', '~> 0.9.8'
+gem 'local_time'
 
 group :development, :test do
   gem 'byebug'
