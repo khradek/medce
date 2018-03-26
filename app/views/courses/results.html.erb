@@ -1,1 +1,30 @@
-<h1>Results = <%= @score %>%</h1>
+
+<br>
+
+<p class="text-center h15-custom"><%= @course.title %></p>
+
+<br>
+<br>
+
+<div class="medium-container">
+  <div class="box text-center">
+    <h1>Score Required to Pass: <%= number_to_percentage(@course.req_score, precision: 2) %></h1>
+
+    <hr class="light-smoke">
+
+    <p class="text-center h15-custom">Your Score: <%= number_to_percentage(@score, precision: 2) %></p>
+    <br>
+    <% if @score >= @course.req_score %>  
+      <p class="green-text h3-custom">Congragulations, you have passed!</p>
+      <p class="green-text h3-custom">CE Hours Earned: <%= @course.ce_hours %></p>
+      <p class="h3-custom underline-text">Certificate</p>
+      <p><i class="fa fa-file-pdf-o fa-2x red-text"></i></p>
+      <p class="green-text h3-custom">A copy of your certificate will also be available on the <%= link_to "My Account", edit_user_registration_path %> page.</p>
+    <% else %>
+      <p class="h3-custom">Sorry, your score is below the score needed to pass the course. Please review the course material and attempt the test again.</p>
+    <% end %>
+    <br>
+    <hr class="light-smoke">
+    <%= link_to "Return to Course", course_path(@course), class: "btn btn-gray" %>
+  </div>
+</div>

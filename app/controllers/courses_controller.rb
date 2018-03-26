@@ -111,6 +111,7 @@ class CoursesController < ApplicationController
   end
 
   def results
+    @course = Course.find params[:course_id]
     @correct = session[:correct]
     @total   = session[:total]
 

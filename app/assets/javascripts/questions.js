@@ -13,8 +13,7 @@ document.addEventListener("turbolinks:load", function() {
 
   //Allows only one correct checkbox to be checked on Questions edit page
   $('.correctCheck').on('change', function() {
-    $('.correctCheck').not(this).prop('checked', false); 
-    console.log("Changed") 
+    $('.correctCheck').not(this).prop('checked', false);  
   });
 
 });

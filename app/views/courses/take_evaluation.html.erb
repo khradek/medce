@@ -1,5 +1,15 @@
- 
-<h1 class="center bold-text"><%= @course.title %> Evaluation</h1>
+
+<div class="overlay">
+  <div class="loader center  dark-blue-text">
+    <p class="h2-custom">Please wait while your score is calculated...</p>
+    <br>
+    <i class='fa fa-spinner fa-spin fa-5x'></i></div>
+</div>
+
+<br>
+<p class="center h15-custom"><%= @course.title %> Evaluation</p>
+<hr>
+<p>Please select the best answer to each question below. Once you have answered every question, click the Submit Evaluation button below to complete the test.</p>
 <br>
 
 <%= form_tag({:controller => "courses", :action => "grading"}, id: "evaluation-form") do %>
@@ -21,7 +31,8 @@
   <br>
 
   <div class="form-group">
-    <%= submit_tag('Submit Test', class: "btn btn-block btn-blue", id: "evaluation-submit-button") %>
+    <%= submit_tag('Submit Evaluation', class: "btn btn-block btn-blue", id: "evaluation-submit-button") %>
   </div>
 
 <% end %>
+
