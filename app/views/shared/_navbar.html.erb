@@ -17,7 +17,8 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li class="divider-vertical-rt divider-vertical-lt <%= is_active?('/courses') %> <%= is_active?('/') %>"><%= link_to 'The Courses', courses_path %></li>
+        <li class="divider-vertical-lt <%= is_active?('/community') %>"><%= link_to 'Community', courses_path %></li>
+        <li class="divider-vertical-rt divider-vertical-lt <%= is_active?('/courses') %> <%= is_active?('/') %>"><%= link_to 'Courses', courses_path %></li>
         <% if user_signed_in? %>
           <li class="dropdown divider-vertical-rt">
             <a href="#" data-toggle="dropdown" class="<%= 'blue-nav' if controller_name == 'registrations' %>"><i class="fa fa-user fa-lg" aria-hidden="true"></i> <b class="caret"></b></a>
