@@ -1,4 +1,4 @@
-<% @title = "Courses" %>
+<% @title = "Classes" %>
 
 <div class="container-fluid">
   
@@ -11,7 +11,7 @@
     <div class="h3-custom bottom-margin-8">Search</div>
       <div>
         <%= search_form_for @q, html: { class: "form-inline-block" } do |f| %>
-          <%= f.search_field :title_or_description_cont, placeholder: "Search Courses...", class: "form-control" %>
+          <%= f.search_field :title_or_description_cont, placeholder: "Search Classes...", class: "form-control" %>
         <% end %>
       </div>
 
@@ -54,7 +54,7 @@
   <div class="col-sm-9">
     
     <div class="box">
-      <div class="courses-header">Courses</div>
+      <div class="courses-header">Available Classes</div>
       <hr class="light-blue">
 
       <% @courses.each do |course| %>
@@ -66,7 +66,7 @@
  
           <% if @purchased_courses.any? {|a| a.course_id == course.id} %>
             <div class="col-sm-4 col-md-3">
-              <strong>You have purchased this course.</strong> 
+              <strong>You have purchased this class.</strong> 
             </div> 
           <% else %>  
             <%= form_for @order_item, remote: true do |f| %>
@@ -90,7 +90,7 @@
         <div class="row">    
           <div class="col-sm-7">
             <%= link_to "More Info", course_path(course), class: "btn btn-gray btn-sm" %>
-            <%= link_to 'Preview Course <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_preview_path(course, :format => 'pdf'), target: "_blank", class: "btn btn-light-gray btn-sm" %>
+            <%= link_to 'Preview Class <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_preview_path(course, :format => 'pdf'), target: "_blank", class: "btn btn-light-gray btn-sm" %>
           </div> 
 
           <% unless @purchased_courses.any? {|a| a.course_id == course.id} %>

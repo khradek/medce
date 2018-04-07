@@ -135,7 +135,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to edit_course_path(@course), notice: 'The course was successfully created. Please be sure to add an evaluation to the course by clicking the Course Evaluation button below.' }
+        format.html { redirect_to edit_course_path(@course), notice: 'The class was successfully created. Please be sure to add an evaluation to the class by clicking the Class Evaluation button below.' }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }
@@ -149,7 +149,7 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'The course was successfully updated.' }
+        format.html { redirect_to @course, notice: 'The class was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit }
@@ -163,7 +163,7 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
     respond_to do |format|
-      format.html { redirect_to courses_url, notice: 'The course was successfully destroyed.' }
+      format.html { redirect_to courses_url, notice: 'The class was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -175,7 +175,7 @@ class CoursesController < ApplicationController
     end
 
     def correct_user
-      redirect_to root_path, notice: "You can only edit courses that you authored." if @course.user != current_user   
+      redirect_to root_path, notice: "You can only edit classes that you authored." if @course.user != current_user   
     end 
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,0 +1,17 @@
+
+<%= form_for @forum_thread do |f| %>
+  <div class="form-group">
+    <%= f.text_field :subject, placeholder: "Subject", class: "form-control" %>
+  </div>
+
+  <%= f.fields_for :forum_posts do |p| %>
+    <div class="form-group">
+      <%= p.cktext_area :body, :ckeditor => {:toolbar => 'mini', :width=>'100%', :height=>'250px'} %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.submit "Create Thread", class: "btn btn-blue btn-block" %>
+  </div>
+<% end %>
+

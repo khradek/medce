@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302001801) do
+ActiveRecord::Schema.define(version: 20180401135613) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "text"
@@ -65,6 +65,21 @@ ActiveRecord::Schema.define(version: 20180302001801) do
   create_table "evaluations", force: :cascade do |t|
     t.integer  "course_id"
     t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "forum_posts", force: :cascade do |t|
+    t.integer  "forum_thread_id"
+    t.integer  "user_id"
+    t.text     "body"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "forum_threads", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "subject"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -8,29 +8,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "Addiction Team USA", root_path, :class => "navbar-brand divider-vertical-rt" %>
+      <%= link_to "Addiction Team USA", root_path, class: "navbar-brand divider-vertical-rt" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-      </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li class="divider-vertical-lt <%= is_active?('/community') %>"><%= link_to 'Community', courses_path %></li>
-        <li class="divider-vertical-rt divider-vertical-lt <%= is_active?('/courses') %> <%= is_active?('/') %>"><%= link_to 'Courses', courses_path %></li>
-        <% if user_signed_in? %>
-          <li class="dropdown divider-vertical-rt">
-            <a href="#" data-toggle="dropdown" class="<%= 'blue-nav' if controller_name == 'registrations' %>"><i class="fa fa-user fa-lg" aria-hidden="true"></i> <b class="caret"></b></a>
-            <ul class="dropdown-menu">
+        <li class="divider-vertical-lt <%= is_active?('/courses') %>"><%= link_to 'Continuing Ed Classes', courses_path, class: "#{'blue-nav' if controller_name == 'courses'}" %></li>
+        <li class="divider-vertical-rt divider-vertical-lt <%= is_active?('/forum_threads') %>" ><%= link_to 'Community', forum_threads_path, class: "#{'blue-nav' if controller_name == 'forum_threads'}" %></li>
+        <li class="dropdown divider-vertical-rt">        
+          <a href="#" data-toggle="dropdown" class="<%= 'blue-nav' if controller_name == 'registrations' || controller_name == 'sessions' %>"><i class="fa fa-user fa-lg" aria-hidden="true"></i> <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <% if user_signed_in? %>
               <li class="<%= is_active?('/users/edit') %> nav-underline"><%= link_to "My Account", edit_user_registration_path %></li>
               <li class=nav-top-padding><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li></li>
-            </ul>
-          </li>
-        <% else %>
-          <li class="<%= is_active?('/users/sign_up') %>"><%= link_to "Sign Up", new_user_registration_path, class: "divider-vertical-rt" %></li>
-          <li class="<%= is_active?('/users/sign_in') %>"><%= link_to "Sign In", new_user_session_path, class: "divider-vertical-rt" %></li>
-        <% end %> 
+            <% else %>
+              <li class="<%= is_active?('/users/sign_up') %>"><%= link_to "Sign Up", new_user_registration_path, class: "divider-vertical-rt" %></li>
+              <li class="<%= is_active?('/users/sign_in') %>"><%= link_to "Sign In", new_user_session_path, class: "divider-vertical-rt" %></li>
+            <% end %> 
+          </ul>
+        </li>
+        
         <li class="<%= is_active?('/cart') %>">
           <%= link_to "My Cart", cart_path %>
         </li>
@@ -42,3 +41,16 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+
+<% unless user_signed_in? || controller_name == 'registrations' || controller_name == 'sessions' %>
+  <div class="top-button-container top-button-hide">
+    <div class="small-container">
+      <%= link_to "Sign Up For a Free Account", new_user_registration_path, class: "btn btn-blue btn-block" %>
+    </div>
+  </div>
+<% end %>
+
+
+
+

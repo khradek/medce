@@ -1,0 +1,11 @@
+
+<p class="text-muted">Join the discussion</p>
+<%= form_for [@forum_thread, @forum_post] do |f| %>
+  <div class="form-group">
+    <%= f.cktext_area :body, :ckeditor => {:toolbar => 'mini', :width=>'100%', :height=>'100px', value: "Enter a comment"} %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Add Reply", class: "btn btn-blue" %>
+  </div>
+<% end %>

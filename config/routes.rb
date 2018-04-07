@@ -27,6 +27,11 @@ Rails.application.routes.draw do
 
   resources :eval_results #add constraints, don't need all routes
 
+  resources :forum_threads do
+    resources :forum_posts, module: :forum_threads
+  end
+
+
   devise_for :users, controllers: { registrations: "registrations" }
   resources :users, :only => [:show]
 

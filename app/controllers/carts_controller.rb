@@ -14,7 +14,7 @@ class CartsController < ApplicationController
     end
     session.delete(:order_id)
     current_order.delete
-    redirect_to courses_path, notice: 'Thank you for your purchase. Your purchased courses are now available.' 
+    redirect_to courses_path, notice: 'Thank you for your purchase. Your purchased classes are now available.' 
   end
 
 end

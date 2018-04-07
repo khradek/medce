@@ -1,0 +1,43 @@
+
+<% @title = @forum_thread.subject %>
+
+<div class="container-fluid wide-margin"> 
+
+  <br>
+
+  <div class="col-sm-3">
+    <br>
+    <br>
+    <div class="forum-box">
+      <%= link_to "New Thread", new_forum_thread_path, class: "btn btn-blue btn-block" %>
+      <hr class="light-smoke-short">
+      <div class="h3-custom bottom-margin-8">Search</div>
+        <div>
+          <%= search_form_for @q, html: { class: "form-inline-block" } do |f| %>
+            <%= f.search_field :subject_or_forum_posts_body_cont, placeholder: "Search...", class: "form-control" %>
+          <% end %>
+        </div>
+        <hr class="light-smoke-short">
+        <div class="h3-custom">Categories</div>        
+    </div>  
+  </div>    
+
+  <br>
+  <br>
+
+  <div class="col-sm-9">
+    
+    <div class="forum-box">
+
+      <%= render @forum_thread.forum_posts %>
+      
+      <br>    
+      <% if current_user %>
+        <%= render partial: "forum_posts/form" %>
+      <% else %>
+       <strong><%= link_to "Sign Up", new_user_registration_path %> or <%= link_to "Sign In", new_user_session_path %> to Join the Discussion</strong>
+      <% end %>
+    </div>
+
+  </div>
+</div>

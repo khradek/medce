@@ -10,7 +10,7 @@
     </div>
     
     <div class="col-sm-3 col-sm-offset-6">
-      <%= link_to 'View Courses by all Authors', courses_path, class: "btn btn-gray btn-md pull-right" %>
+      <%= link_to 'View Classes by all Authors', courses_path, class: "btn btn-gray btn-md pull-right" %>
     </div>
   </div>
 
@@ -34,7 +34,7 @@
 
   <div class="col-xs-12">  
     <div class="box">
-      <div class="h3-custom">Courses by <%= @user.fullname %>:</div>
+      <div class="h3-custom">Classes by <%= @user.fullname %>:</div>
       <hr class="light-blue">
       <% @courses.each do |course| %>
         <div class="row">
@@ -45,7 +45,7 @@
 
           <% if @purchased_courses.any? {|a| a.course_id == course.id} %>
             <div class="col-sm-4 col-md-2">
-              <strong>You have purchased this course.</strong> 
+              <strong>You have purchased this class.</strong> 
             </div> 
           <% else %>  
             <%= form_for @order_item, remote: true do |f| %>
@@ -69,7 +69,7 @@
         <div class="row">    
           <div class="col-sm-8">
             <%= link_to "More Info", course_path(course), class: "btn btn-gray btn-sm" %>
-            <%= link_to 'Preview Course <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_preview_path(course, :format => 'pdf'), target: "_blank", class: "btn btn-light-gray btn-sm" %>
+            <%= link_to 'Preview Class <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_preview_path(course, :format => 'pdf'), target: "_blank", class: "btn btn-light-gray btn-sm" %>
           </div> 
           <div class="col-sm-2">
             <strong>CE Hours: <%= course.ce_hours%></strong>  

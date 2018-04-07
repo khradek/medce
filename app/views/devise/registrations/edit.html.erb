@@ -10,7 +10,7 @@
 
   <% if current_user.author? %>
     <div class="box">
-      <h3 class="text-center bold-text">My Authored Courses</h3>
+      <h3 class="text-center bold-text">My Authored Classes</h3>
       <table class="table table-hover">
         <thead>
           <tr>
@@ -35,7 +35,7 @@
   <% end %>
 
   <div class="box">
-    <h3 class="text-center">My Purchased Courses</h3>
+    <h3 class="text-center">My Purchased Classes</h3>
     <% if @current_user.purchased_courses.exists? %>
       <table class="table table-hover">
         <thead>
@@ -71,7 +71,7 @@
       </table>
     <% else %>
       <br>
-      <p class="text-center">You Have Not Purchased Any Courses Yet</p>
+      <p class="text-center">You Have Not Purchased Any Classes Yet</p>
     <% end %>
   </div>
 </div>

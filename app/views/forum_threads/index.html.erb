@@ -1,0 +1,42 @@
+
+<% @title = "Community" %>
+
+<div class="container-fluid wide-margin"> 
+
+  <br>
+
+  <div class="col-sm-3">
+    <br>
+    <br>
+    <div class="forum-box">
+      <%= link_to "New Thread", new_forum_thread_path, class: "btn btn-blue btn-block" %>
+      <hr class="light-smoke-short">
+      <div class="h3-custom bottom-margin-8">Search</div>
+        <div>
+          <%= search_form_for @q, html: { class: "form-inline-block" } do |f| %>
+            <%= f.search_field :subject_or_forum_posts_body_cont, placeholder: "Search...", class: "form-control" %>
+          <% end %>
+        </div>
+        <hr class="light-smoke-short">
+        <div class="h3-custom">Categories</div>        
+    </div>  
+  </div>    
+
+  <br>
+  <br>
+
+  <div class="col-sm-9"> 
+    <div class="forum-box">
+      <div class="courses-header">Addiction Team USA Forum</div>
+      <hr class="light-blue">
+      <%= render @forum_threads %>
+    </div>
+  </div>
+
+  
+
+
+
+
+
+  
