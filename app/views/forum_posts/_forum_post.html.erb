@@ -1,21 +1,30 @@
 
 <%= div_for forum_post do %>
   <% if forum_post == @first_post %>
-    <div class="header-box"><strong>General, Law Enforcement</strong></div>
+    <div class="header-box">Created by <%= forum_post.user.fullname %><span class="pull-right"><%= local_time_ago forum_post.created_at %></span></div>
     <div class="thread-post-box">
       <div class="center h15-custom thread-title-margin"><%= @forum_thread.subject %></div>
       <hr class="thin-margins">
       <p><%= sanitize forum_post.body %></p>
     </div> 
     <div class="thread-name-box"> 
-      <strong>Created by <%= forum_post.user.fullname %></strong> <span class="text-muted"><%= local_time_ago forum_post.created_at %></span>
+      <span class="transparent">*</span>
     </div>
-    <hr class="light-blue thin-margins">
+    <hr class="light-smoke thin-margins">
     <div class="h3-custom">Replies</div>
   <% else %>
-    <div class="name-box"><strong><%= forum_post.user.fullname %></strong> <span class="text-muted"><%= local_time_ago forum_post.created_at %></span></div>
+    <div class="name-box"><%= forum_post.user.fullname %> <span class="pull-right"><%= local_time_ago forum_post.created_at %></span></div>
     <div class="post-box">
       <p><%= sanitize forum_post.body %></p>
     </div>
+
+    <div class="edit-box">
+      <% if current_user == forum_post.user %>
+        <%= link_to 'Edit', edit_forum_thread_forum_post_path(@forum_thread, forum_post), class: "grey-font bold-font" %>
+      <% else %>
+        <span class="transparent">*</span>
+      <% end %>
+    </div>
   <% end %>
+
 <% end %>
