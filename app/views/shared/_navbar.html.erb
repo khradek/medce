@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -16,7 +17,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li class="divider-vertical-lt <%= is_active?('/courses') %>"><%= link_to 'Continuing Ed Classes', courses_path, class: "#{'blue-nav' if controller_name == 'courses'}" %></li>
-        <li class="divider-vertical-rt divider-vertical-lt <%= is_active?('/forum_threads') %>" ><%= link_to 'Community', forum_threads_path, class: "#{'blue-nav' if controller_name == 'forum_threads'}" %></li>
+        <li class="divider-vertical-rt divider-vertical-lt <%= is_active?('/forum_threads') %>" ><%= link_to 'Forum', forum_threads_path, class: "#{'blue-nav' if controller_name == 'forum_threads'}" %></li>
         <li class="dropdown divider-vertical-rt">        
           <a href="#" data-toggle="dropdown" class="<%= 'blue-nav' if controller_name == 'registrations' || controller_name == 'sessions' %>"><i class="fa fa-user fa-lg" aria-hidden="true"></i> <b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -45,8 +46,11 @@
 
 <% unless user_signed_in? || controller_name == 'registrations' || controller_name == 'sessions' %>
   <div class="top-button-container top-button-hide">
-    <div class="small-container">
-      <%= link_to "Sign Up For a Free Account", new_user_registration_path, class: "btn btn-blue btn-block" %>
+    <div class="left-container">
+      <%= link_to "Sign In", new_user_session_path, class: "btn btn-gray btn-sm btn-block" %>
+    </div>
+    <div class="right-container">
+      <%= link_to "Sign Up For a Free Account", new_user_registration_path, class: "btn btn-blue btn-sm btn-block" %>
     </div>
   </div>
 <% end %>

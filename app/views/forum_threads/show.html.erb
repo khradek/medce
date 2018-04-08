@@ -5,6 +5,10 @@
 
   <br>
 
+  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Forum Home'.html_safe, forum_threads_path, :class => "btn btn-gray btn-sm margin-left-15" %>
+  <br>
+  <br>
+
   <div class="col-sm-3">
     <br>
     <br>
@@ -35,7 +39,7 @@
       <% if current_user %>
         <%= render partial: "forum_posts/form" %>
       <% else %>
-       <strong><%= link_to "Sign Up", new_user_registration_path %> or <%= link_to "Sign In", new_user_session_path %> to Join the Discussion</strong>
+       <strong><%= link_to "Sign Up", new_user_registration_path %> or <%= link_to "Sign In", new_user_session_path %> to join the discussion</strong>
       <% end %>
     </div>
 
