@@ -1,26 +1,39 @@
 
-<div class="row">
-  
-  <div class="col-sm-8 col-md-9">
-    <div class="h2-custom thread-title-margin"><%= link_to forum_thread.subject, forum_thread_path(forum_thread), class: "bold-text dark-blue-text" %></div>
+
+
+<div class="thread-index-cat-box">
+  <%= forum_thread.category %>
+</div>
+
+<div class="thread-index-title-box">
+  <div class="row">
+    
+    <div class="col-sm-8 col-md-9">
+      <div class="h2-custom thread-title-margin"><%= link_to forum_thread.subject, forum_thread_path(forum_thread), class: "bold-text dark-blue-text" %></div>
+    </div>
+
+
+    <div class="col-sm-4 col-md-3">
+      <div class="text-center small-screen-hide"><span class="preview-numb"><%= forum_thread.forum_posts.count - 1 %></span> <%= "Reply".pluralize(forum_thread.forum_posts.count - 1) %></div> 
+    </div>
+  </div>
+</div> 
+
+<div class="thread-index-box">
+  <div class="row">  
+    <div class="col-sm-12">
+      <p class="bold-text">Created by <%= forum_thread.user.fullname %> <%= local_time_ago forum_thread.created_at %></p>
+    </div>  
   </div>
 
-  <div class="col-sm-4 col-md-3">
-    <div class="text-center small-screen-hide"><span class="preview-numb"><%= forum_thread.forum_posts.count - 1 %></span> <%= "Post".pluralize(forum_thread.forum_posts.count - 1) %></div> 
+  <div class="row"> 
+    <div class="col-sm-12">
+      <div class="preview-text"><%= sanitize forum_thread.forum_posts.first.body.truncate(240, separator: ' ') %></div>
+    </div>
   </div>
 </div>
 
-<div class="row">  
-  <div class="col-sm-12">
-    <div class="text-muted">Created by <%= forum_thread.user.fullname %> <%= local_time_ago forum_thread.created_at %></div>
-  </div>  
-</div>
 
 
-<div class="row"> 
-  <div class="col-sm-12">
-    <div class="preview-text"><%= sanitize forum_thread.forum_posts.first.body.truncate(240, separator: ' ') %></div>
-  </div>
-</div>
 
-<hr class="light-smoke no-bottom-margin">
+

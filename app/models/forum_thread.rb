@@ -6,7 +6,10 @@ class ForumThread < ActiveRecord::Base
 
   accepts_nested_attributes_for :forum_posts
 
+  validates :category, presence: true
   validates :subject, presence: true
   validates_associated :forum_posts
+
+
 
 end
