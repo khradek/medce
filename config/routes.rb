@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   
   get '/masquerade' => "pages#masquerade"
   get '/about' => "pages#about"
+  get '/directory' => "pages#directory"
   get '/videos' => "pages#videos"
   get '/contact' => "pages#contact"
   get '/blog' => "pages#blog" #Need to delete this along with view page (in pages foler) after creating blogs resource

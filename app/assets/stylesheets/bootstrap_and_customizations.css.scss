@@ -1,3 +1,6 @@
+
+$grid-float-breakpoint: 1110px;
+
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
@@ -15,13 +18,43 @@ body { background: #F5F5F5 !important;}
   text-align: center;
 }
 
+.brand-text{
+  font-size: 20px;
+  color: #606060 !important;
+  cursor: pointer;
+  font-weight: bold;
+  vertical-align: middle;
+  padding-left: 12px;
+}
+
+.brand-text:hover{
+  color: #000 !important;
+  background-color: inherit;
+  text-decoration: none;
+}
+
+.brand-text-container{
+  vertical-align: middle;  
+}
+
+.slogan-text{
+  font-size: 14px;
+  color: #000 !important;
+  cursor: pointer;
+  font-weight: bold;
+  vertical-align: middle;
+  padding-left: 22px;
+  cursor: text;
+}
+
 .top-button-container{
   margin: auto;
+  height: 48px;
   max-width: 100%;
   border-top: 2px solid;
   border-bottom: 2px solid;
   border-color: rgba(220, 221, 223, 0.84);
-  padding: 5px;
+  padding: 8px 5px 5px 5px;
   overflow: auto;
   background: #f2f6f8; /* Old browsers */
   background: -moz-linear-gradient(top,  #f2f6f8 0%, #d8e1e7 25%, #b5c6d0 51%, #e0eff9 100%) !important; /* FF3.6-15 */
@@ -43,19 +76,20 @@ body { background: #F5F5F5 !important;}
 
 .right-container-sm-screen{
   float: left;
-  width: 60%;
+  width: 47.5%;
 }
 
 .left-container-sm-screen{
   float: right;
-  width: 30%;
+  width: 47.5%;
 }
 
 .left-container-message{
   float: right;
   width: 30%;
   text-align: right;
-  padding-right: 5px;
+  padding-top: 5px;
+  padding-right: 5px; 
 }
 
 .left-container-message-sm{
@@ -205,6 +239,11 @@ body { background: #F5F5F5 !important;}
 
 .bottom-margin-8 {
   margin-bottom: 8px;
+}
+
+.medium-margins {
+  margin-top: 7px;
+  margin-bottom: 10px;
 }
 
 .thread-title-margin {
