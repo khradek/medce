@@ -1,5 +1,5 @@
 
-$grid-float-breakpoint: 1110px;
+$grid-float-breakpoint: 1115px;
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
@@ -43,7 +43,7 @@ body { background: #F5F5F5 !important;}
   cursor: pointer;
   font-weight: bold;
   vertical-align: middle;
-  padding-left: 22px;
+  padding-left: 20px;
   cursor: text;
 }
 
@@ -71,31 +71,29 @@ body { background: #F5F5F5 !important;}
 
 .left-container{
   float: right;
+  margin-right: 5px;
   width: 8%;
 }
 
 .right-container-sm-screen{
-  float: left;
-  width: 47.5%;
+  float: right;
+  margin-right: 5px;
+  width: 20%;
 }
 
 .left-container-sm-screen{
   float: right;
-  width: 47.5%;
+  margin-right: 5px;
+  width: 20%;
 }
 
-.left-container-message{
+.right-container-message{
   float: right;
-  width: 30%;
   text-align: right;
   padding-top: 5px;
   padding-right: 5px; 
 }
 
-.left-container-message-sm{
-  width: 100%;
-  text-align: center;
-}
 
 .large-container{
   margin: auto;
@@ -235,6 +233,10 @@ body { background: #F5F5F5 !important;}
 
 .margin-left-15{
   margin-left: 15px;
+}
+
+.padding-right-50{
+  padding-right: 50px;
 }
 
 .bottom-margin-8 {
@@ -437,6 +439,10 @@ body { background: #F5F5F5 !important;}
 
 hr.no-bottom-margin{
   margin-bottom: 0px;
+}
+
+hr.no-top-margin{
+  margin-top: 4px;
 }
 
 hr.thin-margins{

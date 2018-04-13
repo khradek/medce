@@ -1,5 +1,4 @@
 
-
 <% unless user_signed_in? %>
   <div class="top-button-container">
     
@@ -21,16 +20,11 @@
     </div>
   </div>
 <% else %>
-  <div class="top-button-container small-screen-hide">
+  <div class="top-button-container">
     <span class="brand-text-container small-screen-hide">
       <%= link_to "Addiction Team USA", root_path, class: "brand-text" %>
-    </span>
-    <div class="left-container-message">
-      You are signed in as <%= current_user.fullname %>
-    </div>
-  </div>
-  <div class="top-button-container small-screen-show">
-    <div class="left-container-message-sm">
+    </span>  
+    <div class="right-container-message">
       You are signed in as <%= current_user.fullname %>
     </div>
   </div>
