@@ -4,7 +4,7 @@ class ForumThreadsController < ApplicationController
 
   def index
     @q = ForumThread.search(params[:q])
-    @forum_threads = @q.result(distinct: true).order('created_at DESC')
+    @forum_threads = @q.result(distinct: true).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
   end
 
   def show

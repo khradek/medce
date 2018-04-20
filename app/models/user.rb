@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
   
+  validates :display_name, presence: true
   validates_processing_of :image
   validate :password_complexity, :image_size_validation
   

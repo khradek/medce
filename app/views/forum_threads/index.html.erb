@@ -15,6 +15,12 @@
       <div class="courses-header">Forum</div>
       <hr class="light-smoke no-bottom-margin">
       <%= render @forum_threads %>
+
+      <div class="text-center">
+        <nav class="pagination">
+          <%= will_paginate @forum_threads, renderer: BootstrapPagination::Rails %>
+        </nav>
+      </div>
     </div>
   </div>
 

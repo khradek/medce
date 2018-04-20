@@ -25,7 +25,7 @@
       <%= link_to "Addiction Team USA", root_path, class: "brand-text" %>
     </span>  
     <div class="right-container-message">
-      You are signed in as <%= current_user.fullname %>
+      You are signed in as <%= current_user.display_name %>
     </div>
   </div>
 <% end %>
@@ -66,7 +66,7 @@
         <li class="<%= is_active?('/cart') %>">
           <%= link_to "My Cart", cart_path %>
         </li>
-        <li class="cart-container">
+        <li class="cart-container hidden-md hidden-sm hidden-xs">
           <span class="cart-text"><%= render 'layouts/cart_text' %></span>
         </li>
 

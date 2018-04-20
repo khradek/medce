@@ -1,0 +1,345 @@
+<% @title = "Solving America’s Addiction Crisis"%>
+
+<% unless user_signed_in? %>
+  <div class="top-button-container-home">
+    
+    <span class="brand-text-container small-screen-hide">
+      <%= link_to "Addiction Team USA", root_path, class: "brand-text" %>
+    </span>
+
+    <div class="left-container small-screen-hide">
+      <%= link_to "Sign In", new_user_session_path, class: "btn btn-gray btn-sm btn-block" %>
+    </div>
+    <div class="right-container small-screen-hide">
+      <%= link_to "Sign Up For a Free Account", new_user_registration_path, class: "btn btn-blue btn-sm btn-block" %>
+    </div>
+    <div class="left-container-sm-screen small-screen-show">
+      <%= link_to "Sign In", new_user_session_path, class: "btn btn-gray btn-sm btn-block" %>
+    </div>
+    <div class="right-container-sm-screen small-screen-show">
+      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-blue btn-sm btn-block" %>
+    </div>
+  </div>
+<% else %>
+  <div class="top-button-container-home">
+    <span class="brand-text-container small-screen-hide">
+      <%= link_to "Addiction Team USA", root_path, class: "brand-text" %>
+    </span>  
+    <div class="right-container-message">
+      You are signed in as <%= current_user.display_name %>
+    </div>
+  </div>
+<% end %>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <%= link_to "Addiction Team USA", root_path, class: "navbar-brand divider-vertical-rt small-screen-show" %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <ul class="nav navbar-nav">
+        <li class="divider-vertical-lt" ><%= link_to 'About', about_path %></li>
+        <li class="divider-vertical-lt" ><%= link_to 'Find a Doctor', directory_path %></li>
+        <li class="divider-vertical-lt" ><%= link_to 'Guest Blogs', blog_path %></li>
+        <li class="divider-vertical-lt" ><%= link_to 'Continuing Ed Classes', courses_path %></li>
+        <li class="divider-vertical-lt" ><%= link_to 'Forum', forum_threads_path %></li>
+        <li class="divider-vertical-lt divider-vertical-rt" ><%= link_to 'Contact Us', contact_path %></li>
+      </ul>  
+
+      <ul class="nav navbar-nav navbar-right">
+
+        <% if user_signed_in? %> 
+          <li class="dropdown divider-vertical-rt divider-vertical-lt">        
+            <a href="#" data-toggle="dropdown"><i class="fa fa-user fa-lg" aria-hidden="true"></i> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li class="nav-underline"><%= link_to "My Account", edit_user_registration_path %></li>
+                <li class=nav-top-padding><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li></li>
+            </ul>
+          </li>
+        <% end %>
+
+        <li class="divider-vertical-lt">
+          <%= link_to "My Cart", cart_path %>
+        </li>
+        <li class="cart-container hidden-md hidden-sm hidden-xs">
+          <span class="cart-text"><%= render 'layouts/cart_text' %></span>
+        </li>
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<%= flash_messages %>
+
+
+<div id="main-image-container">
+  <%= image_tag ('header.jpg'), class: "main-image" %>
+  <div class="centered">
+    <span class="h1-custom white">Addiction Team USA</span>
+    <hr>
+    <div class="h25-custom center white">Solving America’s Addiction Crisis Through Collaboration and Education</div>
+  </div>
+</div>
+
+
+<div class="container">
+  <br>
+  <div class="h2-custom center higher-line bottom-margin-8">A place where society can share ideas, improve their education, provide help, and work together to solve our country's addiction problem.   
+  </div>
+  <div class="large-container">
+    <p class="large-font center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet tristique ornare. Duis in efficitur massa, tincidunt gravida risus. Vivamus arcu ante, consectetur ut ex nec, sollicitudin gravida libero. In hac habitasse platea dictumst. Cras rhoncus a sem in dictum. Morbi ac nisi ac dolor laoreet fringilla.</p>
+  </div>
+</div>
+
+<div class="small-container small-screen-hide">
+  <%= link_to "Become Part of the Solution", new_user_registration_path, class: "btn btn-blue btn-block" %>
+</div>
+
+<div class="small-container small-screen-show">
+  <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-blue btn-block" %>
+</div>
+
+<br>
+
+<div class="container">
+  <hr class="end-fade">
+</div>
+
+<br>
+
+<div class="medium-container">
+  <div class="h15-custom-no-bold center">Stay Informed</div>
+  
+  <br>
+
+  <div class="row">  
+    <div class="col-sm-9">
+      <p class="large-font">Morbi ac nisi ac dolor laoreet fringilla. Nulla nisi tortor, pharetra gravida leo vitae, aliquam lacinia quam. Sed eget lectus lectus. Maecenas consectetur tempor ante, vitae finibus ligula imperdiet nec</p>   
+    </div>
+
+    <div class="col-sm-3">
+      <%= link_to ' View All Articles <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, blog_path, class: "btn btn-gray btn-block" %>
+    </div>  
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="question-box">
+        <div class="h3-custom">Top Articles:</div>
+        <hr class="medium-margins">
+        <div class="h3-custom"><%= link_to "Despite the decline in opioid prescriptions since 2010, the number of opioid-involved deaths has accelerated due to staggering growth in overdose fatalities involving heroin and synthetic opioids.", blog_path, class: "dark-blue-text higher-line" %></div>
+        <hr class="medium-margins">
+        <div class="h3-custom"><%= link_to "Opioid addiction treatment behind bars reduced post-incarceration overdose deaths in Rhode Island", blog_path, class: "dark-blue-text higher-line" %></div>
+        <hr class="medium-margins">
+        <div class="h3-custom"><%= link_to "What Does It Mean When We Call Addiction a Brain Disorder?", blog_path, class: "dark-blue-text higher-line" %></div>
+        <hr class="medium-margins">
+        <div class="h3-custom"><%= link_to "Opioid abuse leads to heroin use and a hepatitis C epidemic, researcher says", blog_path, class: "dark-blue-text higher-line" %></div>
+        <hr class="medium-margins">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="container">
+  <hr class="end-fade">
+</div>
+
+<br>
+
+<div class="medium-container">
+  <div class="h15-custom-no-bold center">Earn CE Credits</div>
+  <br>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <p class="large-font">Cras rhoncus a sem in dictum. Morbi ac nisi ac dolor laoreet fringilla. Nulla nisi tortor, pharetra gravida leo vitae, aliquam lacinia quam. Aenean fermentum rhoncus libero, sit amet posuere lacus viverra et. Sed auctor lacinia varius. Sed eget lectus lectus. Maecenas consectetur tempor ante, vitae finibus ligula imperdiet nec.</p>
+
+      <br>
+
+      <%= link_to ' View All Classes <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, courses_path, class: "btn btn-gray btn-md" %>
+    </div>
+    
+    <div class="col-xs-6">  
+      <%= image_tag ('study.jpg'), class: "home-image" %>
+    </div>
+
+  </div>
+
+  <br>
+  <br>
+
+  <div class="h25-custom-no-bold bottom-margin-8">Spotlight Classes:</div>
+
+  <div class="question-box">
+    <% @courses.each do |course| %>
+      
+      <div class="row">
+        <div class="col-sm-8 col-md-9">
+          <div class="h2-custom"><%= link_to course.title, course_path(course), class: "bold-text dark-blue-text" %></div>
+        </div>
+
+        <% if @purchased_courses.any? {|a| a.course_id == course.id} %>
+          <div class="col-sm-4 col-md-3">
+            <strong>You have purchased this class.</strong> 
+          </div> 
+        <% else %>  
+          <%= form_for @order_item, remote: true do |f| %>
+            <div class="col-sm-4 col-md-3">
+              <div class="input-group">
+                <%= f.hidden_field :course_id, value: course.id %>
+                <%= button_tag type: 'submit', class: "btn btn-blue" do %>
+                   Add to Cart <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> 
+                <% end %>
+              </div> 
+            </div> 
+          <% end %>
+        <% end %>
+        
+      </div> 
+      <div class="row"> 
+        <div class="col-sm-12">
+          <h5 class="padding-right-50"><%= course.description %></h5>
+        </div>
+      </div>
+      <hr class="no-top-margin">
+      <div class="row">    
+        <div class="col-sm-7">
+          <%= link_to "More Info", course_path(course), class: "btn btn-gray btn-sm" %>
+          <%= link_to 'Preview Class <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_preview_path(course, :format => 'pdf'), target: "_blank", class: "btn btn-light-gray btn-sm" %>
+        </div> 
+
+        <% unless @purchased_courses.any? {|a| a.course_id == course.id} %>
+          <div class="col-sm-2">
+            <strong>CE Hours: <%= course.ce_hours%></strong>  
+          </div> 
+          <div class="col-sm-3">
+            <strong>Price: $<%= number_with_precision(course.price, :precision => 2) %></strong>  
+          </div> 
+        <% end %>         
+      </div>
+      <hr class="end-fade">
+    <% end %>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="container">
+  <hr class="end-fade">
+</div>
+
+<br>
+
+<div class="medium-container">
+  <div class="h15-custom-no-bold center">Connect with a Medical Professional Near You</div>
+  
+  <br>
+
+  <div class="search-container">
+    <%= link_to 'Search', directory_path, class: "btn btn-light-gray btn-md pull-right" %>
+    <div style="overflow: hidden; padding-right: .5em;">
+      <%= search_form_for @q, html: { class: "form-inline-block" } do |f| %>
+        <%= f.search_field :subject_or_forum_posts_body_or_category_cont, placeholder: "Enter your location...", class: "form-control" %>
+      <% end %>
+    </div>
+  </div>
+  
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <%= image_tag ('doc.jpg'), class: "home-image" %>
+    </div>
+      
+    <div class="col-xs-6">
+      <p class="large-font">Cras rhoncus a sem in dictum. Morbi ac nisi ac dolor laoreet fringilla. Nulla nisi tortor, pharetra gravida leo vitae, aliquam lacinia quam. Aenean fermentum rhoncus libero, sit amet posuere lacus viverra et. Sed auctor lacinia varius.</p>
+
+      <br>
+
+      <%= link_to ' View Full Directory <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, directory_path, class: "btn btn-gray btn-md" %>
+    </div>
+  </div>
+  
+  <br>
+
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="container">
+  <hr class="end-fade">
+</div>
+
+<br>
+
+<div class="medium-container">
+  <div class="h15-custom-no-bold center">Join the Discussion</div>
+  <br>
+  <div class="row">
+    <div class="col-sm-9">
+      <p class="large-font">Cras rhoncus a sem in dictum. Morbi ac nisi ac dolor laoreet fringilla. Nulla nisi tortor, pharetra gravida leo vitae, aliquam lacinia quam. Aenean fermentum rhoncus libero, sit amet posuere lacus viverra et. Sed auctor lacinia varius.</p>
+    </div>
+    <div class="col-sm-3">
+      <%= link_to ' View All Posts <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, forum_threads_path, class: "btn btn-gray btn-block" %>
+    </div>
+  </div>
+
+  <br>
+
+
+  <div class="h25-custom-no-bold bottom-margin-8">Recent Posts:</div>
+
+  <div class="question-box">
+    <%= render @forum_threads %>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="container">
+  <hr class="end-fade">
+</div>
+
+<br>
+
+<div class="medium-container">
+  <div class="h15-custom-no-bold center">Contact Us</div>
+  <br>
+  <p class="center">Either have a form here or display email address. Also links to Twitter and Facebook.</p>
+</div>
+
+
+
+
+
+
+
+
+
+

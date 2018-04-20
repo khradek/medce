@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409232855) do
+ActiveRecord::Schema.define(version: 20180415142344) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "text"
@@ -150,6 +150,7 @@ ActiveRecord::Schema.define(version: 20180409232855) do
     t.boolean  "author",                 default: false, null: false
     t.string   "image"
     t.boolean  "admin",                  default: false, null: false
+    t.string   "display_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

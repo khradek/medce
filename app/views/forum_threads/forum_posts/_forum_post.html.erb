@@ -1,7 +1,7 @@
 
 <%= div_for forum_post do %>
   <% if forum_post == @first_post %>
-    <div class="header-box">Created by <%= forum_post.user.fullname %><span class="pull-right"><%= local_time_ago forum_post.created_at %></span></div>
+    <div class="header-box">Created by <%= forum_post.user.display_name %><span class="pull-right"><%= local_time_ago forum_post.created_at %></span></div>
     <div class="thread-post-box">
       <div class="center h15-custom thread-title-margin"><%= @forum_thread.subject %></div>
       <hr class="medium-margins">
@@ -13,7 +13,7 @@
     <hr class="light-smoke thin-margins">
     <div class="h3-custom">Replies</div>
   <% else %>
-    <div class="name-box"><%= forum_post.user.fullname %> <span class="pull-right"><%= local_time_ago forum_post.created_at %></span></div>
+    <div class="name-box"><%= forum_post.user.display_name %> <span class="pull-right"><%= local_time_ago forum_post.created_at %></span></div>
     <div class="post-box">
       <p><%= sanitize forum_post.body %></p>
     </div>

@@ -14,7 +14,7 @@
         <div class="col-xs-12">
           <div class="field">
             <%= f.label :email %><br />
-            <%= f.email_field :email, class: "form-control" %>
+            <%= f.email_field :email, maxlength: 60, class: "form-control" %>
           </div>
         </div>
       </div>  
@@ -39,6 +39,15 @@
           </div>
         </div>
       </div> 
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="field">
+          <%= f.label :display_name, 'Display Name' %> <em>Your posts & comments will be displayed under this name</em><br />
+          <%= f.text_field :display_name, maxlength: 20, class: "form-control" %>
+        </div>
+      </div>
+    </div> 
 
     <div class="row">
       <div class="col-xs-12">

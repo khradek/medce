@@ -17,12 +17,21 @@
     </div>
   <% end %>
 
-  <%= render partial: "shared/navbar" %>
-
-  <div class="container" style="margin-top: 10px">
-    <%= flash_messages %>
+  <% unless action_name == "home" %>
+    <%= render partial: "shared/navbar" %>
+    <div class="container" style="margin-top: 10px">
+      <%= flash_messages %>
     <%= yield %>
-  </div>
+    </div>
+  <% else %>
+    <%= yield %>
+  <% end %>
+
+
 
 </body>
 </html>
+
+<br>
+<br>
+<br>
