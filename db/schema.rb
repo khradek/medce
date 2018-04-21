@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180415142344) do
+ActiveRecord::Schema.define(version: 20180421192638) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "text"
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 20180415142344) do
     t.string   "title"
     t.text     "body"
     t.integer  "user_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
     t.text     "description"
     t.integer  "ce_hours"
     t.decimal  "price",       precision: 8, scale: 2
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20180415142344) do
     t.integer  "preview_num"
     t.string   "category6"
     t.decimal  "req_score",   precision: 5, scale: 2
+    t.boolean  "spotlight",                           default: false, null: false
   end
 
   create_table "eval_results", force: :cascade do |t|

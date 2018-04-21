@@ -7,7 +7,7 @@ class PagesController < ApplicationController
   end
 
   def home
-    @courses = Course.limit(2).order('id asc')
+    @courses = Course.where('spotlight = ?', true )
     @q = ForumThread.search(params[:q]) #change to query directory
     @forum_threads = ForumThread.limit(2).order('id desc')
     @order_item = current_order.order_items.new
