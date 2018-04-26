@@ -51,7 +51,7 @@
       <ul class="nav navbar-nav">
         <li class="divider-vertical-lt" ><%= link_to 'About', about_path %></li>
         <li class="divider-vertical-lt" ><%= link_to 'Find a Doctor', directory_path %></li>
-        <li class="divider-vertical-lt" ><%= link_to 'Guest Blogs', blog_path %></li>
+        <li class="divider-vertical-lt" ><%= link_to 'Articles', articles_path %></li>
         <li class="divider-vertical-lt" ><%= link_to 'Continuing Ed Classes', courses_path %></li>
         <li class="divider-vertical-lt" ><%= link_to 'Forum', forum_threads_path %></li>
         <li class="divider-vertical-lt divider-vertical-rt" ><%= link_to 'Contact Us', contact_path %></li>
@@ -130,7 +130,7 @@
     </div>
 
     <div class="col-sm-3">
-      <%= link_to ' View All Articles <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, blog_path, class: "btn btn-gray btn-block" %>
+      <%= link_to ' View All Articles <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, articles_path, class: "btn btn-gray btn-block" %>
     </div>  
   </div>
 
@@ -141,14 +141,16 @@
       <div class="question-box">
         <div class="h3-custom">Top Articles:</div>
         <hr class="medium-margins">
-        <div class="h3-custom"><%= link_to "Despite the decline in opioid prescriptions since 2010, the number of opioid-involved deaths has accelerated due to staggering growth in overdose fatalities involving heroin and synthetic opioids.", blog_path, class: "dark-blue-text higher-line" %></div>
-        <hr class="medium-margins">
-        <div class="h3-custom"><%= link_to "Opioid addiction treatment behind bars reduced post-incarceration overdose deaths in Rhode Island", blog_path, class: "dark-blue-text higher-line" %></div>
-        <hr class="medium-margins">
-        <div class="h3-custom"><%= link_to "What Does It Mean When We Call Addiction a Brain Disorder?", blog_path, class: "dark-blue-text higher-line" %></div>
-        <hr class="medium-margins">
-        <div class="h3-custom"><%= link_to "Opioid abuse leads to heroin use and a hepatitis C epidemic, researcher says", blog_path, class: "dark-blue-text higher-line" %></div>
-        <hr class="medium-margins">
+        <% @featured_articles.each do |article| %>
+          <div class="h3-custom">
+            <% if article.external %> 
+              <%= link_to "<i class='fa fa-caret-right' aria-hidden='true'></i> #{article.title}".html_safe, article.link, :target => "_blank", class: "dark-blue-text higher-line" %>
+            <% else %>
+              <%= link_to "<i class='fa fa-caret-right' aria-hidden='true'></i> #{article.title}".html_safe, article, class: "dark-blue-text higher-line" %>
+            <% end %>
+          </div>
+          <hr class="medium-margins">
+        <% end %>
       </div>
     </div>
   </div>

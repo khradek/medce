@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180421192638) do
+ActiveRecord::Schema.define(version: 20180423223302) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "text"
@@ -19,6 +19,21 @@ ActiveRecord::Schema.define(version: 20180421192638) do
     t.boolean  "correct_answer", default: false, null: false
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "link"
+    t.string   "author"
+    t.integer  "user_id"
+    t.string   "category"
+    t.boolean  "published",  default: false, null: false
+    t.boolean  "spotlight",  default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "external",   default: false, null: false
+    t.string   "image"
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|

@@ -1,0 +1,43 @@
+
+<% @title = @article.title %>
+
+<div class="container-fluid wide-margin">
+  
+  <% if @article.published || current_user == @article.user%>
+    <% if !@article.published && current_user == @article.user%>
+      <br>
+      <div class="h2-custom red-text">This article is not published. Click <%= link_to "HERE", edit_article_path(@article) %> to edit.</div>
+    <% end %>
+    <% if @article.external %>
+      <h1 class="text-center">This is an external article and can be found at <%= link_to @article.link %>.</h1>
+    <% else %>
+      <br>
+      <br>
+
+      <div class="row">
+        <div class="col-sm-9"> 
+          <div class="forum-box">
+            <%= render @article %>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="forum-box">
+            <%= render "side_menu" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <br>
+  <% else %>
+    <h1 class="text-center">This article has not yet been published.</h1>
+  <% end %>
+
+  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Articles Page'.html_safe, articles_path, :class => "btn btn-gray btn-sm" %>
+
+</div>
+
+
+
+
+

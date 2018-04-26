@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :eval_results
   has_many :forum_threads
   has_many :forum_posts
+  has_many :articles
    
   def password_complexity
     if password.present? and not password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)./)

@@ -1,0 +1,18 @@
+
+<div class="h15-custom bottom-margin-8">
+  <%= @article.title %>
+</div>
+
+<hr>
+
+<%= image_tag @article.image.url, class: "article-image" %>
+
+<br>
+
+<div class="">
+  By: <strong><%= @article.author %></strong>
+</div>
+
+<p>
+  <%= raw(@article.body) %>
+</p>

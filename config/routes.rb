@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  
+
+  resources :articles
+
   resource :cart, only: [:show] do
     get :purchase
   end
@@ -45,6 +47,5 @@ Rails.application.routes.draw do
   get '/home' => "pages#home"
   get '/videos' => "pages#videos"
   get '/contact' => "pages#contact"
-  get '/blog' => "pages#blog" #Need to delete this along with view page (in pages foler) after creating blogs resource
 
 end

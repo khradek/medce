@@ -1,0 +1,100 @@
+<div class="large-container">  
+  <%= simple_form_for @article do |f| %>
+    <% if @article.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= "#{pluralize(@article.errors.count, "error")} prohibited this article from being saved:" %>
+        </h2>
+        <ul>
+          <% @article.errors.full_messages.each do |msg| %>
+            <li>
+              <%= msg %>
+            </li>
+            <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <hr>
+
+    <div class="form-group">
+      <%= f.button :submit, "Save Article", class: "btn-block btn-blue" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :title, "Title" %>
+      <%= f.input :title, placeholder: 'Article Title', label: false, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :author, "Author" %>
+      <%= f.input :author, placeholder: 'Article Author', label: false, class: "form-control" %>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group"> 
+        <%= f.label :external, "External?" %>
+          <%= f.select(:external, options_for_select([['Yes', 'true'], ['No', 'false']], :selected => f.object.external), {}, {class: "form-control"}) %>
+        </div>  
+      </div> 
+    </div>
+
+    <div class="form-group">
+      <%= f.label :link, "URL" %>
+      <%= f.input :link, placeholder: 'URL', label: false, class: "form-control" %>
+    </div>
+
+    <%= f.label :category, "Category" %>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group"> 
+          <%= f.select(:category, options_for_select([['General', 'General'], ['Counseling', 'Counseling'], ['Law Enforcement', 'Law Enforcement'], ['Legal', 'Legal'], ['Medical', 'Medical'], ['Science/Lab', 'Science/Lab']], :selected => f.object.category), {prompt: "Select a Category..."}, {class: "form-control"}) %>
+        </div>  
+      </div> 
+    </div>  
+
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group"> 
+        <%= f.label :spotlight, "Spotlight?" %>
+          <%= f.select(:spotlight, options_for_select([['Yes', 'true'], ['No', 'false']], :selected => f.object.spotlight), {}, {class: "form-control"}) %>
+        </div>  
+      </div> 
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="field">
+          <%= f.label :image %><br>
+          <%= f.file_field :image %><br>
+          <% if f.object.image? %>
+            <%= image_tag f.object.image.thumb.url %>
+            <%= f.label :remove_image %>
+            <%= f.check_box :remove_image %> 
+          <% end %>
+        </div>
+      </div>
+    </div>
+      
+    <br>
+    <div class="form-group">
+      <%= f.input :body, label: false, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FUll'}}, class: "form-control" %>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group"> 
+        <%= f.label :published, "Publish?" %>
+          <%= f.select(:published, options_for_select([['Yes', 'true'], ['No', 'false']], :selected => f.object.published), {}, {class: "form-control"}) %>
+        </div>  
+      </div> 
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+      <%= f.button :submit, "Save Article", class: "btn-block btn-blue" %>
+    </div>
+  <% end %>
+</div>

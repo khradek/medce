@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit] 
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :author_user, only: [:new, :edit, :update, :destroy]
 
   # GET /courses
   # GET /courses.json
@@ -177,6 +178,10 @@ class CoursesController < ApplicationController
     def correct_user
       redirect_to root_path, notice: "You can only edit classes that you authored." if @course.user != current_user   
     end 
+
+    def author_user
+      redirect_to root_path, notice: "You do not have the needed permission to create a class." unless current_user.author   
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
