@@ -21,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @current_user.articles.each do |article|%>
+          <% @current_user.articles.order('created_at DESC').each do |article|%>
             <tr>
               <td width="85%"><%= link_to article.title, article, class: "bold-text dark-blue-text" %></td>
               <td width="5%"><%= link_to "Edit", edit_article_path(article) %></td>

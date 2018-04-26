@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
     @q = Article.search(params[:q])
     @articles = @q.result(distinct: true).where('published = ?', true).where('external = ?', false ).order('created_at DESC').paginate(:page => params['articles'], :per_page => 5)
     @web_articles = @q.result(distinct: true).where('published = ?', true).where('external = ?', true ).order('created_at DESC').paginate(:page => params['web_articles'], :per_page => 5)
-    @recent_articles = Article.limit(5).order('id desc')
+    @recent_articles = Article.limit(5).order('id DESC')
   end
 
   # GET /articles/1
