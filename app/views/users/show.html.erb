@@ -44,7 +44,7 @@
 
 
           <% if @purchased_courses.any? {|a| a.course_id == course.id} %>
-            <div class="col-sm-4 col-md-2">
+            <div class="col-sm-4 col-md-2 bottom-margin-8">
               <strong>You have purchased this class.</strong> 
             </div> 
           <% else %>  
@@ -52,7 +52,7 @@
               <div class="col-sm-4 col-md-2">
                 <div class="input-group">
                   <%= f.hidden_field :course_id, value: course.id %>
-                  <%= button_tag type: 'submit', class: "btn btn-blue" do %>
+                  <%= button_tag type: 'submit', class: "btn btn-blue bottom-margin-8" do %>
                      Add to Cart <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> 
                   <% end %>
                 </div> 
