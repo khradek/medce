@@ -1,11 +1,11 @@
 
 
-<%= link_to "New Thread", new_forum_thread_path, class: "btn btn-blue btn-block" %>
+<%= link_to "Start New Thread", new_forum_thread_path, class: "btn btn-blue btn-block" %>
 <hr class="light-smoke-short">
 <div class="h3-custom bottom-margin-8">Search</div>
   <div>
     <%= search_form_for @q, html: { class: "form-inline-block" } do |f| %>
-      <%= f.search_field :subject_or_forum_posts_body_or_category_cont, placeholder: "Search Forum...", class: "form-control" %>
+      <%= f.search_field :subject_or_forum_posts_body_or_category_cont, placeholder: "Search...", class: "form-control" %>
     <% end %>
   </div>
   <hr class="light-smoke-short">

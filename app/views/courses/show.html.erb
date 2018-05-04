@@ -1,7 +1,19 @@
 <% @title = @course.title %>
 
+<div class="container-fluid wide-margin"> 
+
+  <br>
+
+  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> View All Classes'.html_safe, courses_path, :class => "btn btn-gray btn-sm margin-left-15" %>
+  
+  <br>
+  <br>
+
+</div>
+
 <% if @course.published || current_user == @course.user %>
   <div class="medium-container">
+    <br>
     <p class="text-center h15-custom"><%= @course.title %></p>
     <br>
     <h5><%= @course.description %></h5>
@@ -47,7 +59,7 @@
     <% if current_user && @purchased_courses.any? {|a| a.course_id == @course.id} || current_user == @course.user %>
       
       <br>
-      <p>Please open and review the class material by clicking the Open CLass button below. Once you are comfortable with the material, you must take and pass the evaluation to receive your CE hours. The score required to pass the evaluation for this class is <%= number_to_percentage(@course.req_score, precision: 2) %>.</p>
+      <p>Please open and review the class material by clicking the Open Class button below. Once you are comfortable with the material, you must take and pass the evaluation to receive your CE hours. The score required to pass the evaluation for this class is <%= number_to_percentage(@course.req_score, precision: 2) %>.</p>
       <hr>
       
       <%= link_to "Open Class (PDF)", course_path(@course, :format => 'pdf'), target: "_blank", class: "btn btn-block btn-blue" %>
