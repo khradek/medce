@@ -1,0 +1,22 @@
+<br>
+
+<div class="h1-custom text-center">Update Blog Post</div>
+
+<%= render 'form' %>
+
+<br>
+<br>
+
+<% if current_user.admin? %>
+  <div class="large-container"> 
+    <div class="pull-right">
+      <%= link_to '<i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete Blog'.html_safe, @blog, method: :delete, class: "btn btn-default btn-red", data: { confirm: 'Are you sure? Once the blog posst is deleted, there is no way to restore it.' } %>
+    </div>
+  </div>
+<% end %>
+
+<br>
+<br>
+<br>
+<br>
+<br>

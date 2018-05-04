@@ -1,3 +1,5 @@
+
+/*
 document.addEventListener("turbolinks:load", function() {
 
   //Scrolls back down to Web Articles section when pagination is used
@@ -8,3 +10,5 @@ document.addEventListener("turbolinks:load", function() {
   });
 
 });
+
+/*

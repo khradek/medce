@@ -1,5 +1,5 @@
 
-<% @title = @article.title %>
+<% @title = @article.title + " | Addiction Team USA" %>
 
 <div class="container-fluid wide-margin">
   
@@ -33,7 +33,7 @@
     <h1 class="text-center">This article has not yet been published.</h1>
   <% end %>
 
-  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Articles Page'.html_safe, articles_path, :class => "btn btn-gray btn-sm" %>
+  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> All Articles'.html_safe, articles_path, :class => "btn btn-gray btn-sm" %>
 
 </div>
 

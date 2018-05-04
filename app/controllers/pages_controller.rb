@@ -8,6 +8,7 @@ class PagesController < ApplicationController
 
   def home
     @featured_articles = Article.where('published = ?', true).where('spotlight = ?', true).order('created_at DESC')
+    @featured_blogs = Blog.where('published = ?', true).where('spotlight = ?', true).order('created_at DESC')
     @courses = Course.where('spotlight = ?', true )
     @q = ForumThread.search(params[:q]) #change to query directory
     @forum_threads = ForumThread.limit(2).order('id desc')

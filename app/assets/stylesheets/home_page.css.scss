@@ -22,14 +22,31 @@
 }
 
 .navbar-default-landing .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    background-color: transparent;
-    color: #036ccb;
+  background-color: transparent;
+  color: #036ccb;
+}
+
+.h-active{
+  background-color: #fff !important;
+  color: #036ccb !important;
+  pointer-events: none;
+  cursor: default;
+}
+
+.h-navbar-fixed{
+  top: 0;
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+}
+
+.adjust-height{
+  margin-top: 50px;
 }
 
 .dead{
   pointer-events: none;
 }
-
 
 .main-image{
   display: block;

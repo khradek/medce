@@ -1,0 +1,35 @@
+
+<% @title = @blog.title + " | Addiction Team USA" %>
+
+<div class="container-fluid wide-margin">
+  
+  <% if @blog.published || current_user == @blog.user%>
+    <% if !@blog.published && current_user == @blog.user%>
+      <br>
+      <div class="h2-custom red-text">This blog is not published. Click <%= link_to "HERE", edit_blog_path(@blog) %> to edit.</div>
+    <% end %>
+
+    <br>
+    <br>
+
+    <div class="row">
+      <div class="col-sm-9"> 
+        <div class="forum-box">
+          <%= render @blog %>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="forum-box">
+          <%= render "side_menu" %>
+        </div>
+      </div>
+    </div>
+  <br>
+  <% else %>
+    <h1 class="text-center">This blog post has not yet been published.</h1>
+  <% end %>
+
+  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> All Blog Posts'.html_safe, blogs_path, :class => "btn btn-gray btn-sm" %>
+
+</div>

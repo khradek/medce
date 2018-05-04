@@ -301,6 +301,10 @@ body { background: #F5F5F5 !important;}
   margin-bottom: 8px;
 }
 
+.bottom-margin-10 {
+  margin-bottom: 10px;
+}
+
 .medium-margins {
   margin-top: 7px;
   margin-bottom: 10px;
@@ -386,6 +390,17 @@ body { background: #F5F5F5 !important;}
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ) !important; /* IE6-9 */
   border-color: #b6b6b6; 
   color: #fff; 
+}
+
+.articles-box{
+  border-style: ridge;
+  border-width: 2px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 30px;
+  background-color: #fff;
+  border-color: #b6b6b6; 
 }
 
 .forum-box{

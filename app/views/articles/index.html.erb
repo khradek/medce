@@ -1,5 +1,5 @@
 
-<% @title = "Articles" %>
+<% @title = "Articles | Addiction Team USA" %>
 
 <div class="container-fluid wide-margin">
    
@@ -8,40 +8,11 @@
   <div class="col-sm-9">
     <br>
     <br>
-    <div class="forum-box">
 
-      <div class="courses-header">Articles</div>
-      <hr class="light-blue no-bottom-margin">
-
-      <% @articles.each do |article| %>
-        <div class="row">
-          <div class="col-sm-3">
-            <%= image_tag article.image.url, class: "profile-image" %>
-          </div>
-
-          <div class="col-sm-9">
-            <div class="h2-custom bottom-margin-8">
-              <%= link_to "<i class='fa fa-caret-right' aria-hidden='true'></i> #{article.title}".html_safe, article, class: "bold-text dark-blue-text" %>
-            </div>
-            <div class="preview-text"><%= sanitize article.body.truncate(240, separator: ' ') %></div>
-            <div><strong>From: </strong><span><%= article.author %></span></div>
-            <div><strong>Category: </strong><span><%= article.category %></span></div>
-          </div>
-        </div>
-        <hr class="light-smoke medium-margins">
-      <% end %>
-      <div class="text-center">
-        <nav class="pagination">
-          <%= will_paginate @articles, :param_name => 'articles', renderer: BootstrapPagination::Rails %>
-        </nav>
-      </div>
-    </div>  
-
-    <br>
     <div class="focus" tabindex="1">
-      <div class="forum-box">
-        <div class="h2-custom">From Around the Web</div>
-        <hr class="medium-margins">
+      <div class="articles-box">
+        <div class="h2-custom">Articles From Around the Web</div>
+        <hr>
 
         <% @web_articles.each do |article| %>
           <div class="h2-custom bottom-margin-8">

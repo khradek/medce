@@ -1,0 +1,40 @@
+
+<div class=" h3-custom bottom-margin-8">Recent Blog Posts:</div>
+<% @recent_blogs.each do |blog| %>
+  <div class="h4-custom bottom-margin-8">
+    <%= link_to "<i class='fa fa-caret-right' aria-hidden='true'></i> #{blog.title}".html_safe, blog, class: "bold-text dark-blue-text" %>
+  </div>  
+<% end %>
+
+<hr class="light-smoke-short">
+
+<div class="h3-custom bottom-margin-8">Search</div>
+<div>
+  <%= search_form_for @q, html: { class: "form-inline-block" } do |f| %>
+    <%= f.search_field :title_or_body_or_category_cont, placeholder: "Search Blog Posts...", class: "form-control" %>
+  <% end %>
+</div>
+
+<hr class="light-smoke-short">
+
+<div class="h3-custom">Blog Categories</div>
+<div><%= link_to 'Counseling', blogs_path(q: {category_cont: 'Counseling'}), class: "bold-text dark-blue-text break-word" %></div>
+<div><%= link_to 'General', blogs_path(q: {category_cont: 'General'}), class: "bold-text dark-blue-text break-word" %></div>
+<div><%= link_to 'Law Enforcement', blogs_path(q: {category_cont: 'Law Enforcement'}), class: "bold-text dark-blue-text break-word" %></div>
+<div><%= link_to 'Legal', blogs_path(q: {category_cont: 'Legal'}), class: "bold-text dark-blue-text break-word" %></div> 
+<div><%= link_to 'Medical', blogs_path(q: {category_cont: 'Medical'}), class: "bold-text dark-blue-text break-word" %></div>
+<div><%= link_to 'Science/Lab', blogs_path(q: {category_cont: 'Science/Lab'}), class: "bold-text dark-blue-text break-word" %></div>
+<div><%= link_to 'View All', blogs_path(q: {category_cont: ''}), class: "bold-text dark-blue-text break-word" %></div> 
+
+<hr class="light-smoke-short">
+
+<div class="h3-custom">Recent Articles:</div>
+<% @recent_articles.each do |article| %>
+  <div class="h4-custom bottom-margin-8">
+    <%= link_to "<i class='fa fa-caret-right' aria-hidden='true'></i> #{article.title}".html_safe, article, class: "bold-text dark-blue-text" %>
+  </div>  
+<% end %>
+
+<%= link_to 'All Articles <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, articles_path, class: "btn btn-gray btn-sm" %>
+
+

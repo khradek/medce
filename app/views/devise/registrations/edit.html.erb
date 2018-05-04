@@ -11,6 +11,32 @@
 
   <% if current_user.author? %>
     <div class="box">
+      <h3 class="text-center bold-text">My Blog Posts</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Title</th>   
+            <th></th>
+            <th class="text-center">Published?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @current_user.blogs.order('created_at DESC').each do |blog|%>
+            <tr>
+              <td width="85%"><%= link_to blog.title, blog, class: "bold-text dark-blue-text" %></td>
+              <td width="5%"><%= link_to "Edit", edit_blog_path(blog) %></td>
+              <td width="10%" class="text-center"><% if blog.published %><span class="green-text">Yes</span><% else %><span class="red-text">No</span><% end %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to 'Write New Blog Post', new_blog_path, class: "btn btn-light-gray btn-block" %>
+    </div>
+    <hr> 
+  <% end %>  
+
+  <% if current_user.author? %>
+    <div class="box">
       <h3 class="text-center bold-text">My Articles</h3>
       <table class="table table-hover">
         <thead>
