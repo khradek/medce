@@ -1,0 +1,32 @@
+
+<h2>Email Subscribers</h2>
+
+<div class="media">
+  <div class="media-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Added Date & Time</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @email_subscribers.each do |email_subscriber| %>
+          <tr>
+            <td><%= email_subscriber.email %></td>
+            <td><%= local_time(email_subscriber.created_at) %></td>
+            <td><%= link_to 'View', email_subscriber %></td>
+            <td><%= link_to 'Edit', edit_email_subscriber_path(email_subscriber) %></td>
+            <td><%= link_to 'Delete', email_subscriber, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<br>
+
+<%= link_to 'Add an Email Subscriber', new_email_subscriber_path %>

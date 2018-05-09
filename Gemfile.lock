@@ -122,6 +122,8 @@ GEM
       temple (>= 0.8.0)
       tilt
     i18n (0.8.6)
+    invisible_captcha (0.10.0)
+      rails (>= 3.2.0)
     ipaddress (0.8.3)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -287,6 +289,7 @@ DEPENDENCIES
   devise (~> 4.3)
   devise_masquerade
   fog-aws
+  invisible_captcha
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails (~> 5.0, >= 5.0.5)

@@ -18,4 +18,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authorize_admin
+    if current_user.nil?
+      redirect_to root_path
+    else
+      redirect_to root_path unless current_user.admin
+      #redirects to previous page
+    end
+  end
+
 end

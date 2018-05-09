@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180503140053) do
+ActiveRecord::Schema.define(version: 20180507221415) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "text"
@@ -81,6 +81,12 @@ ActiveRecord::Schema.define(version: 20180503140053) do
     t.string   "category6"
     t.decimal  "req_score",   precision: 5, scale: 2
     t.boolean  "spotlight",                           default: false, null: false
+  end
+
+  create_table "email_subscribers", force: :cascade do |t|
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "eval_results", force: :cascade do |t|

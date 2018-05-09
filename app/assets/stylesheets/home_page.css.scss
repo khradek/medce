@@ -29,8 +29,6 @@
 .h-active{
   background-color: #fff !important;
   color: #036ccb !important;
-  pointer-events: none;
-  cursor: default;
 }
 
 .h-navbar-fixed{
@@ -52,7 +50,8 @@
   display: block;
   margin: auto;
   width: 100%;
-  height: 300px;
+  height: auto;
+  margin-bottom: 5px;
 }
 
 #main-image-container{
@@ -122,3 +121,27 @@
   width: 100%;
   border-radius: 10px;
 }
+
+.h1-custom-responsive{
+  display: block;
+  font-size: 4vw;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.h25-custom-responsive{
+  display: block;
+  font-size: 1.5vw;
+  margin-top: 0;
+  margin-bottom: 5px;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+

@@ -1,6 +1,6 @@
 
 
-<% @title = "Solving America’s Addiction Crisis"%>
+<% @title = "Helping Solve the Addiction Crisis Through Collaboration and Education"%>
 
 <% unless user_signed_in? %>
   <div class="top-button-container-home">
@@ -12,14 +12,8 @@
     <div class="left-container small-screen-hide">
       <%= link_to "Sign In", new_user_session_path, class: "btn btn-gray btn-sm btn-block" %>
     </div>
-    <div class="right-container small-screen-hide">
-      <%= link_to "Sign Up For a Free Account", new_user_registration_path, class: "btn btn-blue btn-sm btn-block" %>
-    </div>
     <div class="left-container-sm-screen small-screen-show">
       <%= link_to "Sign In", new_user_session_path, class: "btn btn-gray btn-sm btn-block" %>
-    </div>
-    <div class="right-container-sm-screen small-screen-show">
-      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-blue btn-sm btn-block" %>
     </div>
   </div>
 <% else %>
@@ -51,11 +45,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav">
-        <li class="divider-vertical-lt"><a href="#stay-informed">Stay Informed</a></li>
-        <li class="divider-vertical-lt"><a href="#find-a-doctor">Find a Doctor or Counselor</a></li>
-        <li class="divider-vertical-lt"><a href="#join-the-discussion">Join The Discussion</a></li>
-        <li class="divider-vertical-lt"><a href="#earn-ce-credits">Earn CE Credits</a></li>
-        <li class="divider-vertical-lt divider-vertical-rt"><a href="#contact-us">Contact Us</a></li>
+        <li class="divider-vertical-lt"><%= link_to "About", about_path, data: {id: "about"} %></li>
+        <li class="divider-vertical-lt"><%= link_to "Addiction Articles", articles_path, data: {id: "articles"} %></li>
+        <li class="divider-vertical-lt"><%= link_to "Find an Addiction Doctor", directory_path, data: {id: "find-a-doctor"} %></li>        
+        <li class="divider-vertical-lt"><%= link_to "Find an Addiction Counselor", directory_path, data: {id: "find-a-counselor"} %></li>
+        <li class="divider-vertical-lt divider-vertical-rt"><%= link_to "Contact Us", contact_path, data: {id: "contact-us"} %></li>
       </ul>  
 
       <ul class="nav navbar-nav navbar-right">
@@ -68,14 +62,13 @@
                 <li class=nav-top-padding><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li></li>
             </ul>
           </li>
+          <li class="divider-vertical-lt">
+            <%= link_to "My Cart", cart_path %>
+          </li>
+          <li class="cart-container hidden-md hidden-sm hidden-xs">
+            <span class="cart-text"><%= render 'layouts/cart_text' %></span>
+          </li>
         <% end %>
-
-        <li class="divider-vertical-lt">
-          <%= link_to "My Cart", cart_path %>
-        </li>
-        <li class="cart-container hidden-md hidden-sm hidden-xs">
-          <span class="cart-text"><%= render 'layouts/cart_text' %></span>
-        </li>
 
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -84,37 +77,44 @@
 
 <%= flash_messages %>
 
-
-<div id="main-image-container">
-  <%= image_tag ('header.jpg'), class: "main-image" %>
-  <div class="centered">
-    <span class="h1-custom white">Addiction Team USA</span>
-    <hr>
-    <div class="h25-custom center white">Solving America’s Addiction Crisis Through Collaboration and Education</div>
+<div class="section" id="about">
+  <div id="main-image-container">
+    <%= image_tag ('header.jpg'), class: "main-image" %>
+    <div class="centered">
+      <span class="h1-custom-responsive white">Addiction Team USA</span>
+      <hr>
+      <div class="h25-custom-responsive center white">Helping Solve the Addiction Crisis Through Collaboration and Education</div>
+    </div>
   </div>
-</div>
+
+  <div class = "large-container">
+    <div class="h2-custom center higher-line bottom-margin-8 top-margin-8">A place where we can share ideas, raise awareness, provide help, and work together to solve the problem of addiction.   
+    </div>
+  </div>
 
 
-<div class="container">
+  <div class="small-container small-screen-hide">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-blue btn-block" data-toggle="modal" data-target="#new_subscriber">
+      Sign Up For Our Free Addiction Updates
+    </button>
+  </div>
+
+  <div class="small-container small-screen-show">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-blue btn-block" data-toggle="modal" data-target="#new_subscriber">
+      Sign Up For Updates
+    </button>  
+  </div>
+
+  <%= render partial: "email_subscribers/new_modal" %>
+
   <br>
-  <div class="h2-custom center higher-line bottom-margin-8">A place where society can share ideas, improve their education, provide help, and work together to solve our country's addiction problem.   
-  </div>
-  <div class="large-container">
-    <p class="large-font center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet tristique ornare. Duis in efficitur massa, tincidunt gravida risus. Vivamus arcu ante, consectetur ut ex nec, sollicitudin gravida libero. In hac habitasse platea dictumst. Cras rhoncus a sem in dictum. Morbi ac nisi ac dolor laoreet fringilla.</p>
-  </div>
+  <br>
+
 </div>
 
-<div class="small-container small-screen-hide">
-  <%= link_to "Become Part of the Solution", new_user_registration_path, class: "btn btn-blue btn-block" %>
-</div>
-
-<div class="small-container small-screen-show">
-  <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-blue btn-block" %>
-</div>
-
-<br>
-
-<div class="section" id="stay-informed">
+<div class="section" id="articles">
 
   <div class="container">
     <hr class="end-fade">
@@ -124,13 +124,14 @@
   <br>
 
   <div class="medium-container">
-    <div class="h15-custom-no-bold center">Stay Informed</div>
+    <div class="h15-custom-no-bold center">Addiction Arcticles</div>
     
+    <br>
     <br>
 
     <div class="row">  
       <div class="col-md-9">
-        <p class="large-font">Morbi ac nisi ac dolor laoreet fringilla. Nulla nisi tortor, pharetra gravida leo vitae, aliquam lacinia quam. Sed eget lectus lectus. Maecenas consectetur tempor ante, vitae finibus ligula imperdiet nec</p>   
+        <p class="large-font">Stay informed. We post a collection of current addiction related news stories and studies from around web. Our articles section will keep you up to date, knowledgeable, and poised to fight the addiction crisis with us.</p>   
       </div>
 
       <div class="col-md-3">
@@ -158,50 +159,18 @@
         </div>
       </div>
     </div>
-
-    <br>
-
-    <div class="row">
-      <div class="col-sm-11">
-        <p class="large-font bottom-margin-10">Sed eget lectus lectus. Maecenas consectetur tempor ante, vitae finibus ligula imperdiet nec. Morbi ac nisi ac dolor laoreet fringilla.</p>   
-      </div>
-    </div>
-
-
-
-    <div class="row">  
-      <div class="col-lg-3">
-        <%= link_to ' View All Blog Posts <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, blogs_path, class: "btn btn-gray btn-block" %>
-      </div>  
-    </div>
-
-    <br>
-
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="question-box">
-          <div class="h3-custom">Recent Blog Posts:</div>
-          <hr class="medium-margins">
-          <% @featured_blogs.each do |blog| %>
-            <div class="h3-custom">
-              <%= link_to "<i class='fa fa-caret-right' aria-hidden='true'></i> #{blog.title}".html_safe, blog, class: "dark-blue-text higher-line" %>
-            </div>
-            <hr class="medium-margins">
-          <% end %>
-        </div>
-      </div>
-    </div>
-
   </div>
-
-  <br>
-  <br>
-  <br>
-
 </div>
 
+<br>
+<br>
+<br>
+
+
 <div class="section" id="find-a-doctor">
+  
   <br>
+  
   <div class="container">
     <hr class="end-fade">
   </div>
@@ -231,148 +200,34 @@
         <%= image_tag ('doc.jpg'), class: "home-image" %>
       </div>
         
-      <div class="col-sm-6">
+      <div class="col-sm-5">
+        <div class="h3-custom">Doctor Directory</div>
         <p class="large-font">Cras rhoncus a sem in dictum. Morbi ac nisi ac dolor laoreet fringilla. Nulla nisi tortor, pharetra gravida leo vitae, aliquam lacinia quam. Aenean fermentum rhoncus libero, sit amet posuere lacus viverra et. Sed auctor lacinia varius.</p>
 
-        <br>
+        <%= link_to ' View Full Doctor Directory <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, directory_path, class: "btn btn-gray btn-md" %>
+      </div>
+    </div>
+    
+  </div>
+</div>
 
-        <%= link_to ' View Full Directory <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, directory_path, class: "btn btn-gray btn-md" %>
+<div class="section" id="find-a-counselor">
+
+  <br>
+  <br>
+
+  <div class="medium-container">
+
+    <div class="row">
+      <div class="col-sm-10">
+        <div class="h3-custom">Counselor Directory</div>        
+        <p class="large-font">Cras rhoncus a sem in dictum. Morbi ac nisi ac dolor laoreet fringilla. Nulla nisi tortor, pharetra gravida leo vitae, aliquam lacinia quam. Aenean fermentum rhoncus libero, sit amet posuere lacus viverra et. Sed auctor lacinia varius.</p>
+        <%= link_to ' View Full Counselor Directory <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, directory_path, class: "btn btn-gray btn-md" %>
       </div>
     </div>
     
     <br>
 
-  </div>
-
-  <br>
-  <br>
-  <br>
-
-</div>
-
-
-<div class="section" id="join-the-discussion">
-  <br>
-  <div class="container">
-    <hr class="end-fade">
-  </div>
-
-  <br>
-  <br>
-
-  <div class="medium-container">
-    <div class="h15-custom-no-bold center">Join the Discussion</div>
-    <br>
-    <div class="row">
-      <div class="col-md-9">
-        <p class="large-font">Cras rhoncus a sem in dictum. Morbi ac nisi ac dolor laoreet fringilla. Nulla nisi tortor, pharetra gravida leo vitae, aliquam lacinia quam. Aenean fermentum rhoncus libero, sit amet posuere lacus viverra et. Sed auctor lacinia varius.</p>
-      </div>
-      <div class="col-md-3">
-        <%= link_to ' View All Posts <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, forum_threads_path, class: "btn btn-gray btn-block" %>
-      </div>
-    </div>
-
-    <br>
-
-
-    <div class="h25-custom-no-bold bottom-margin-8">Recent Posts:</div>
-
-    <div class="question-box">
-      <%= render @forum_threads %>
-    </div>
-  </div>
-
-  <br>
-  <br>
-  <br>
-
-</div>
-
-<div class="section" id="earn-ce-credits">
-  <br>
-  <div class="container">
-    <hr class="end-fade">
-  </div>
-
-  <br>
-  <br>
-
-  <div class="medium-container">
-    <div class="h15-custom-no-bold center">Earn CE Credits</div>
-    <br>
-
-    <div class="row">
-      <div class="col-sm-6">
-        <p class="large-font">Cras rhoncus a sem in dictum. Morbi ac nisi ac dolor laoreet fringilla. Nulla nisi tortor, pharetra gravida leo vitae, aliquam lacinia quam. Aenean fermentum rhoncus libero, sit amet posuere lacus viverra et. Sed auctor lacinia varius. Sed eget lectus lectus. Maecenas consectetur tempor ante, vitae finibus ligula imperdiet nec.</p>
-
-        <br>
-
-        <%= link_to ' View All Classes <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, courses_path, class: "btn btn-gray btn-md bottom-margin-8" %>
-
-      </div>
-      
-
-      <div class="col-sm-6">  
-        <%= image_tag ('study.jpg'), class: "home-image" %>
-      </div>
-
-    </div>
-
-    <br>
-    <br>
-
-    <div class="h25-custom-no-bold bottom-margin-8">Spotlight Classes:</div>
-
-    <div class="question-box">
-      <% @courses.each do |course| %>
-        
-        <div class="row">
-          <div class="col-sm-8 col-md-9">
-            <div class="h2-custom"><%= link_to course.title, course_path(course), class: "bold-text dark-blue-text" %></div>
-          </div>
-
-          <% if @purchased_courses.any? {|a| a.course_id == course.id} %>
-            <div class="col-sm-4 col-md-3">
-              <strong>You have purchased this class.</strong> 
-            </div> 
-          <% else %>  
-            <%= form_for @order_item, remote: true do |f| %>
-              <div class="col-sm-4 col-md-3">
-                <div class="input-group">
-                  <%= f.hidden_field :course_id, value: course.id %>
-                  <%= button_tag type: 'submit', class: "btn btn-blue" do %>
-                     Add to Cart <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> 
-                  <% end %>
-                </div> 
-              </div> 
-            <% end %>
-          <% end %>
-          
-        </div> 
-        <div class="row"> 
-          <div class="col-sm-12">
-            <h5 class="padding-right-50"><%= course.description %></h5>
-          </div>
-        </div>
-        <hr class="no-top-margin">
-        <div class="row">    
-          <div class="col-sm-7">
-            <%= link_to "More Info", course_path(course), class: "btn btn-gray btn-sm" %>
-            <%= link_to 'Preview Class <i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i>'.html_safe, course_preview_path(course, :format => 'pdf'), target: "_blank", class: "btn btn-light-gray btn-sm" %>
-          </div> 
-
-          <% unless @purchased_courses.any? {|a| a.course_id == course.id} %>
-            <div class="col-sm-2">
-              <strong>CE Hours: <%= course.ce_hours%></strong>  
-            </div> 
-            <div class="col-sm-3">
-              <strong>Price: $<%= number_with_precision(course.price, :precision => 2) %></strong>  
-            </div> 
-          <% end %>         
-        </div>
-        <hr class="light-smoke">
-      <% end %>
-    </div>
   </div>
 
   <br>
@@ -396,6 +251,18 @@
     <p class="center">Either have a form here or display email address. Also links to Twitter and Facebook.</p>
   </div>
 
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>  
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
   <br>
   <br>
   <br>

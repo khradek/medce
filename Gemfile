@@ -27,6 +27,7 @@ gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'acts_as_list', '~> 0.9.8'
 gem 'local_time'
 gem 'rails_admin', '~> 1.3'
+gem 'invisible_captcha'
 
 group :development, :test do
   gem 'byebug'
