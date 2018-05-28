@@ -7,15 +7,15 @@ window.addMarkers = function addMarkers() {
 
   map.removeMarkers();
 
-  var i = 1
+  var i = 1;
 
   med_profs.forEach(function(med_prof){
     var number = i++
     var med_prof_label_num = number.toString(); 
     if (top.location.pathname === '/med_profs'){
-      var med_prof_label = med_prof_label_num
+      var med_prof_label = med_prof_label_num;
     }else {
-      var med_prof_label = ''
+      var med_prof_label = "";
     }
     if (med_prof.latitude && med_prof.longitude){
       var marker = map.addMarker({
