@@ -1,0 +1,38 @@
+
+<%= content_tag(:div, nil, id: "med_profs-list", data: { med_profs: @med_profs.to_json(methods: [:address]), l: params[:l] }) do %>
+  <% if @med_profs.empty? %>
+    There are no results in this area. Please refine your search.
+  <% else %>
+    <% @med_profs.each do |med_prof| %>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="list-div">
+            <span class="list-number bold-text top-text"></span><span class="bold-text top-text">.</span>
+            <% if med_prof.image.present? %>
+              <%= image_tag med_prof.image, class: "med-prof-image" %>
+            <% else %>
+              <%= image_tag ('doc.jpg'), class: "med-prof-image"%>
+            <% end %>  
+          </div>
+        </div>
+
+        <div class="col-sm-9">
+          <div class="h2-custom name-link">
+            <%= link_to "<i class='fa fa-caret-right' aria-hidden='true'></i> #{med_prof.title}".html_safe, med_prof, class: "bold-text dark-blue-text med-prof-link", id: "#{med_prof.id}" %>
+          </div>
+          <div class="preview-text indent-text"><%= med_prof.med_prof_type %></div>
+          <div class="preview-text indent-text"><%= link_to number_to_phone(med_prof.phone), "tel:#{number_to_phone(med_prof.phone)}" %></div>
+          <div class="preview-text indent-text"><%= med_prof.street %></div>
+          <div class="preview-text indent-text"><%= med_prof.city %>, <%= med_prof.state%> <%= med_prof.zip%></div>
+        </div>
+      </div>
+      <hr class="light-smoke medium-margins">
+    <% end %>
+
+    <div class="text-center">
+      <nav class="pagination">
+        <%= will_paginate @med_profs, renderer: BootstrapPagination::Rails, remote: true %>
+      </nav>
+    </div>
+  <% end %>
+<% end %>

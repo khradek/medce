@@ -28,6 +28,9 @@ gem 'acts_as_list', '~> 0.9.8'
 gem 'local_time'
 gem 'rails_admin', '~> 1.3'
 gem 'invisible_captcha'
+gem 'sidekiq'
+gem 'geocoder'
+gem 'searchkick'
 
 group :development, :test do
   gem 'byebug'

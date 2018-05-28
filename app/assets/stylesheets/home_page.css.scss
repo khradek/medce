@@ -46,21 +46,6 @@
   pointer-events: none;
 }
 
-.main-image{
-  display: block;
-  margin: auto;
-  width: 100%;
-  height: auto;
-  margin-bottom: 5px;
-}
-
-#main-image-container{
-  position: relative;
-  text-align: center;
-  color: black;
-  margin-bottom: 0px; 
-}
-
 .centered {
   position: absolute;
   top: 50%;
@@ -120,6 +105,21 @@
   margin: auto;
   width: 100%;
   border-radius: 10px;
+}
+
+.main-image{
+  display: block;
+  margin: auto;
+  width: 100%;
+  height: auto;
+  margin-bottom: 5px;
+}
+
+#main-image-container{
+  position: relative;
+  text-align: center;
+  color: black;
+  margin-bottom: 0px; 
 }
 
 .h1-custom-responsive{

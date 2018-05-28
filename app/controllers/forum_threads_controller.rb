@@ -1,6 +1,7 @@
 class ForumThreadsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_forum_thread, except: [:index, :new, :create]
+  before_filter :authorize_admin, only: [:index, :show, :update, :destroy, :edit, :new] #remove once section ready to go live
 
   def index
     @q = ForumThread.search(params[:q])

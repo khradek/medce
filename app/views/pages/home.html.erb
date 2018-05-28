@@ -47,8 +47,7 @@
       <ul class="nav navbar-nav">
         <li class="divider-vertical-lt"><%= link_to "About", about_path, data: {id: "about"} %></li>
         <li class="divider-vertical-lt"><%= link_to "Addiction Articles", articles_path, data: {id: "articles"} %></li>
-        <li class="divider-vertical-lt"><%= link_to "Find an Addiction Doctor", directory_path, data: {id: "find-a-doctor"} %></li>        
-        <li class="divider-vertical-lt"><%= link_to "Find an Addiction Counselor", directory_path, data: {id: "find-a-counselor"} %></li>
+        <li class="divider-vertical-lt"><%= link_to "Find an Addiction Doctor or Counselor", med_profs_path, data: {id: "find-a-doctor"} %></li>        
         <li class="divider-vertical-lt divider-vertical-rt"><%= link_to "Contact Us", contact_path, data: {id: "contact-us"} %></li>
       </ul>  
 
@@ -179,17 +178,19 @@
   <br>
 
   <div class="medium-container">
-    <div class="h15-custom-no-bold center">Connect with a Medical Professional Near You</div>
+    <div class="h15-custom-no-bold center">Connect with an Addiction Doctor or Counselor Near You</div>
     
     <br>
 
     <div class="search-container">
-      <%= link_to 'Search', directory_path, class: "btn btn-light-gray btn-md pull-right" %>
-      <div style="overflow: hidden; padding-right: .5em;">
-        <%= search_form_for @q, html: { class: "form-inline-block" } do |f| %>
-          <%= f.search_field :subject_or_forum_posts_body_or_category_cont, placeholder: "Enter your location...", class: "form-control" %>
-        <% end %>
-      </div>
+      <%= form_tag med_profs_path, method: :get do |f| %>
+        <div class="input-group">
+          <%= text_field_tag :near, nil, class: "form-control", placeholder: "Enter your location", id: "search-form" %>
+          <span class="input-group-btn">
+            <%= button_tag 'Search', class: "btn btn-light-gray", id: "search-button" %>
+          </span>
+        </div>
+      <% end %>
     </div>
     
     <br>
@@ -201,33 +202,12 @@
       </div>
         
       <div class="col-sm-5">
-        <div class="h3-custom">Doctor Directory</div>
         <p class="large-font">Cras rhoncus a sem in dictum. Morbi ac nisi ac dolor laoreet fringilla. Nulla nisi tortor, pharetra gravida leo vitae, aliquam lacinia quam. Aenean fermentum rhoncus libero, sit amet posuere lacus viverra et. Sed auctor lacinia varius.</p>
 
-        <%= link_to ' View Full Doctor Directory <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, directory_path, class: "btn btn-gray btn-md" %>
+        <%= link_to ' View Full Directory <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, med_profs_path, class: "btn btn-gray btn-md" %>
       </div>
     </div>
     
-  </div>
-</div>
-
-<div class="section" id="find-a-counselor">
-
-  <br>
-  <br>
-
-  <div class="medium-container">
-
-    <div class="row">
-      <div class="col-sm-10">
-        <div class="h3-custom">Counselor Directory</div>        
-        <p class="large-font">Cras rhoncus a sem in dictum. Morbi ac nisi ac dolor laoreet fringilla. Nulla nisi tortor, pharetra gravida leo vitae, aliquam lacinia quam. Aenean fermentum rhoncus libero, sit amet posuere lacus viverra et. Sed auctor lacinia varius.</p>
-        <%= link_to ' View Full Counselor Directory <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, directory_path, class: "btn btn-gray btn-md" %>
-      </div>
-    </div>
-    
-    <br>
-
   </div>
 
   <br>

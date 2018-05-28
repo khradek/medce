@@ -1,0 +1,71 @@
+
+<% @title = "Directory | Addiction Team USA" %>
+
+<div class="container-fluid wide-margin">
+   
+  <br>
+
+  <div id="med_prof_type" class="hidden"><%= @type_filter %></div>
+
+  <div class="col-xs-7">
+    <div class="forum-box">
+      <p class="h175-custom bottom-margin-15">Search Our Directory</p>
+      <hr>
+      <div class="row">
+        <div class="col-sm-9">  
+          <%= form_tag med_profs_path, method: :get do |f| %>
+            <div class="input-group">
+              <%= text_field_tag :near, nil, class: "form-control", placeholder: "Enter your location", id: "search-form" %>
+              <span class="input-group-btn">
+                <%= button_tag 'Search', class: "btn btn-light-gray", id: "search-button" %>
+              </span> 
+            </div>
+            <% if params[:med_prof_type] %>
+              <%= hidden_field_tag :med_prof_type, @type_filter %>
+            <% end %>             
+          <% end %>       
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-sm-3 padding-right-2 bottom-padding-2">  
+          <%= link_to 'All', params.except(:med_prof_type, :page).merge(near: @p_location), class: "btn btn-gray btn-block #{'disabled' unless @type_filter == 'Doctor' || @type_filter == 'Counselor'}" %> 
+        </div>
+        <div class="col-sm-3 padding-right-2 padding-left-2 bottom-padding-2">  
+          <%= link_to 'Counselors', params.except(:page).merge(med_prof_type: 'Counselor'), class: "btn btn-gray btn-block #{'disabled' if @type_filter == 'Counselor'}" %>
+        </div>
+        <div class="col-sm-3 padding-left-2">  
+          <%= link_to 'Doctors', params.except(:page).merge(med_prof_type: 'Doctor'), class: "btn btn-gray btn-block #{'disabled' if @type_filter == 'Doctor'}" %>
+        </div>
+      </div>
+      <br>
+      <div class="large-font">
+        <% if params[:med_prof_type] %>
+          Addiction <%= @type_filter %>s
+        <% else %>
+          Addiction Doctors and Counselors  
+        <% end %>
+
+        <% if params[:near] %>
+          Located Near <%= @p_location.upcase %>
+        <% end %> 
+      </div>
+
+      <hr class="light-smoke medium-margins">
+
+      <%= render partial: "list" %>
+    </div>
+  </div>
+
+  <div class="col-xs-5">
+    <div id="map-div">
+      <%= content_tag(:div, nil, id: "map") %>
+    </div>
+  </div>
+
+</div>
+
+
+

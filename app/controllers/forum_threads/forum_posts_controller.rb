@@ -3,6 +3,7 @@ class ForumThreads::ForumPostsController < ApplicationController
   before_action :set_forum_thread
   before_action :set_forum_post, only: [:edit, :update]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_filter :authorize_admin, only: [:index, :show, :update, :destroy, :edit, :new] #remove once section ready to go live
 
   def create
     @forum_post = @forum_thread.forum_posts.new forum_post_params

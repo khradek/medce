@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180507221415) do
+ActiveRecord::Schema.define(version: 20180510172110) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "text"
@@ -118,6 +118,23 @@ ActiveRecord::Schema.define(version: 20180507221415) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "category"
+  end
+
+  create_table "med_profs", force: :cascade do |t|
+    t.string   "title"
+    t.text     "about"
+    t.string   "med_prof_type"
+    t.string   "image"
+    t.string   "phone"
+    t.string   "street"
+    t.string   "city"
+    t.string   "zip"
+    t.string   "state"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "order_items", force: :cascade do |t|

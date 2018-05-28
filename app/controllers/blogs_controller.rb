@@ -3,6 +3,7 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit] 
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :author_user, only: [:new, :edit, :update, :destroy]
+  before_filter :authorize_admin, only: [:index, :show, :update, :destroy, :edit, :new] #remove once section ready to go live
 
 
   def index

@@ -18,5 +18,6 @@
 //= require bootstrap
 //= require ckeditor/init
 //= require ckeditor/config
+//= require gmaps/gmaps
 //= require local-time
 //= require_tree .

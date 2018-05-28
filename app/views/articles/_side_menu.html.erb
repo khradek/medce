@@ -30,14 +30,5 @@
 <div><%= link_to 'Science/Lab', articles_path(q: {category_cont: 'Science/Lab'}), class: "bold-text dark-blue-text break-word" %></div>
 <div><%= link_to 'View All', articles_path(q: {category_cont: ''}), class: "bold-text dark-blue-text break-word" %></div> 
 
-<hr class="light-smoke-short">
 
-<div class="h3-custom">Recent Blog Posts:</div>
-<% @recent_blogs.each do |blog| %>
-  <div class="h4-custom bottom-margin-8">
-    <%= link_to "<i class='fa fa-caret-right' aria-hidden='true'></i> #{blog.title}".html_safe, blog, class: "bold-text dark-blue-text" %>
-  </div>  
-<% end %>
-
-<%= link_to 'All Blog Posts <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, blogs_path, class: "btn btn-gray btn-sm" %>
 

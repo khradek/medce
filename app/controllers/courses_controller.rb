@@ -3,9 +3,9 @@ class CoursesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit] 
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :author_user, only: [:new, :edit, :update, :destroy]
+  before_filter :authorize_admin, only: [:index, :show, :update, :destroy, :edit, :new] #remove once section ready to go live
 
-  # GET /courses
-  # GET /courses.json
+
   def index
     @q = Course.where('published = ?', true ).search(params[:q])
     @courses = @q.result.order("title").paginate(:page => params[:page], :per_page => 5)
@@ -18,8 +18,6 @@ class CoursesController < ApplicationController
     end
   end
 
-  # GET /courses/1
-  # GET /courses/1.json
   def show
     @course = Course.find params[:id]
     @author = @course.user
@@ -119,17 +117,13 @@ class CoursesController < ApplicationController
     @score = @correct * 100 / @total 
   end
 
-  # GET /courses/new
   def new
     @course = current_user.courses.build
   end
 
-  # GET /courses/1/edit
   def edit
   end
 
-  # POST /courses
-  # POST /courses.json
   def create
     @course = Course.new(course_params)
     @course.user = current_user
@@ -145,8 +139,6 @@ class CoursesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /courses/1
-  # PATCH/PUT /courses/1.json
   def update
     respond_to do |format|
       if @course.update(course_params)
@@ -159,8 +151,6 @@ class CoursesController < ApplicationController
     end
   end
 
-  # DELETE /courses/1
-  # DELETE /courses/1.json
   def destroy
     @course.destroy
     respond_to do |format|
@@ -170,7 +160,6 @@ class CoursesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_course
       @course = Course.find(params[:id])
     end
@@ -183,7 +172,6 @@ class CoursesController < ApplicationController
       redirect_to root_path, notice: "You do not have the needed permission to create a class." unless current_user.author   
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
       params.require(:course).permit(:title, :body, :preview_num, :spotlight, :req_score, :author_id, :description, :ce_hours, :price, :category1, :category2, :category3, :category4, :category5, :category6, :published)
     end

@@ -1,0 +1,86 @@
+<%= simple_form_for(@med_prof) do |f| %>
+  <% if @med_prof.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= "#{pluralize(@med_prof.errors.count, "error")} prohibited this from being saved:" %>
+      </h2>
+      <ul>
+        <% @med_prof.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+          <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :about %>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group">
+          <%= f.label :med_prof_type, "Type" %>
+          <%= f.select(:med_prof_type, options_for_select([['Counselor', 'Counselor'], ['Doctor', 'Doctor']], :selected => f.object.med_prof_type), {}, {class: "form-control"}) %>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :image %><br>
+      <%= f.file_field :image %><br>
+      <% if f.object.image? %>
+        <%= image_tag f.object.image.thumb.url %>
+        <%= f.label :remove_image %>
+        <%= f.check_box :remove_image %> 
+      <% end %>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group">
+          <%= f.input :phone, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group">
+          <%= f.input :street, class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="form-group">
+          <%= f.input :city, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group">  
+          <%= f.input :state, as: :select, collection: MedProf::STATES, class: "  form-control" %>
+        </div>
+      </div>    
+
+      <div class="col-xs-6">
+        <div class="form-group">
+          <%= f.input :zip, class: "form-control" %>
+        </div> 
+      </div>
+    </div>
+  
+    --------------------------------------------------------------------   
+    <%= f.input :latitude %>
+    <%= f.input :longitude %>
+    <%= f.input :user_id %>
+    --------------------------------------------------------------------   
+  </div>
+
+  <br>
+  
+  <div class="form-actions">
+    <%= f.button :submit, "Save Listing", class: "btn-block btn-blue" %>
+  </div>
+<% end %>
