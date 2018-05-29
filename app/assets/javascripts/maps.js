@@ -70,7 +70,10 @@ document.addEventListener("turbolinks:load", function() {
     lat: 35.021050,
     lng: -80.845996,
     maxZoom: 17,
-    mapTypeControl: false
+    mapTypeControl: false,
+    zoomControlOptions: {
+      position: google.maps.ControlPosition.LEFT_BOTTOM
+    }
   });
 
   addMarkers();
