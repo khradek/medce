@@ -185,7 +185,7 @@
     <div class="search-container">
       <%= form_tag med_profs_path, method: :get do |f| %>
         <div class="input-group">
-          <%= text_field_tag :near, nil, class: "form-control", placeholder: "Enter your location", id: "search-form" %>
+          <%= text_field_tag :near, nil, class: "form-control", placeholder: "Enter your zip code or city & state", id: "search-form" %>
           <span class="input-group-btn">
             <%= button_tag 'Search', class: "btn btn-light-gray", id: "search-button" %>
           </span>
