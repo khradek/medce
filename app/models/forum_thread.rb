@@ -1,4 +1,4 @@
-class ForumThread < ActiveRecord::Base
+class ForumThread < ApplicationRecord
   
   belongs_to :user
   has_many :forum_posts

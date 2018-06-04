@@ -1,4 +1,4 @@
-class Course < ActiveRecord::Base
+class Course < ApplicationRecord
   belongs_to :user
   has_many :order_items
   has_one :evaluation, dependent: :destroy

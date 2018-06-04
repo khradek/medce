@@ -21,6 +21,3 @@
 
 en:
   hello: "Hello world"
-  will_paginate:
-    previous_label: <i class="fa fa-angle-left" style="color:#033f92"></i>
-    next_label: <i class="fa fa-angle-right" style="color:#033f92"></i>

@@ -1,4 +1,4 @@
-class EvalResult < ActiveRecord::Base
+class EvalResult < ApplicationRecord
   belongs_to :user
   belongs_to :course
 

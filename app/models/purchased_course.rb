@@ -1,4 +1,4 @@
-class PurchasedCourse < ActiveRecord::Base
+class PurchasedCourse < ApplicationRecord
   belongs_to :user
 
   def matching_course

@@ -1,3 +1,3 @@
-class OrderStatus < ActiveRecord::Base
+class OrderStatus < ApplicationRecord
   has_many :orders
 end

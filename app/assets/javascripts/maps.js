@@ -55,6 +55,7 @@ function setSafeBounds(element) {
 
 document.addEventListener("turbolinks:load", function() {
 
+  console.log("Test");
   //Disables search button unless text is in field
   $('#search-button').prop('disabled', true);
   $('#search-form').keyup(function(){ 

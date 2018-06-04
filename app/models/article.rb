@@ -1,4 +1,4 @@
-class Article < ActiveRecord::Base
+class Article < ApplicationRecord
   belongs_to :user
 
   mount_uploader :image, ImageUploader

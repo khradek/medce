@@ -17,7 +17,7 @@
       <% @blogs.each do |blog| %>
         <div class="row">
           <div class="col-sm-3">
-            <%= image_tag blog.image.url, class: "profile-image" %>
+            <%= image_tag blog.image.url, class: "profile-image" unless blog.image.blank? %>
           </div>
 
           <div class="col-sm-9">

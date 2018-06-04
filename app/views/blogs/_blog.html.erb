@@ -5,7 +5,7 @@
 
 <hr>
 
-<%= image_tag @blog.image.url, class: "article-image" %>
+<%= image_tag @blog.image.url, class: "article-image" unless blog.image.blank? %>
 
 <br>
 

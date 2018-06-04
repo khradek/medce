@@ -1,3 +1,3 @@
-class EmailSubscriber < ActiveRecord::Base
+class EmailSubscriber < ApplicationRecord
   validates :email, presence: true
 end
