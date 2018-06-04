@@ -14,7 +14,7 @@ gem 'devise', '~> 4.3'
 gem 'simple_form', '~> 3.2'
 gem 'ckeditor', '~> 4.2', '>= 4.2.4'
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-binary' #https://stackoverflow.com/questions/46921015/rails-5-wkhtmltopdf-does-not-include-bootstrap - possibly takes a lot of memory, many not work with rails 5
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
