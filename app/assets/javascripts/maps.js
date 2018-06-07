@@ -41,8 +41,9 @@ window.addMarkers = function addMarkers() {
 
 function setSafeBounds(element) {
 
-  if ($("#med_profs-list").attr('data-l')) {
-    var l = element.dataset.l;
+  //if ($("#med_profs-list").attr('data-l')) {  
+  var l = element.dataset.l;
+  if (l !== undefined) {
     var latlngs   = l.split(',');
     var southWest = new google.maps.LatLng(latlngs[0], latlngs[1]);
     var northEast = new google.maps.LatLng(latlngs[2], latlngs[3]);
