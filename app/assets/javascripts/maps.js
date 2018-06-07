@@ -40,8 +40,9 @@ window.addMarkers = function addMarkers() {
 
 
 function setSafeBounds(element) {
-  var l = element.dataset.l;
-  if (l !== 'null') {
+
+  if ($("#med_profs-list").attr('data-l')) {
+    var l = element.dataset.l;
     var latlngs   = l.split(',');
     var southWest = new google.maps.LatLng(latlngs[0], latlngs[1]);
     var northEast = new google.maps.LatLng(latlngs[2], latlngs[3]);
@@ -49,13 +50,13 @@ function setSafeBounds(element) {
     map.fitBounds(bounds, 0);
   }else {
     map.fitZoom();
-  }
+  };
+    
 }
 
 
 document.addEventListener("turbolinks:load", function() {
 
-  console.log("Test");
   //Disables search button unless text is in field
   $('#search-button').prop('disabled', true);
   $('#search-form').keyup(function(){ 
