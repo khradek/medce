@@ -32,6 +32,7 @@ gem 'sidekiq'
 gem 'geocoder'
 gem 'searchkick'
 gem 'record_tag_helper', '~> 1.0' #allows use of div_for and content_tag in rails 5
+gem 'stripe', '~> 1.43'
 
 group :development, :test do
   gem 'byebug'

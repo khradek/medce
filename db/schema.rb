@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180510172110) do
+ActiveRecord::Schema.define(version: 20180614193433) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "text"
@@ -58,9 +57,8 @@ ActiveRecord::Schema.define(version: 20180510172110) do
     t.integer  "height"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
-
-  add_index "ckeditor_assets", ["type"], name: "index_ckeditor_assets_on_type"
 
   create_table "courses", force: :cascade do |t|
     t.string   "title"
@@ -145,10 +143,9 @@ ActiveRecord::Schema.define(version: 20180510172110) do
     t.decimal  "total_price", precision: 12, scale: 3
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.index ["course_id"], name: "index_order_items_on_course_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
   end
-
-  add_index "order_items", ["course_id"], name: "index_order_items_on_course_id"
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
 
   create_table "order_statuses", force: :cascade do |t|
     t.string   "name"
@@ -164,9 +161,8 @@ ActiveRecord::Schema.define(version: 20180510172110) do
     t.integer  "order_status_id"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.index ["order_status_id"], name: "index_orders_on_order_status_id"
   end
-
-  add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
 
   create_table "purchased_courses", force: :cascade do |t|
     t.integer  "course_id"
@@ -203,9 +199,16 @@ ActiveRecord::Schema.define(version: 20180510172110) do
     t.string   "image"
     t.boolean  "admin",                  default: false, null: false
     t.string   "display_name"
+    t.string   "stripe_id"
+    t.string   "stripe_subscription_id"
+    t.string   "card_last4"
+    t.integer  "card_exp_month"
+    t.integer  "card_exp_year"
+    t.string   "card_brand"
+    t.datetime "subscription_end"
+    t.boolean  "cancelled",              default: false, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

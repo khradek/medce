@@ -88,7 +88,7 @@
   <% end %>
 
   <div class="box">
-    <h3 class="text-center">Purchased Classes</h3>
+    <h3 class="text-center bold-text">Purchased Classes</h3>
     <% if @current_user.purchased_courses.exists? %>
       <table class="table table-hover">
         <thead>
@@ -138,10 +138,108 @@
       <hr>
       <br>
       <h3 class="text-center">Directory Listings</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Title</th>   
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @current_user.med_profs.each do |med_prof|%>
+            <tr>
+              <td width="85%"><%= link_to med_prof.title, med_prof, class: "bold-text dark-blue-text" %></td>
+              <td width="15%"><%= link_to "Edit", edit_med_prof_path(med_prof) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to 'Create New Listing', new_med_prof_path, class: "btn btn-light-gray btn-block" %>
+    </div>
+  <% end %>
+
+  <hr>
+
+</div>
+
+<div class="small-container"> 
+  <div class="box">
+    <h3 class="text-center bold-text">My Directory Listing</h3>
+    <% if current_user.subscribed? && !current_user.cancelled? %>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>My Listing</th>   
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @current_user.med_profs.each do |med_prof|%>
+            <tr>
+              <td width="85%"><%= link_to med_prof.title, med_prof, class: "bold-text dark-blue-text" %></td>
+              <td width="15%"><%= link_to "Edit", edit_med_prof_path(med_prof) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <p>Your listing is active. The current billing period ends <%= current_user.subscription_end.strftime("%m/%d/%Y") %>. The listing will automatically renew at the end of the billing period and your <b><%= current_user.card_brand%></b> card ending in <b><%= current_user.card_last4 %></b> will be charged $10.</p>
+
+      <br>
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-light-gray btn-sm" data-toggle="modal" data-target="#new_subscriber">Update Card on File</button>
+
+      <span class="pull-right"><%= link_to "Deactivate My Listing", subscription_path, data: { confirm: "Are you sure? This will stop any future charges, but after #{current_user.subscription_end.strftime('%m/%d/%Y')} your listing will no longer be shown in our directory." }, method: :delete %></span>
+
+    <% elsif current_user.subscribed? && current_user.cancelled?%>
+      
+      <br>
+
+      <p class="text-center red-text bold-text">You have chosen to deactivate your listing. Your listing will remain active until <%= current_user.subscription_end.strftime("%m/%d/%Y") %> which is the end of your last billing period.</p>
+
+      <br>
+
+      <div class="center">
+        <%= link_to "Reactivate My Listing", new_subscription_path, class: "btn btn-blue" %>
+      </div>      
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>My Listing</th>   
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @current_user.med_profs.each do |med_prof|%>
+            <tr>
+              <td width="85%"><%= link_to med_prof.title, med_prof, class: "bold-text dark-blue-text" %></td>
+              <td width="15%"><%= link_to "Edit", edit_med_prof_path(med_prof) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+    <% else %>
+      <br>
+
+      <% if current_user.med_profs.count > 0 %>
+        <p class="text-center red-text bold-text">Your Listing is not Currently Active</p>
+
+        <br>
+
+        <div class="center">
+        <%= link_to "Activate My Listing", new_subscription_path, class: "btn btn-blue" %>
+        </div>
+
+        <br>
+
         <table class="table table-hover">
           <thead>
             <tr>
-              <th>Title</th>   
+              <th>My Listing</th>   
               <th></th>
             </tr>
           </thead>
@@ -154,15 +252,23 @@
             <% end %>
           </tbody>
         </table>
-        <%= link_to 'Create New Listing', new_med_prof_path, class: "btn btn-light-gray btn-block" %>
-      </div>
-      <hr> 
-    </div>
 
-  <% end %>
-</div>
+      <% else %>
+        <p class="text-center">You Have Not Yet Created Your Listing</p>
+        <br>
+        <%= link_to 'Create Your Listing', new_med_prof_path, class: "btn btn-light-gray btn-block" %>
+      <% end %>   
 
-<div class="small-container"> 
+    <% end %>
+  </div>
+
+
+
+  <br>
+
+
+
+  <hr>
 
   <h3>Update Personal Info</h3>
 
@@ -278,12 +384,94 @@
 
   <% end %>
     
-  <hr>  
-  <h3>Cancel my account</h3>
+  <hr>
 
-  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-red btn-block"  %>
 </div>
 
 <br>
 <br>
 <br>
+
+
+<!-- Modal -->
+<div class="modal fade" id="new_subscriber" tabindex="-1" role="dialog" aria-labelledby="my_modal_label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="h25-custom">Update Card on File
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div>
+          <p class="large-font bold-text">Your current card on file is:</p>
+
+          <% if current_user.card_brand != "American Express" %>
+            <div><b><%= current_user.card_brand%></b> **** **** **** <%= current_user.card_last4 %></div>
+          <% else %>
+            <div><b><%= current_user.card_brand%></b> **** ****** *<%= current_user.card_last4%></div>
+          <% end %>  
+          <div><b>Expires: </b><%= current_user.card_exp_month %> / <%= current_user.card_exp_year %></div>
+
+          <hr>
+
+          <p class="large-font bold-text">Please enter new card information below</p>
+
+          <%= form_tag card_path, method: :put, id: "payment-form" do %>
+            <span class="payment-errors red"></span>
+            
+            <div class="center"><img src="https://www.merchantequip.com/image/?logos=v|m|a|d&height=64" alt="Credit Card Logos" /></div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="field">
+                  <label>
+                    <span>Card Number</span>
+                  </label>
+                  <input class="form-control" placeholder="1234 5678 9012 3456" type="text" size="20" data-stripe="number">
+                </div>
+              </div>  
+            </div>
+              
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="field">
+                  <label>
+                    <span>Expiration</span>
+                  </label>
+                  <input class="form-control" placeholder="MM" type="text" size="10" data-stripe="exp_month">        
+                </div>
+              </div>
+
+              <div class="col-lg-3">
+                <div class="field">
+                  <label>&nbsp</label>
+                  <input class="form-control" placeholder="YYYY" type="text" size="10" data-stripe="exp_year">
+                </div>  
+              </div>
+
+              <div class="col-lg-3"></div>
+
+              <div class="col-lg-3">
+                <div class="field">
+                  <label>
+                    <span>CVC</span>
+                  </label>  
+                  <input class="form-control" placeholder="123" type="text" size="4" data-stripe="cvc">
+                </div>
+              </div>
+            </div> 
+            <div class="actions">
+              <%= button_tag "Update Card", class: "submit btn btn-blue btn-block" %>
+            </div>
+          <% end %> 
+          <br>  
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

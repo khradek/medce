@@ -31,6 +31,10 @@ class User < ApplicationRecord
     fullname = "#{first_name} #{last_name}"
   end
 
+  def subscribed?
+    stripe_subscription_id?
+  end
+  
   private
   def image_size_validation
     errors[:image] << "should be less than 500KB" if image.size > 0.5.megabytes

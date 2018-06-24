@@ -2,6 +2,7 @@ class MedProfsController < ApplicationController
   before_action :set_med_prof, only: [:show, :edit, :update, :destroy]
 
   def index
+    #@med_prof1s = MedProf.includes(:user).where.not(users: { stripe_subscription_id: nil})            
     @med_profs = if params[:l] && params[:med_prof_type]
                    sw_lat, sw_lng, ne_lat, ne_lng = params[:l].split(",")
                    MedProf.search("*", page: params[:page], per_page: 5, 
@@ -67,6 +68,7 @@ class MedProfsController < ApplicationController
                  else
                   MedProf.all.order("state").paginate(:page => params[:page], :per_page => 5)
                 end
+    
     @p_location = params[:near]
     @type_filter = params[:med_prof_type]
   end

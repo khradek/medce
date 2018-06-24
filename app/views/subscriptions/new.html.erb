@@ -1,0 +1,61 @@
+<% @title= "Payment Form | Addiction Team USA" %>
+
+<div class="small-container">
+
+  <h1 class="center">Payment Info</h1>
+
+  <p>To activate your listing, please enter your card information into the form below.</p>
+
+  <%= form_tag subscription_path, id: "payment-form" do %>
+    <span class="payment-errors"></span>
+
+    <hr class="light-blue">
+    
+    <div class="center"><img src="https://www.merchantequip.com/image/?logos=v|m|a|d&height=64" alt="Credit Card Logos" /></div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="field">
+          <label>
+            <span>Card Number</span>
+          </label>
+          <input class="form-control" placeholder="1234 5678 9012 3456" type="text" size="20" data-stripe="number" autocomplete="cc-number" value="4242 4242 4242 4242">
+        </div>
+      </div>  
+    </div>
+      
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="field">
+          <label>
+            <span>Expiration</span>
+          </label>
+          <input class="form-control" placeholder="MM" type="text" size="10" data-stripe="exp_month" autocomplete="cc-exp-month" value="10">        
+        </div>
+      </div>
+
+      <div class="col-lg-3">
+        <div class="field">
+          <label>&nbsp</label>
+          <input class="form-control" placeholder="YYYY" type="text" size="10" data-stripe="exp_year" autocomplete="cc-exp-year" value="2021">
+        </div>  
+      </div>
+
+      <div class="col-lg-3"></div>
+
+      <div class="col-lg-3">
+        <div class="field">
+          <label>
+            <span>CVC</span>
+          </label>  
+          <input class="form-control" placeholder="123" type="text" size="4" data-stripe="cvc" autocomplete="cc-csc" value="123">
+        </div>
+      </div>
+    </div>  
+
+    <hr>
+
+    <input type="submit" class="submit btn btn-blue btn-block" value="Activate My Listing">
+    
+  <% end %>
+
+</div>

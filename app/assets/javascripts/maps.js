@@ -12,7 +12,7 @@ window.addMarkers = function addMarkers() {
   med_profs.forEach(function(med_prof){
     var number = i++
     var med_prof_label_num = number.toString(); 
-    if (top.location.pathname === '/med_profs'){
+    if (top.location.pathname === '/medical_professionals'){
       var med_prof_label = med_prof_label_num;
     }else {
       var med_prof_label = "";
@@ -25,7 +25,7 @@ window.addMarkers = function addMarkers() {
         label: med_prof_label,
         infoWindow: {
           content: `<p>
-                      <span class="bold-text"><a href='/med_profs/${med_prof.id}'>${med_prof.title}</a></span><br>
+                      <span class="bold-text"><a href='/medical_professionals/${med_prof.id}'>${med_prof.title}</a></span><br>
                       <a href='tel:${med_prof.phone}'>${med_prof.phone}</a><br>
                       ${med_prof.street}<br>
                       ${med_prof.city}, ${med_prof.state} ${med_prof.zip}
@@ -82,7 +82,7 @@ document.addEventListener("turbolinks:load", function() {
   addMarkers();
 
   //if statement to prohibit page reload on drag on show page
-  if (top.location.pathname === '/med_profs'){
+  if (top.location.pathname === '/medical_professionals'){
 
     map.addListener("dragend", function(){
       var bounds = map.getBounds();
@@ -91,9 +91,9 @@ document.addEventListener("turbolinks:load", function() {
       //if statement to check if med_prof_type present and then add to URL if true
       if ($.trim($('#med_prof_type').text()) != ""){
         var med_prof_type = $('#med_prof_type').text();
-        Turbolinks.visit(`/med_profs?l=${location}&med_prof_type=${med_prof_type}`);
+        Turbolinks.visit(`/medical_professionals?l=${location}&med_prof_type=${med_prof_type}`);
       }else {
-        Turbolinks.visit(`/med_profs?l=${location}`);
+        Turbolinks.visit(`/medical_professionals?l=${location}`);
       };
     });
 
