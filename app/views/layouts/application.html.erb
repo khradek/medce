@@ -8,6 +8,7 @@
   <%= javascript_include_tag "//maps.google.com/maps/api/js?key=#{MAPS_KEY}" %>
   <%= csrf_meta_tags %>
   <%= tag :meta, name: "stripe-key", content: STRIPE_PUBLIC %>
+  <%= favicon_link_tag asset_path('favicon.png'), :rel => 'icon', :type =>  'image/png' %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="<%= controller_name %> <%= action_name %>">

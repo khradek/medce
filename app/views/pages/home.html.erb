@@ -44,17 +44,15 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
+
         <li class="divider-vertical-lt"><%= link_to "About", about_path, data: {id: "about"} %></li>
         <li class="divider-vertical-lt"><%= link_to "Addiction Articles", articles_path, data: {id: "articles"} %></li>
         <li class="divider-vertical-lt"><%= link_to "Find an Addiction Doctor or Counselor", med_profs_path, data: {id: "find-a-doctor"} %></li>        
-        <li class="divider-vertical-lt divider-vertical-rt"><%= link_to "Contact Us", contact_path, data: {id: "contact-us"} %></li>
-      </ul>  
-
-      <ul class="nav navbar-nav navbar-right">
+        <li class="divider-vertical-lt divider-vertical-rt"><%= link_to "Contact Us", contact_path, data: {id: "contact-us"} %></li>        
 
         <% if user_signed_in? %> 
-          <li class="dropdown divider-vertical-lt">        
+          <li class="dropdown">        
             <a href="#" data-toggle="dropdown"><i class="fa fa-user fa-lg" aria-hidden="true"></i> <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li class="nav-underline"><%= link_to "My Account", edit_user_registration_path %></li>
