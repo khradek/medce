@@ -87,49 +87,6 @@
     <hr> 
   <% end %>
 
-  <div class="box">
-    <h3 class="text-center bold-text">Purchased Classes</h3>
-    <% if @current_user.purchased_courses.exists? %>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Title</th>   
-            <th class="text-center">Passed?</th>
-            <th class="text-center">CE Hours Earned</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @current_user.purchased_courses.each do |pc|%>
-            <tr>
-              <td width="75%"><%= link_to pc.matching_course.title, pc.matching_course, class: "bold-text dark-blue-text" %></td>
-              <td class="text-center" width="5%">
-                <% if pc.matching_course.passed?(@current_user) %>
-                  Yes
-                <% else %>
-                  No
-                <% end %>      
-               </td>
-              <td class="text-center" width="15%">
-                <% if pc.matching_course.passed?(@current_user) %>
-                  <%= pc.matching_course.ce_hours %>
-                <% end %>  
-              </td>
-              <% if pc.matching_course.passed?(@current_user) %>
-                <td class="text-center red-text" width="5%"><i class="fa fa-file-pdf-o"></i></td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% else %>
-      <br>
-      <p class="text-center">You Have Not Purchased Any Classes Yet</p>
-    <% end %>
-  </div>
-
-  <hr>
-
   <% if current_user.admin? %>
     <div class="box">
       <div class="h2-custom text-center">Admin Only</div>
@@ -156,15 +113,11 @@
       </table>
       <%= link_to 'Create New Listing', new_med_prof_path, class: "btn btn-light-gray btn-block" %>
     </div>
+    <hr>
   <% end %>
 
-  <hr>
-
-</div>
-
-<div class="small-container"> 
   <div class="box">
-    <h3 class="text-center bold-text">My Directory Listing</h3>
+    <h3 class="text-center bold-text">Directory Listing</h3>
     <% if current_user.subscribed? && !current_user.cancelled? %>
 
       <table class="table table-hover">
@@ -261,15 +214,96 @@
 
     <% end %>
   </div>
+  
+  <hr>
 
+  <div class="box">
+    <h3 class="text-center bold-text">Prior Charges</h3>
 
+      <% if current_user.charges.exists? %>
+        <div class="media">
+          <div class="media-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Card</th>
+                </tr>
+              </thead>
 
-  <br>
-
-
+              <tbody>
+                <% current_user.charges. each do |charge| %>
+                  <tr>
+                    <td><%= charge.charge_date.strftime("%m/%d/%Y") %></td>
+                    <td><%= number_to_currency(charge.amount * 0.01) %></td>
+                    <% if charge.card_brand != "American Express" %>
+                      <td><%= charge.card_brand %> **** **** **** <%= charge.card_last4%></td>
+                    <% else %>
+                      <td><%= charge.card_brand %> **** ****** *<%= charge.card_last4%></td>
+                    <% end %>  
+                  </tr>
+                <% end%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      <% else %>
+        <p>You do not have any charges.</p>
+      <% end %>
+  </div>
 
   <hr>
 
+  <div class="box">
+    <h3 class="text-center bold-text">Purchased Classes</h3>
+    <% if @current_user.purchased_courses.exists? %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Title</th>   
+            <th class="text-center">Passed?</th>
+            <th class="text-center">CE Hours Earned</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @current_user.purchased_courses.each do |pc|%>
+            <tr>
+              <td width="75%"><%= link_to pc.matching_course.title, pc.matching_course, class: "bold-text dark-blue-text" %></td>
+              <td class="text-center" width="5%">
+                <% if pc.matching_course.passed?(@current_user) %>
+                  Yes
+                <% else %>
+                  No
+                <% end %>      
+               </td>
+              <td class="text-center" width="15%">
+                <% if pc.matching_course.passed?(@current_user) %>
+                  <%= pc.matching_course.ce_hours %>
+                <% end %>  
+              </td>
+              <% if pc.matching_course.passed?(@current_user) %>
+                <td class="text-center red-text" width="5%"><i class="fa fa-file-pdf-o"></i></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <br>
+      <p class="text-center">Coming Soon!</p>
+    <% end %>
+  </div>
+
+  <hr>
+
+</div>
+
+<div class="small-container"> 
+
+  <br>
+  
   <h3>Update Personal Info</h3>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>

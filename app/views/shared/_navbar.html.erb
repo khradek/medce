@@ -44,7 +44,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="divider-vertical-lt <%= is_active?('/about') %>" ><%= link_to 'About', about_path %></li>
         <li class="divider-vertical-lt <%= is_active?('/articles') %>" ><%= link_to 'Addiction Articles', articles_path, class: "#{'blue-nav' if controller_name == 'articles'}" %></li>
-        <li class="divider-vertical-lt <%= is_active?('/med_profs') %>" ><%= link_to 'Find an Addiction Doctor or Counselor', med_profs_path %></li>
+        <li class="divider-vertical-lt <%= is_active?('/medical_professionals') %>" ><%= link_to 'Find an Addiction Doctor or Counselor', med_profs_path %></li>
         <li class="divider-vertical-rt divider-vertical-lt <%= is_active?('/contact') %>" ><%= link_to 'Contact Us', contact_path %></li>
         <% if user_signed_in? %> 
           <li class="dropdown divider-vertical-rt">        

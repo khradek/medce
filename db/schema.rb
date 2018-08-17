@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180614193433) do
+ActiveRecord::Schema.define(version: 20180815223456) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "text"
@@ -46,6 +46,20 @@ ActiveRecord::Schema.define(version: 20180614193433) do
     t.string   "image"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "charges", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "amount"
+    t.string   "stripe_id"
+    t.string   "card_last4"
+    t.string   "card_brand"
+    t.string   "card_exp_month"
+    t.string   "card_exp_year"
+    t.datetime "charge_date"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["stripe_id"], name: "index_charges_on_stripe_id", unique: true
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
@@ -131,8 +145,11 @@ ActiveRecord::Schema.define(version: 20180614193433) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "user_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.boolean  "active",        default: false, null: false
+    t.string   "slug"
+    t.string   "website"
   end
 
   create_table "order_items", force: :cascade do |t|

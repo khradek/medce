@@ -49,7 +49,6 @@
         <li class="divider-vertical-lt"><%= link_to "Addiction Articles", articles_path, data: {id: "articles"} %></li>
         <li class="divider-vertical-lt"><%= link_to "Find an Addiction Doctor or Counselor", med_profs_path, data: {id: "find-a-doctor"} %></li>        
         <li class="divider-vertical-lt divider-vertical-rt"><%= link_to "Contact Us", contact_path, data: {id: "contact-us"} %></li>
-        <li class="divider-vertical-rt"><%= link_to "Test", new_subscription_path %></li>
       </ul>  
 
       <ul class="nav navbar-nav navbar-right">
@@ -96,7 +95,7 @@
   <div class="small-container small-screen-hide">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-blue btn-block" data-toggle="modal" data-target="#new_subscriber">
-      Sign Up For Our Free Addiction Updates
+      Sign Up For Our Free Addiction Email
     </button>
   </div>
 
@@ -203,16 +202,20 @@
       </div>
         
       <div class="col-sm-5">
-        <p class="large-font">Cras rhoncus a sem in dictum. Morbi ac nisi ac dolor laoreet fringilla. Nulla nisi tortor, pharetra gravida leo vitae, aliquam lacinia quam. Aenean fermentum rhoncus libero, sit amet posuere lacus viverra et. Sed auctor lacinia varius.</p>
+        <p class="large-font bottom-margin-15">Search our directory and connect with an addiction professional today. The directory contains the contact information, location, experience, and other details of the top addiction professionals.</p>
 
-        <%= link_to ' View Full Directory <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, med_profs_path, class: "btn btn-gray btn-md" %>
+        <%= link_to ' View Full Directory <i class="fa fa-arrow-right" aria-hidden="true"></i>'.html_safe, med_profs_path, class: "btn btn-gray btn-md bottom-margin-15" %>
       </div>
     </div>
-    
+
+    <div class="row">
+      <div class="col-sm-6">
+        <p class="top-margin-8">Click <%= link_to 'HERE', new_user_registration_path %> if you're an addiction professional and would like to be listed in our directory.</p>
+      </div>
+    </div>
+
   </div>
 
-  <br>
-  <br>
   <br>
 
 </div>
@@ -227,35 +230,20 @@
   <br>
 
   <div class="medium-container">
-    <div class="h15-custom-no-bold center">Contact Us</div>
-    <br>
-    <p class="center">Either have a form here or display email address. Also links to Twitter and Facebook.</p>
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 text-center">
+        <div class="h15-custom-no-bold center">Contact Us</div>
+        <br>
+        <p class="large-font">We are happy to answer any questions and would love to hear your feedback as well. Please send us an email and we will get back to you as soon as possible.</p>
+      </div>
+      <div class="col-lg-12 text-center">
+        <i class="fa fa-envelope-o fa-3x"></i>
+        <p class="large-font"><a href="mailto:addictionteamusa@gmail.com">addictionteamusa@gmail.com</a></p>
+      </div>
+    </div>
   </div>
 
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>  
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>  
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+
 
 </div>
 

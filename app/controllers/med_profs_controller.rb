@@ -17,7 +17,8 @@ class MedProfsController < ApplicationController
                                               lon: ne_lng
                                             }
                                           },
-                                        med_prof_type: params[:med_prof_type]  
+                                        med_prof_type: params[:med_prof_type],
+                                        active: true  
                                         })                                        
                   elsif params[:l]
                    sw_lat, sw_lng, ne_lat, ne_lng = params[:l].split(",")
@@ -31,7 +32,8 @@ class MedProfsController < ApplicationController
                                               lat: sw_lat,
                                               lon: ne_lng
                                             }
-                                          }
+                                          },
+                                          active: true
                                         })
                  elsif params[:near] && params[:med_prof_type]
                    location = Geocoder.search(params[:near]).first
@@ -43,9 +45,10 @@ class MedProfsController < ApplicationController
                           lat: location.latitude,
                           lon: location.longitude
                         },
-                        within: "25mi"
+                        within: "50mi"
                       },
-                      med_prof_type: params[:med_prof_type]  
+                      med_prof_type: params[:med_prof_type],
+                      active: true  
                     }
                  elsif params[:near] 
                    location = Geocoder.search(params[:near]).first
@@ -57,16 +60,18 @@ class MedProfsController < ApplicationController
                           lat: location.latitude,
                           lon: location.longitude
                         },
-                        within: "25mi"
-                      } 
+                        within: "50mi"
+                      },
+                      active: true 
                     } 
                  elsif params[:med_prof_type]
                    MedProf.search("*", page: params[:page], per_page: 5, 
                                         where: {
-                                        med_prof_type: params[:med_prof_type]  
+                                        med_prof_type: params[:med_prof_type],
+                                        active: true  
                                         })                          
                  else
-                  MedProf.all.order("state").paginate(:page => params[:page], :per_page => 5)
+                  MedProf.where(active: true).where.not(latitude: nil).order("state").paginate(:page => params[:page], :per_page => 5)
                 end
     
     @p_location = params[:near]
@@ -77,7 +82,7 @@ class MedProfsController < ApplicationController
 
 
   def show
-    @med_profs = ["", MedProf.find(params[:id])]
+    @med_profs = ["", MedProf.find_by_slug(params[:slug])]
   end
 
   def new
@@ -123,10 +128,10 @@ class MedProfsController < ApplicationController
 
   private
     def set_med_prof
-      @med_prof = MedProf.find(params[:id])
+      @med_prof = MedProf.find_by slug: params[:slug]
     end
 
     def med_prof_params
-      params.require(:med_prof).permit(:title, :about, :med_prof_type, :image, :phone, :street, :city, :zip, :state, :latitude, :longitude, :user_id)
+      params.require(:med_prof).permit(:title, :about, :slug, :website, :med_prof_type, :image, :remove_image, :phone, :street, :city, :zip, :state, :latitude, :longitude, :user_id)
     end
 end

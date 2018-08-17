@@ -5,7 +5,7 @@
   <% else %>
     <% @med_profs.each do |med_prof| %>
       <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-4">
           <div class="list-div">
             <span class="list-number bold-text top-text"></span><span class="bold-text top-text">.</span>
             <% if med_prof.image.present? %>
@@ -16,7 +16,7 @@
           </div>
         </div>
 
-        <div class="col-sm-9">
+        <div class="col-sm-8">
           <div class="h2-custom name-link">
             <%= link_to "<i class='fa fa-caret-right' aria-hidden='true'></i> #{med_prof.title}".html_safe, med_prof, class: "bold-text dark-blue-text med-prof-link", id: "#{med_prof.id}" %>
           </div>
@@ -24,6 +24,9 @@
           <div class="preview-text indent-text"><%= link_to number_to_phone(med_prof.phone), "tel:#{number_to_phone(med_prof.phone)}" %></div>
           <div class="preview-text indent-text"><%= med_prof.street %></div>
           <div class="preview-text indent-text"><%= med_prof.city %>, <%= med_prof.state%> <%= med_prof.zip%></div>
+          <% if med_prof.website? %>
+            <div class="bold-text dark-blue-text indent-text"><%= link_to med_prof.website, "http://#{med_prof.website}", :target => "_blank", class: "dark-blue-text" %></div>
+          <% end %>
         </div>
       </div>
       <hr class="light-smoke medium-margins">

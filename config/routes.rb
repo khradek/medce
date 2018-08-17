@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
+  mount StripeEvent::Engine, at: '/stripe/webhook' 
+  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
   mount Ckeditor::Engine => '/ckeditor'
 
-  resources :med_profs, :path => "medical_professionals"
+  resources :med_profs, :path => "medical_professionals", param: :slug
   
   resources :email_subscribers
   

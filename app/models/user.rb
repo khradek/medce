@@ -20,7 +20,17 @@ class User < ApplicationRecord
   has_many :articles
   has_many :blogs
   has_many :med_profs
+  has_many :charges
    
+  after_create :create_directory_listing
+
+  # Creates med_prof for user 
+  def create_directory_listing
+    MedProf.create :user_id => self.id, :title => self.display_name
+  end
+
+
+
   def password_complexity
     if password.present? and not password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)./)
       errors.add :password, "must include at least one lowercase letter, one uppercase letter, and one digit"

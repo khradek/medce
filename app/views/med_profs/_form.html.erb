@@ -39,7 +39,15 @@
     <div class="row">
       <div class="col-xs-6">
         <div class="form-group">
-          <%= f.input :phone, class: "form-control" %>
+          <%= f.input :website, placeholder: 'example.com', class: "form-control" %>
+        </div>
+      </div>
+    </div>    
+
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group">
+          <%= f.input :phone, placeholder: '555-555-5555', class: "form-control" %>
         </div>
       </div>
     </div>
@@ -71,11 +79,6 @@
       </div>
     </div>
   
-    --------------------------------------------------------------------   
-    <%= f.input :latitude %>
-    <%= f.input :longitude %>
-    <%= f.input :user_id %>
-    --------------------------------------------------------------------   
   </div>
 
   <br>

@@ -31,10 +31,14 @@ class SubscriptionsController < ApplicationController
 
     current_user.update(options)
 
-    #current_user.med_profs.update(subscription_end: Time.at(subscription.current_period_end)
+    #Updates each med_prof belonging to user to active 
+    current_user.med_profs.each do |med_prof|
+      med_prof.update(active: true)
+    end
 
-    redirect_to home_path, notice: "Your listing is now active" 
+    redirect_to home_path, notice: "Your listing is now active and can be edited in your account settings" 
   end
+
 
   #don't show listing if cancelled true and subscription_end in the past
   #only show listing if cancelled false and subscription_end in the future... need to worry about if both nill

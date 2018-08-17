@@ -25,7 +25,7 @@ window.addMarkers = function addMarkers() {
         label: med_prof_label,
         infoWindow: {
           content: `<p>
-                      <span class="bold-text"><a href='/medical_professionals/${med_prof.id}'>${med_prof.title}</a></span><br>
+                      <span class="bold-text"><a href='/medical_professionals/${med_prof.slug}'>${med_prof.title}</a></span><br>
                       <a href='tel:${med_prof.phone}'>${med_prof.phone}</a><br>
                       ${med_prof.street}<br>
                       ${med_prof.city}, ${med_prof.state} ${med_prof.zip}

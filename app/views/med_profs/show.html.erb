@@ -4,7 +4,7 @@
 
 <div class="container-fluid wide-margin">
    
-  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Previous Page'.html_safe, url_for(:back), class: "btn btn-gray btn-sm top-margin-8"%>
+  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Previous Page'.html_safe, url_for(:back), class: "btn btn-gray btn-sm top-margin-8 margin-left-15"%>
   
   <br>
   <br>
@@ -12,7 +12,7 @@
   <div class="col-xs-7">
     <div class="forum-box">
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-5">
           <% if @med_prof.image.present? %>
             <%= image_tag @med_prof.image, class: "med-prof-image" %>
           <% else %>
@@ -20,12 +20,15 @@
           <% end %>  
         </div>
         <%= content_tag(:div, nil, id: "med_profs-list", data: { med_profs: @med_profs.to_json(methods: [:address]), l: params[:l] }) do %>
-          <div class="col-sm-8">
+          <div class="col-sm-7">
             <div class="h2-custom name-link"><%= @med_prof.title %></div>          
             <%= link_to "<i class='fa fa-lg fa-phone' aria-hidden='true'></i> #{number_to_phone(@med_prof.phone)}".html_safe, "tel:#{number_to_phone(@med_prof.phone)}", class: "btn btn-blue btn-sm bold-text" %>
             <div class="preview-text bold-text"><%= @med_prof.med_prof_type %></div>
             <div class="preview-text bold-text"><%= @med_prof.street %></div>
             <div class="preview-text bold-text"><%= @med_prof.city %>, <%= @med_prof.state%> <%= @med_prof.zip%></div>
+            <% if @med_prof.website? %>
+              <div class="bold-text"><%= link_to @med_prof.website, "http://#{@med_prof.website}", :target => "_blank", class: "dark-blue-text" %></div>
+            <% end %> 
           </div>
         <% end %>
       </div>

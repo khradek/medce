@@ -1,6 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
+  invisible_captcha only: [:create]
 
-  #New
+
   def update_resource(resource, params)
     if params[:password].blank? && params[:password_confirmation].blank?
       resource.update_without_password(params)
@@ -25,6 +26,8 @@ class RegistrationsController < Devise::RegistrationsController
   end
   private :account_update_params
 
-
+  def after_sign_up_path_for(resource)
+    new_subscription_path
+  end
 
 end

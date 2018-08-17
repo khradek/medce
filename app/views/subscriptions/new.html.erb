@@ -4,7 +4,7 @@
 
   <h1 class="center">Payment Info</h1>
 
-  <p>To activate your listing, please enter your card information into the form below.</p>
+  <p>To activate your directory listing, please enter your card information into the form below.</p>
 
   <%= form_tag subscription_path, id: "payment-form" do %>
     <span class="payment-errors"></span>
@@ -54,8 +54,13 @@
 
     <hr>
 
-    <input type="submit" class="submit btn btn-blue btn-block" value="Activate My Listing">
+    <input type="submit" class="submit btn btn-blue btn-block" value="Activate My Listing Now">
     
   <% end %>
+
+  <hr class="light-blue">
+  <p class="center">OR</p>
+  <br>
+  <%= link_to "I'll Activate Later", edit_user_registration_path, class: "btn btn-gray btn-block" %>
 
 </div>
