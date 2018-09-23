@@ -57,5 +57,8 @@ Rails.application.routes.draw do
   get '/home' => "pages#home"
   get '/videos' => "pages#videos"
   get '/contact' => "pages#contact"
+  get '/terms' => "pages#terms"
+  get '/privacy' => "pages#privacy"
+  get '/copyright' => "pages#copyright"
 
 end

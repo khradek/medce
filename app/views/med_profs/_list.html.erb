@@ -5,21 +5,16 @@
   <% else %>
     <% @med_profs.each do |med_prof| %>
       <div class="row">
-        <div class="col-sm-4">
-          <div class="list-div">
-            <span class="list-number bold-text top-text"></span><span class="bold-text top-text">.</span>
-            <% if med_prof.image.present? %>
-              <%= image_tag med_prof.image, class: "med-prof-image" %>
-            <% else %>
-              <%= image_tag ('doc.jpg'), class: "med-prof-image"%>
-            <% end %>  
-          </div>
+
+        <div class="col-xs-1">
+          <span class="list-number bold-text large-font-inline"></span><span class=" bold-text large-font-inline">.</span>
         </div>
 
-        <div class="col-sm-8">
-          <div class="h2-custom name-link">
+        <div class="col-xs-7">
+          <div class="h2-custom-inline name-link">
             <%= link_to "<i class='fa fa-caret-right' aria-hidden='true'></i> #{med_prof.title}".html_safe, med_prof, class: "bold-text dark-blue-text med-prof-link", id: "#{med_prof.id}" %>
           </div>
+
           <div class="preview-text indent-text"><%= med_prof.med_prof_type %></div>
           <div class="preview-text indent-text"><%= link_to number_to_phone(med_prof.phone), "tel:#{number_to_phone(med_prof.phone)}" %></div>
           <div class="preview-text indent-text"><%= med_prof.street %></div>
@@ -28,6 +23,18 @@
             <div class="bold-text dark-blue-text indent-text"><%= link_to med_prof.website, "http://#{med_prof.website}", :target => "_blank", class: "dark-blue-text" %></div>
           <% end %>
         </div>
+
+        <div class="col-xs-4">
+          <div class="list-div">
+            <% if med_prof.image.present? %>
+              <%= image_tag med_prof.image, class: "med-prof-image" %>
+            <% end %>  
+          </div>
+        </div>
+
+
+
+
       </div>
       <hr class="light-smoke medium-margins">
     <% end %>
